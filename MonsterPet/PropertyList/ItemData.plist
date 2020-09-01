@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CornFlake</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake. 
+Not that delicious.
+    Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Apple</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Apple.
+    Seriously, It 's an apple.
+      Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Apple.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Carrot</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Carrot.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Carrot.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Cheese</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cheese.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cheese.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Egg</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Pumpkin</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Fish</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Pancake</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Cabbage</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Potato</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>PurplePotato</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>YakiPurplePotato</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Lemon</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>Daikon</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>UsagiApple</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>p</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>q</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>r</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>s</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>t</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>u</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>v</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>w</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>y</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>z</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>aa</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+	<key>bb</key>
+	<dict>
+		<key>DialogueText</key>
+		<string>  Just a Cornflake.
+    Not that delicious.
+        Eadible though...</string>
+		<key>Description</key>
+		<string>Simple Cornflake.
+    People eat everyday</string>
+		<key>RequiredIngredient_1</key>
+		<string>None</string>
+		<key>RequiredIngredient_2</key>
+		<string>None</string>
+		<key>RequiredIngredient_3</key>
+		<string>None</string>
+		<key>IngredientQuantity_1</key>
+		<string>0</string>
+		<key>IngredientQuantity_2</key>
+		<string>0</string>
+		<key>IngredientQuantity_3</key>
+		<string>0</string>
+		<key>CoinRequirement</key>
+		<string>25</string>
+	</dict>
+</dict>
+</plist>

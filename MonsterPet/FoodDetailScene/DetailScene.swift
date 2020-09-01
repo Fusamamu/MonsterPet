@@ -1,0 +1,167 @@
+import Foundation
+import SpriteKit
+import GameplayKit
+
+class DetailScene: SKScene, Observer{
+    
+    var id: Int = 0
+    
+    private let currencyManager     : CurrencyManager       = .sharedInstance
+    private let placeHolderManager  : PlaceHolderManager    = .sharedInstance
+    private let itemManager         : ItemManager           = .sharedInstance
+   
+    private var uiManager           : DetailSceneUIManager!
+    private var sceneBuilder        : SceneBuilder!
+    
+    var currentItem         : Item!
+    var currentItemIndex    : Int!
+    var itemCountLabel      : SKLabelNode = SKLabelNode(text: "Still nil")
+    
+    private var coinCountLabel : BMGlyphLabel!
+    
+    override func didMove(to view: SKView) {
+        
+        sceneBuilder    = SceneBuilder(currentSKScene: self)
+        uiManager       = DetailSceneUIManager(skScene: self)
+        uiManager.InitializeBasicUIElements(itemIndex: currentItemIndex)
+        uiManager.InitializeLabels(by : currentItemIndex)
+        
+        self.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 190/255, alpha: 1)
+        
+       
+        if currentItem == nil{
+            currentItem = Item(index: currentItemIndex)
+            currentItem.setScale(0.2)
+            currentItem.position = uiManager.centerPosition
+            currentItem.position.y += 195
+            currentItem.zPosition = 6
+            addChild(currentItem)
+            currentItem.AddObserver(observer: self)
+            currentItem.count = itemManager.itemCountInventory[currentItem.itemName]!
+        }
+ 
+       
+        
+        
+        itemCountLabel = SKLabelNode(fontNamed: "Andale Mono-Bold")
+        itemCountLabel.horizontalAlignmentMode = .center
+        itemCountLabel.zPosition = 10
+        
+        itemCountLabel.position = uiManager.centerPosition
+        itemCountLabel.position.x += 100
+        itemCountLabel.position.y -= 190
+        itemCountLabel.fontSize = 25
+        itemCountLabel.fontColor = .black
+        itemCountLabel.text = String(currentItem.count)
+        addChild(itemCountLabel)
+        
+
+        itemManager.SetCurrentScene(to: self)
+        
+        
+        coinCountLabel = BMGlyphLabel(txt: String(currencyManager.CoinCounts), fnt: BMGlyphFont(name: "petText"))
+        coinCountLabel.setHorizontalAlignment(.right)
+        coinCountLabel.position = uiManager.upperLeftPosition
+        coinCountLabel.position.x += 145
+        coinCountLabel.position.y -= 38
+        coinCountLabel.zPosition = 200
+        coinCountLabel.setScale(0.5)
+        currencyManager.AddObserver(observer: self)
+        addChild(coinCountLabel)
+        
+        CreateBackground()
+    }
+    
+    override func willMove(from view: SKView) {
+        //Don't know why I have to remove observer????
+        //currentItem.count -= 1 ***********
+        currentItem.RemoveObserver(observer: self)
+        currentItem.removeFromParent()
+        currentItem = nil
+        
+        currencyManager.RemoveObserver(observer: self)
+        
+   
+        
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+        let touch = touches.first
+        let location = touch?.location(in: self)
+        
+        uiManager.UpdateTouch(at: location!)
+        
+        if uiManager.buyButton.contains(location!){
+            currentItem.BuyItem()
+        }
+        
+        if uiManager.placeButton.contains(location!){
+           LoadGameScene()
+        }
+    }
+    
+    func Update() {
+        itemCountLabel.text = String(currentItem.count)
+        ItemManager.sharedInstance.TempCount = currentItem.count
+    }
+    
+    func LoadGameScene(){
+        
+        let mainScene = sceneBuilder.Create(selectedScene: .mainScene)
+        
+        placeHolderManager.AddArrowImages(to: mainScene)
+        
+        itemManager.TempCount  = currentItem.count
+        itemManager.tempItemHolder = currentItem
+  
+        view?.presentScene(mainScene)
+    }
+    
+    
+  
+    
+    func CreateBackground(){
+        let backgroundTexture = SKTexture(imageNamed: "foodScrollBackground")
+        
+        
+        
+        for i in 0 ... 1 {
+            let background = SKSpriteNode(texture: backgroundTexture)
+            let scale: CGFloat = 0.15
+            background.zPosition = -30 - CGFloat(i)
+            background.setScale(scale)
+            background.anchorPoint = CGPoint.zero
+            background.position = CGPoint(x: (backgroundTexture.size().width * scale * CGFloat(i))  , y: 0)
+            self.addChild(background)
+
+            let moveLeft    = SKAction.moveBy(x: -backgroundTexture.size().width*scale, y: 0, duration: 8)
+            let moveReset   = SKAction.moveBy(x: backgroundTexture.size().width*scale, y: 0, duration: 0)
+            let moveLoop    = SKAction.sequence([moveLeft, moveReset])
+            let moveForever = SKAction.repeatForever(moveLoop)
+
+            background.run(moveForever)
+            
+          
+        }
+        
+        
+      
+        
+//        let background = SKSpriteNode(texture: backgroundTexture)
+//        let scale: CGFloat = 0.15
+//        background.zPosition = -30
+//        background.setScale(scale)
+//        background.anchorPoint = CGPoint.zero
+//        background.position = CGPoint(x: (backgroundTexture.size().width*scale * CGFloat(1)) , y: 0)
+//        self.addChild(background)
+//
+//        let moveLeft    = SKAction.moveBy(x: -backgroundTexture.size().width*scale, y: 0, duration: 8)
+//        let moveReset   = SKAction.moveBy(x: backgroundTexture.size().width*scale, y: 0, duration: 0)
+//        let moveLoop    = SKAction.sequence([moveLeft, moveReset])
+//        let moveForever = SKAction.repeatForever(moveLoop)
+//
+//        background.run(moveForever)
+    }
+}
