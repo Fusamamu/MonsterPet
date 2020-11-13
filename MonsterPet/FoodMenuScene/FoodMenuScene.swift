@@ -23,10 +23,7 @@ class FoodMenuScene: SKScene, Observer{
     
     private var pages:[ItemSelectionPage] = []
     
-    var page_1 : ItemSelectionPage!
-    var page_2 : ItemSelectionPage!
-    var page_3 : ItemSelectionPage!
-    
+
     private var pageCountLabel = LabelBuilder().Build(selectedLabel: .pageCountLabel)
     
     private var currentSelectedSlot     : Slot!
@@ -34,13 +31,15 @@ class FoodMenuScene: SKScene, Observer{
     private var slotPopUpInfo           : SKSpriteNode!
     
     override func didMove(to view: SKView) {
+        
+        currentSelectedSlot = nil
         self.name = "FoodMenuScene is the parent"
         //itemPageManager.SetCurrentSKScene(to: self as SKScene)
         uiManager      = FoodMenuUIManager(skScene: self)
         swipeManager   = SwipeManager(skScene: self)
         swipeManager.AddSwipeGesture(target: self, swipeRightAction: #selector(self.swipedRight(sender:)), swipeLeftAction: #selector(self.swipedLeft(sender:)))
         
-
+        //reset page to index 0, positionx = 0
         itemPageManager.pages[currentPageIndex].position.x = 0
         itemPageManager.UpdateItemCount()
         currentPage = itemPageManager.pages[currentPageIndex]
@@ -48,13 +47,16 @@ class FoodMenuScene: SKScene, Observer{
         
         pageCountLabel.position.x = uiManager.mid_X
         pageCountLabel.position.y += 30
-        pageCountLabel.setGlyphText("\(String(describing: currentPageIndex))|\(String(describing: maxPageNumber))")
+        //pageCountLabel.setGlyphText("\(String(describing: currentPageIndex))|\(String(describing: maxPageNumber))")
+        pageCountLabel.setGlyphText("1|\(String(describing: maxPageNumber))")
         addChild(pageCountLabel)
         
         slotSelectionHighlight = SKSpriteNode(imageNamed: "SelectionHighlight")
         slotPopUpInfo = SKSpriteNode(imageNamed:"popUpInfo")
         
         self.backgroundColor = UIColor(red: 178/255, green: 176/255, blue: 122/255, alpha: 1)
+        
+                                        
     }
     
     override func willMove(from view: SKView) {
@@ -65,81 +67,70 @@ class FoodMenuScene: SKScene, Observer{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+    
         let touch       = touches.first
         let location    = touch?.location(in: self)
         
         uiManager.UpdateTouch(at: location!)
-        
-        RemoveHighlight_PopUpInfo()
         uiManager.dialogueLabel.setGlyphText("Could you just choose something")
-        
-        if currentSelectedSlot != nil && !currentSelectedSlot.contains(location!){
-            currentSelectedSlot.ClickedCount = 0
-        }
-         
-
+    
         switch uiManager.state{
             case .allClose:
+                if currentSelectedSlot != nil {
+                    if !currentSelectedSlot.contains(location!){
+                        RemoveHighlight_PopUpInfo()
+                        currentSelectedSlot.isSelected = false
+                        currentSelectedSlot = nil
+                    }
+                    else{
+                        if currentSelectedSlot.isSelected{
+                            
+                            currentSelectedSlot.isSelected = false
+                            
+                            let itemDetailScene = DetailScene(size: view!.bounds.size)
+                            itemDetailScene.scaleMode = .aspectFill
+                            itemDetailScene.currentItemIndex = currentSelectedSlot.itemInSlot.itemIndex
+                            
+                            
+                            view?.presentScene(itemDetailScene)
+                        }
+                    }
+                }
                 
                 guard let checkedCurrentPage = currentPage else { return }
                 
                 for slot in checkedCurrentPage.slots{
                     if slot.isLock && slot.contains(location!){
+
                         
                         
                         if slot.unpackMenuPanel == nil{
                             slot.unpackMenuPanel = UnpackPanel(index: slot.slotIndex, skScene: self as SKScene)
                             slot.SubscribeButton(target: slot.unpackMenuPanel)
                             slot.SubscribeButton(target: slot.unpackMenuPanel.alphaBlackPanel)
+                        }else{
+                            slot.unpackMenuPanel.currentSKscene = self
                         }
                         
+                        
+                        
+                        
                         slot.OnClicked(at: location!)
+
+                        currentSelectedSlot = slot
                         
                         uiManager.state = .unpackMenuOpend
-                        currentSelectedSlot = slot
                         swipeManager.RemoveSwipeGesture()
                     }
                     
-                  
-                    
-                    if !slot.isLock && !slot.isSelected &&  slot.contains(location!) {
-                        
-                        AddHighlight_PopUpInfo(at: slot.position)
-                       
-                        if currentSelectedSlot == nil {
-                            currentSelectedSlot = slot
-                            currentSelectedSlot.ClickedCount += 1
-                        }else if currentSelectedSlot != nil && currentSelectedSlot == slot{
-                            currentSelectedSlot.ClickedCount += 1
-                            currentSelectedSlot.isSelected = true
-                        }else if currentSelectedSlot != nil && currentSelectedSlot != slot{
-                            currentSelectedSlot.isSelected = false
-                            currentSelectedSlot.ClickedCount = 0
-                            currentSelectedSlot = nil
-                            
-                            currentSelectedSlot = slot
-                            currentSelectedSlot.ClickedCount += 1
-                        }
-                        
-                        
+                    if !slot.isLock && !slot.isSelected && slot.contains(location!){
+                        currentSelectedSlot = slot
+                        currentSelectedSlot.isSelected = true
+                        AddHighlight_PopUpInfo(at: currentSelectedSlot.position)
                         //Update Dialogue Box by Plist here
                         uiManager.UpdateDialogueLabel(by: currentSelectedSlot.itemInSlot.itemIndex)
                     }
-                    
-                 
-                    if !slot.isLock && slot.isSelected && slot.ClickedCount == 2 && slot.contains(location!) {
-                        
-                            slot.ClickedCount = 0
-                            slot.isSelected = false
-                            
-                            let itemDetailScene = DetailScene(size: view!.bounds.size)
-                            itemDetailScene.scaleMode = .aspectFill
-                            itemDetailScene.currentItemIndex = slot.itemInSlot.itemIndex
-                            
-                            itemDetailScene.itemCountLabel.text = String(ItemManager.sharedInstance.TempCount)
-                            view?.presentScene(itemDetailScene)
-                    }
+
                 }
             
             case .unpackMenuOpend:
@@ -151,7 +142,9 @@ class FoodMenuScene: SKScene, Observer{
      
                     cancelButton.OnClicked(at: location!)
 
-                    currentSelectedSlot.unpackMenuPanel.removeFromParent()
+                   // currentSelectedSlot.unpackMenuPanel.removeFromParent()
+                    
+                   // currentSelectedSlot.isSelected = false
                     currentSelectedSlot = nil
                     
                     uiManager.state = .allClose
@@ -163,11 +156,13 @@ class FoodMenuScene: SKScene, Observer{
                     unpackButton.OnClicked(at: location!)
 
                     if currencyManager.HeartCounts > 50{
+                        currentSelectedSlot.isLock = false
                         currentSelectedSlot.itemInSlot.isUnlock = true
                         itemManager.slotUpdateUnpackState[currentSelectedSlot.slotIndex] = true
                     }
                     
                     currentSelectedSlot.unpackMenuPanel.removeFromParent()
+                    currentSelectedSlot.isSelected = false
                     currentSelectedSlot = nil
                     
                     uiManager.state = .allClose
@@ -219,8 +214,7 @@ class FoodMenuScene: SKScene, Observer{
     }
     
     func Update() {
-        //currentPage.slots[0].isLock = false
-        //currentPage.slots[0].UpdateLockStatus()
+       
     }
     
     private func MakeSlotsTouchable(){
@@ -240,15 +234,14 @@ class FoodMenuScene: SKScene, Observer{
     
     func RemoveHighlight_PopUpInfo(){
         slotSelectionHighlight.removeFromParent()
-        slotPopUpInfo.removeFromParent()
+        //slotPopUpInfo.removeFromParent()
     }
     
     func AddHighlight_PopUpInfo(at point: CGPoint){
         
-        let scaleUp = SKAction.scale(to: 0.15, duration: 0.5)
+        let scaleUp = SKAction.scale(to: 0.13, duration: 0.5)
         let scaleDown = SKAction.scale(to: 0.1, duration: 0.5)
         let loop = SKAction.sequence([scaleUp,scaleDown])
-        
         
         slotSelectionHighlight.zPosition = 39
         slotSelectionHighlight.position = point
@@ -256,12 +249,6 @@ class FoodMenuScene: SKScene, Observer{
         slotSelectionHighlight.run(SKAction.repeatForever(loop))
         addChild(slotSelectionHighlight)
         
-        slotPopUpInfo.zPosition = 60
-        slotPopUpInfo.setScale(0.15)
-        slotPopUpInfo.position = point
-        slotPopUpInfo.position.x += 5
-        slotPopUpInfo.position.y -= 80
-        addChild(slotPopUpInfo)
     }
     
 

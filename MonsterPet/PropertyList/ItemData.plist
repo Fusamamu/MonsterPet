@@ -30,11 +30,12 @@ People eat everyday</string>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Apple.
-    Seriously, It 's an apple.
+    Seriously, It &apos;s an apple.
       Eadible though...</string>
 		<key>Description</key>
-		<string>Simple Apple.
-    People eat everyday</string>
+		<string>   A vibrant red fruit from
+   a Malus domestica. Good
+   to have for many recipes</string>
 		<key>RequiredIngredient_1</key>
 		<string>None</string>
 		<key>RequiredIngredient_2</key>
@@ -48,7 +49,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>10</string>
 	</dict>
 	<key>Carrot</key>
 	<dict>
@@ -57,8 +58,9 @@ People eat everyday</string>
     Not that delicious.
         Eadible though...</string>
 		<key>Description</key>
-		<string>Simple Carrot.
-    People eat everyday</string>
+		<string>   Orange, very orange, it is.
+    Full with potential recipes.
+    Or leave it uncooked also fine.</string>
 		<key>RequiredIngredient_1</key>
 		<string>None</string>
 		<key>RequiredIngredient_2</key>
@@ -72,7 +74,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>20</string>
 	</dict>
 	<key>Cheese</key>
 	<dict>
@@ -81,8 +83,9 @@ People eat everyday</string>
     Not that delicious.
         Eadible though...</string>
 		<key>Description</key>
-		<string>Simple Cheese.
-    People eat everyday</string>
+		<string>   Oop, What&apos;s that SMELL!
+    Can&apos;t believe something so smelly
+    can be so delicious. </string>
 		<key>RequiredIngredient_1</key>
 		<string>None</string>
 		<key>RequiredIngredient_2</key>
@@ -96,7 +99,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>300</string>
 	</dict>
 	<key>Egg</key>
 	<dict>
@@ -105,8 +108,9 @@ People eat everyday</string>
     Not that delicious.
         Eadible though...</string>
 		<key>Description</key>
-		<string>Simple Cornflake.
-    People eat everyday</string>
+		<string>   Fresh from farm. High
+    quality ingredient to have for
+    preparing upcoming meal.</string>
 		<key>RequiredIngredient_1</key>
 		<string>None</string>
 		<key>RequiredIngredient_2</key>
@@ -120,7 +124,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>50</string>
 	</dict>
 	<key>Pumpkin</key>
 	<dict>
@@ -144,7 +148,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>100</string>
 	</dict>
 	<key>Fish</key>
 	<dict>
@@ -168,7 +172,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>400</string>
 	</dict>
 	<key>Pancake</key>
 	<dict>
@@ -192,7 +196,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>1500</string>
 	</dict>
 	<key>Cabbage</key>
 	<dict>
@@ -216,7 +220,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>45</string>
 	</dict>
 	<key>Potato</key>
 	<dict>
@@ -240,7 +244,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>30</string>
 	</dict>
 	<key>PurplePotato</key>
 	<dict>
@@ -264,7 +268,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>50</string>
 	</dict>
 	<key>YakiPurplePotato</key>
 	<dict>
@@ -288,7 +292,7 @@ People eat everyday</string>
 		<key>IngredientQuantity_3</key>
 		<string>0</string>
 		<key>CoinRequirement</key>
-		<string>25</string>
+		<string>200</string>
 	</dict>
 	<key>Lemon</key>
 	<dict>
@@ -362,7 +366,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>p</key>
+	<key>Salmon</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -386,7 +390,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>q</key>
+	<key>Sandwich</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -410,7 +414,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>r</key>
+	<key>Tofu</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -434,7 +438,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>s</key>
+	<key>Mushroom</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -458,7 +462,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>t</key>
+	<key>Milk</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.

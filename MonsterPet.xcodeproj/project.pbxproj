@@ -13,6 +13,10 @@
 		AE0A574E2478DC24002C6CA4 /* EquipmentSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A574D2478DC24002C6CA4 /* EquipmentSlot.swift */; };
 		AE0A57512478F6FC002C6CA4 /* PetInfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A57502478F6FC002C6CA4 /* PetInfoScene.swift */; };
 		AE0A57532478F745002C6CA4 /* PetInfoUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A57522478F745002C6CA4 /* PetInfoUIManager.swift */; };
+		AE0AB05E2557BFD80018D314 /* PetInfoPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0AB05D2557BFD80018D314 /* PetInfoPageManager.swift */; };
+		AE0AB0642557CB9C0018D314 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0AB0632557CB9C0018D314 /* DataManager.swift */; };
+		AE0AB06F2557D1AA0018D314 /* PetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0AB06E2557D1AA0018D314 /* PetInfo.swift */; };
+		AE0AB0742557D5E90018D314 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0AB0732557D5E90018D314 /* ItemInfo.swift */; };
 		AE0D3A6C24AF8FB900365D13 /* EquipmentDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3A6B24AF8FB900365D13 /* EquipmentDetailScene.swift */; };
 		AE0D3A6F24AF904900365D13 /* EquipDetailSceneUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3A6E24AF904900365D13 /* EquipDetailSceneUIManager.swift */; };
 		AE0D48AC24386B860098E8DB /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D48AB24386B860098E8DB /* TimerManager.swift */; };
@@ -61,6 +65,7 @@
 		AE6E8CBF24AE35110075370B /* UnpackPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E8CBE24AE35110075370B /* UnpackPanel.swift */; };
 		AE706FE024C7F9FE00AA45EB /* SKMultilineLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE706FDF24C7F9FE00AA45EB /* SKMultilineLabelNode.swift */; };
 		AE71B07A248E81E200AC3B21 /* PetCharacterDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE71B079248E81E200AC3B21 /* PetCharacterDisplay.swift */; };
+		AE73D6C4255BC8A4003EB9A7 /* WarnPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73D6C3255BC8A4003EB9A7 /* WarnPanel.swift */; };
 		AE76679A24C7573E00F006A3 /* peng@2x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE76679624C7573E00F006A3 /* peng@2x.xml */; };
 		AE76679B24C7573E00F006A3 /* peng.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE76679724C7573E00F006A3 /* peng.atlas */; };
 		AE76679C24C7573E00F006A3 /* peng@4x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE76679824C7573E00F006A3 /* peng@4x.xml */; };
@@ -89,6 +94,10 @@
 		AE9BBDA724CE9C3A00AA5CA8 /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9BBDA624CE9C3A00AA5CA8 /* PlistManager.swift */; };
 		AE9BBDA924CEC37500AA5CA8 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9BBDA824CEC37500AA5CA8 /* GameData.swift */; };
 		AE9C1F4B243A145A008B5FB2 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9C1F4A243A145A008B5FB2 /* Package.swift */; };
+		AEA34B9A25284EDA003FDCD5 /* GiftScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34B9925284EDA003FDCD5 /* GiftScene.swift */; };
+		AEA34B9F25284EF2003FDCD5 /* GIftUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34B9E25284EF2003FDCD5 /* GIftUIManager.swift */; };
+		AEA34BA425284F16003FDCD5 /* GiftSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34BA325284F16003FDCD5 /* GiftSlot.swift */; };
+		AEA34BA925284F39003FDCD5 /* GiftPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA34BA825284F39003FDCD5 /* GiftPage.swift */; };
 		AEA4D28A242738AE0031868D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4D289242738AE0031868D /* Item.swift */; };
 		AEA9AB4E24D7D6C100922166 /* TitleText@3x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AEA9AB4B24D7D6C100922166 /* TitleText@3x.xml */; };
 		AEA9AB4F24D7D6C100922166 /* TitleText@2x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AEA9AB4C24D7D6C100922166 /* TitleText@2x.xml */; };
@@ -107,8 +116,6 @@
 		AEEAA193248E36B60016A8FB /* HeartShopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEAA192248E36B60016A8FB /* HeartShopPage.swift */; };
 		AEF0F29F24138EEB002ABFFF /* FoodMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF0F29E24138EEB002ABFFF /* FoodMenuScene.swift */; };
 		AEF8B1272410393F00C6B690 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF8B1262410393F00C6B690 /* CurrencyManager.swift */; };
-		AEF8B12B24103F7000C6B690 /* Pomeranian-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEF8B12A24103F7000C6B690 /* Pomeranian-Regular.ttf */; };
-		AEF8B12D2410416800C6B690 /* Andale Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEF8B12C2410416800C6B690 /* Andale Mono.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +142,10 @@
 		AE0A574D2478DC24002C6CA4 /* EquipmentSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentSlot.swift; sourceTree = "<group>"; };
 		AE0A57502478F6FC002C6CA4 /* PetInfoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoScene.swift; sourceTree = "<group>"; };
 		AE0A57522478F745002C6CA4 /* PetInfoUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoUIManager.swift; sourceTree = "<group>"; };
+		AE0AB05D2557BFD80018D314 /* PetInfoPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoPageManager.swift; sourceTree = "<group>"; };
+		AE0AB0632557CB9C0018D314 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		AE0AB06E2557D1AA0018D314 /* PetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfo.swift; sourceTree = "<group>"; };
+		AE0AB0732557D5E90018D314 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		AE0D3A6B24AF8FB900365D13 /* EquipmentDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailScene.swift; sourceTree = "<group>"; };
 		AE0D3A6E24AF904900365D13 /* EquipDetailSceneUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipDetailSceneUIManager.swift; sourceTree = "<group>"; };
 		AE0D48AB24386B860098E8DB /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
@@ -189,6 +200,7 @@
 		AE6E8CBE24AE35110075370B /* UnpackPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnpackPanel.swift; sourceTree = "<group>"; };
 		AE706FDF24C7F9FE00AA45EB /* SKMultilineLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMultilineLabelNode.swift; sourceTree = "<group>"; };
 		AE71B079248E81E200AC3B21 /* PetCharacterDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCharacterDisplay.swift; sourceTree = "<group>"; };
+		AE73D6C3255BC8A4003EB9A7 /* WarnPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnPanel.swift; sourceTree = "<group>"; };
 		AE76679624C7573E00F006A3 /* peng@2x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "peng@2x.xml"; path = "../../../../pengfont/peng@2x.xml"; sourceTree = "<group>"; };
 		AE76679724C7573E00F006A3 /* peng.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = peng.atlas; path = ../../../../pengfont/peng.atlas; sourceTree = "<group>"; };
 		AE76679824C7573E00F006A3 /* peng@4x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "peng@4x.xml"; path = "../../../../pengfont/peng@4x.xml"; sourceTree = "<group>"; };
@@ -217,6 +229,10 @@
 		AE9BBDA624CE9C3A00AA5CA8 /* PlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
 		AE9BBDA824CEC37500AA5CA8 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		AE9C1F4A243A145A008B5FB2 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		AEA34B9925284EDA003FDCD5 /* GiftScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftScene.swift; sourceTree = "<group>"; };
+		AEA34B9E25284EF2003FDCD5 /* GIftUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIftUIManager.swift; sourceTree = "<group>"; };
+		AEA34BA325284F16003FDCD5 /* GiftSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSlot.swift; sourceTree = "<group>"; };
+		AEA34BA825284F39003FDCD5 /* GiftPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftPage.swift; sourceTree = "<group>"; };
 		AEA4D289242738AE0031868D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		AEA9AB4B24D7D6C100922166 /* TitleText@3x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "TitleText@3x.xml"; sourceTree = "<group>"; };
 		AEA9AB4C24D7D6C100922166 /* TitleText@2x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "TitleText@2x.xml"; sourceTree = "<group>"; };
@@ -235,8 +251,6 @@
 		AEEAA192248E36B60016A8FB /* HeartShopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartShopPage.swift; sourceTree = "<group>"; };
 		AEF0F29E24138EEB002ABFFF /* FoodMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenuScene.swift; sourceTree = "<group>"; };
 		AEF8B1262410393F00C6B690 /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
-		AEF8B12A24103F7000C6B690 /* Pomeranian-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pomeranian-Regular.ttf"; sourceTree = "<group>"; };
-		AEF8B12C2410416800C6B690 /* Andale Mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Andale Mono.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +286,7 @@
 				AE4055FC24810BE4002F8450 /* PetInfoPage.swift */,
 				AE40560A2481139D002F8450 /* PetInfoSlot.swift */,
 				AE71B079248E81E200AC3B21 /* PetCharacterDisplay.swift */,
+				AE0AB05D2557BFD80018D314 /* PetInfoPageManager.swift */,
 			);
 			path = PetInfoScene;
 			sourceTree = "<group>";
@@ -287,6 +302,16 @@
 				AEB1EEDB24D6BCB800EFD010 /* TextAnimation.swift */,
 			);
 			path = MainScene;
+			sourceTree = "<group>";
+		};
+		AE0AB0622557CB890018D314 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				AE0AB0632557CB9C0018D314 /* DataManager.swift */,
+				AE0AB06E2557D1AA0018D314 /* PetInfo.swift */,
+				AE0AB0732557D5E90018D314 /* ItemInfo.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		AE0D3A6D24AF8FD200365D13 /* EquipmentDetailScene */ = {
@@ -364,6 +389,8 @@
 		AE28B715240B7B6800A49B23 /* MonsterPet */ = {
 			isa = PBXGroup;
 			children = (
+				AE0AB0622557CB890018D314 /* DataManager */,
+				AEA34B9825284EBC003FDCD5 /* GiftScene */,
 				AEE1261324E5228A006C7535 /* GameSounds */,
 				AE92F50B24D1632600904A73 /* PropertyList */,
 				AE94B92424CC0B660010441E /* ParticleEmitter */,
@@ -385,18 +412,15 @@
 				AE00CA4C244895EE005B7342 /* Smoke.atlas */,
 				AE4746E6243D973500BDD3D2 /* petText@2x.xml */,
 				AE4746E4243D971600BDD3D2 /* petText.atlas */,
-				AEF8B12A24103F7000C6B690 /* Pomeranian-Regular.ttf */,
-				AEF8B12C2410416800C6B690 /* Andale Mono.ttf */,
 				AE8776492449669B00779C34 /* MainScene.sks */,
+				AE0D48AB24386B860098E8DB /* TimerManager.swift */,
+				AE28B728240B7B6900A49B23 /* Info.plist */,
 				AE28B71A240B7B6800A49B23 /* Actions.sks */,
 				AE28B716240B7B6800A49B23 /* AppDelegate.swift */,
 				AE28B71E240B7B6800A49B23 /* GameViewController.swift */,
-				AE0D48AB24386B860098E8DB /* TimerManager.swift */,
 				AE28B720240B7B6800A49B23 /* Main.storyboard */,
 				AE28B723240B7B6900A49B23 /* Assets.xcassets */,
 				AE28B725240B7B6900A49B23 /* LaunchScreen.storyboard */,
-				AE28B728240B7B6900A49B23 /* Info.plist */,
-				AE0E4F1124B97A5A00AB26FC /* GameData.plist */,
 			);
 			path = MonsterPet;
 			sourceTree = "<group>";
@@ -494,6 +518,7 @@
 		AE92F50B24D1632600904A73 /* PropertyList */ = {
 			isa = PBXGroup;
 			children = (
+				AE0E4F1124B97A5A00AB26FC /* GameData.plist */,
 				AE92F50C24D1635500904A73 /* ItemData.plist */,
 			);
 			path = PropertyList;
@@ -517,6 +542,17 @@
 				AE76678A24C754F100F006A3 /* ChalkboardRegular */,
 			);
 			path = TextFont;
+			sourceTree = "<group>";
+		};
+		AEA34B9825284EBC003FDCD5 /* GiftScene */ = {
+			isa = PBXGroup;
+			children = (
+				AEA34B9925284EDA003FDCD5 /* GiftScene.swift */,
+				AEA34B9E25284EF2003FDCD5 /* GIftUIManager.swift */,
+				AEA34BA325284F16003FDCD5 /* GiftSlot.swift */,
+				AEA34BA825284F39003FDCD5 /* GiftPage.swift */,
+			);
+			path = GiftScene;
 			sourceTree = "<group>";
 		};
 		AEA9AB4A24D7D68C00922166 /* TitleFont */ = {
@@ -556,6 +592,7 @@
 			children = (
 				AE5AF5D22423C64600C61262 /* DetailScene.swift */,
 				AE09C274247F83CD003D5779 /* DetailSceneUIManager.swift */,
+				AE73D6C3255BC8A4003EB9A7 /* WarnPanel.swift */,
 			);
 			path = FoodDetailScene;
 			sourceTree = "<group>";
@@ -649,7 +686,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Sukum Duangpattra";
 				TargetAttributes = {
 					AE28B712240B7B6800A49B23 = {
@@ -692,7 +729,6 @@
 			files = (
 				AE95327B2484C95200370C8D /* ChalkboardRegular@3x.xml in Resources */,
 				AE76679D24C7573E00F006A3 /* peng.xml in Resources */,
-				AEF8B12D2410416800C6B690 /* Andale Mono.ttf in Resources */,
 				AE28B722240B7B6800A49B23 /* Main.storyboard in Resources */,
 				AE28B724240B7B6900A49B23 /* Assets.xcassets in Resources */,
 				AE28B727240B7B6900A49B23 /* LaunchScreen.storyboard in Resources */,
@@ -716,7 +752,6 @@
 				AE7667C824C75EF000F006A3 /* hd.atlas in Resources */,
 				AE4F3C3824D47B98006A2BAB /* coin.atlas in Resources */,
 				AE76679C24C7573E00F006A3 /* peng@4x.xml in Resources */,
-				AEF8B12B24103F7000C6B690 /* Pomeranian-Regular.ttf in Resources */,
 				AEA9AB5024D7D6C100922166 /* TitleText.atlas in Resources */,
 				AE76679A24C7573E00F006A3 /* peng@2x.xml in Resources */,
 				AEA9AB4E24D7D6C100922166 /* TitleText@3x.xml in Resources */,
@@ -746,14 +781,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE73D6C4255BC8A4003EB9A7 /* WarnPanel.swift in Sources */,
+				AE0AB0742557D5E90018D314 /* ItemInfo.swift in Sources */,
 				AE0A57532478F745002C6CA4 /* PetInfoUIManager.swift in Sources */,
 				AE7EC62A24939D9700E70A28 /* ItemPageManager.swift in Sources */,
 				AE0A57512478F6FC002C6CA4 /* PetInfoScene.swift in Sources */,
 				AEB1EEDC24D6BCB800EFD010 /* TextAnimation.swift in Sources */,
+				AEA34BA425284F16003FDCD5 /* GiftSlot.swift in Sources */,
 				AE1D81C6247411A7003EBB96 /* EquipMenuScene.swift in Sources */,
 				AEB2B3DC2490D5CC00B23033 /* EasingDeclarations.swift in Sources */,
 				AE6279F5240D817B0016AC8B /* Pet.swift in Sources */,
 				AE49B5932421453800562B41 /* ItemManager.swift in Sources */,
+				AE0AB05E2557BFD80018D314 /* PetInfoPageManager.swift in Sources */,
+				AEA34B9F25284EF2003FDCD5 /* GIftUIManager.swift in Sources */,
+				AE0AB06F2557D1AA0018D314 /* PetInfo.swift in Sources */,
 				AEA4D28A242738AE0031868D /* Item.swift in Sources */,
 				AE2264EB241B6BC600E6CB84 /* Page.swift in Sources */,
 				AEEAA191248E35C30016A8FB /* BuyHeartSlot.swift in Sources */,
@@ -773,12 +814,14 @@
 				AE40560324810D67002F8450 /* GameSettingScene.swift in Sources */,
 				AE0D3A6C24AF8FB900365D13 /* EquipmentDetailScene.swift in Sources */,
 				AE706FE024C7F9FE00AA45EB /* SKMultilineLabelNode.swift in Sources */,
+				AEA34B9A25284EDA003FDCD5 /* GiftScene.swift in Sources */,
 				AE28B71D240B7B6800A49B23 /* MainScene.swift in Sources */,
 				AE40560524810D8C002F8450 /* GameSettingUIManager.swift in Sources */,
 				AE28B74D240B82DE00A49B23 /* Panel.swift in Sources */,
 				AEB2B3E02490D5F300B23033 /* easing.swift in Sources */,
 				AE9BBDA924CEC37500AA5CA8 /* GameData.swift in Sources */,
 				AEB1EEDA24D67EF500EFD010 /* SceneEnvironment.swift in Sources */,
+				AEA34BA925284F39003FDCD5 /* GiftPage.swift in Sources */,
 				AE0D3A6F24AF904900365D13 /* EquipDetailSceneUIManager.swift in Sources */,
 				AE40560124810D35002F8450 /* HeartShopUIManager.swift in Sources */,
 				AEC82124247BBF580077E57D /* SceneBuilder.swift in Sources */,
@@ -786,6 +829,7 @@
 				AE09C277247F90EE003D5779 /* SwipeManager.swift in Sources */,
 				AEEAA193248E36B60016A8FB /* HeartShopPage.swift in Sources */,
 				AE40560924810DD8002F8450 /* ScenarioShopUIManager.swift in Sources */,
+				AE0AB0642557CB9C0018D314 /* DataManager.swift in Sources */,
 				AE28B71F240B7B6800A49B23 /* GameViewController.swift in Sources */,
 				AE81785B24D59C7E000DC0F9 /* Tree.swift in Sources */,
 				AE28B717240B7B6800A49B23 /* AppDelegate.swift in Sources */,
@@ -894,6 +938,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -955,6 +1000,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -22,6 +22,7 @@ class UIElementBuilder{
         case petInfoButton
         case backButton
         case buyHeartButton
+        case giftButton
         case cameraButton
         case nextPageLeftButton
         case nextPageRightButton
@@ -39,6 +40,7 @@ class UIElementBuilder{
     enum UiIcons {
         case heart
         case coin
+        case petInfoTitleIcon
         case foodTitleIcon
         case equipmentTitleIcon
         case scenarioTitleIcon
@@ -122,6 +124,15 @@ class UIElementBuilder{
             buyHeartButton.position.y -= 50
             
             return buyHeartButton
+        case .giftButton:
+            let giftButton = Button(DefaultImage: "GiftButton")
+            giftButton.setScale(buttonScale)
+            giftButton.zPosition = buttonZPosition
+            
+            giftButton.position = baseUIManager.upperRightPosition
+            giftButton.position.x -= 100
+            giftButton.position.y -= 50
+            return giftButton
             
         case .cameraButton:
             let cameraButton = Button(DefaultImage: "CameraButton")
@@ -201,6 +212,14 @@ class UIElementBuilder{
             coin.position.x += 50
             coin.position.y -= 73
             return coin
+        case.petInfoTitleIcon:
+            let petInfoTitleIcon = SKSpriteNode(imageNamed: "petInfoIcon")
+            petInfoTitleIcon.setScale(0.092)
+            petInfoTitleIcon.zPosition = defaultUi_Zposition
+            petInfoTitleIcon.position = baseUIManager.upperLeftPosition
+            petInfoTitleIcon.position.x += 60
+            petInfoTitleIcon.position.y -= 45
+            return petInfoTitleIcon
         case .foodTitleIcon:
             let foodTitleIcon = SKSpriteNode(imageNamed: "FoodIcon")
             foodTitleIcon.setScale(0.092)

@@ -27,6 +27,8 @@ class DetailSceneUIManager: BaseUIManager{
     public var buyButton        : Button!
     public var makeButton       : Button!
     
+    public var quantityLabel    : BMGlyphLabel!
+    
 
     
     override init(skScene: SKScene) {
@@ -109,9 +111,6 @@ class DetailSceneUIManager: BaseUIManager{
         
     }
     
-    
-    
-    
     public func InitializeBasicUIElements(itemIndex: Int){
         
         let currencyIcon    = uiElementBuilder.Build(seletedUiIcon: .coin)
@@ -151,7 +150,6 @@ class DetailSceneUIManager: BaseUIManager{
     
     public func InitializeLabels(by itemIndex: Int){
         
-
         let description             = labelBuilder.Build(selectedLabel: .equipmentNameLabel)
         description.setHorizontalAlignment(BMGlyphLabel.BMGlyphHorizontalAlignment.centered)
         description.position    = centerPosition
@@ -169,8 +167,8 @@ class DetailSceneUIManager: BaseUIManager{
         itemNameLabel.setGlyphText("Default Text")
         currentSKScene.addChild(itemNameLabel)
         
-        let quantityLabel       = labelBuilder.Build(selectedLabel: .itemCountLabel)
-        quantityLabel.setScale(0.3)
+        quantityLabel       = labelBuilder.Build(selectedLabel: .itemCountLabel)
+        quantityLabel.setScale(0.7)
         quantityLabel.zPosition = layerManager.layer_9
         quantityLabel.position = itemNameLabel.position
         quantityLabel.position.x += 85
@@ -178,7 +176,7 @@ class DetailSceneUIManager: BaseUIManager{
         currentSKScene.addChild(quantityLabel)
         
         let coinRequirementLabel = labelBuilder.Build(selectedLabel: .itemCountLabel)
-        coinRequirementLabel.setScale(0.3)
+        coinRequirementLabel.setScale(0.7)
         coinRequirementLabel.zPosition = layerManager.layer_9
         coinRequirementLabel.position = centerPosition
         coinRequirementLabel.position.y -= 180

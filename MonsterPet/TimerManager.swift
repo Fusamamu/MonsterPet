@@ -34,6 +34,14 @@ class TimerManager{
         
     }
     
+    func timePassed(Target: CFTimeInterval) -> Bool{
+        timerCount += 1
+        if timerCount > Target{
+            return true
+        }
+        return false
+    }
+    
     func FixedUpdate(every countTarget: CFTimeInterval){
         
         

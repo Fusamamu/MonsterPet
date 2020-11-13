@@ -23,12 +23,12 @@ enum ItemName: String, CaseIterable{
     case daikon                 = "Daikon"
     case usagiApple             = "UsagiApple"
     
-    case p = "p"
-    case q = "q"
-    case r = "r"
+    case salmon                 = "Salmon"
+    case sandwich               = "Sandwich"
+    case tofu                   = "Tofu"
     ////////////////////////////////////
-    case s = "s"
-    case t = "t"
+    case mushroom               = "Mushroom"
+    case milk                   = "Milk"
     case u = "u"
     
     case v = "v"
@@ -44,7 +44,6 @@ enum ItemName: String, CaseIterable{
 }
 
 class Item: SKSpriteNode, Observable, ItemProtocol{
-    
 
     var itemManager     : ItemManager       = .sharedInstance
     var currencyManager : CurrencyManager   = .sharedInstance
@@ -68,13 +67,25 @@ class Item: SKSpriteNode, Observable, ItemProtocol{
     var timeOnScreen: CFTimeInterval! = 100
     
     var observers: [Observer] = []
+    
+    var notEnoughCoin: Bool = false
+    
+    var itemData: [String:Any]
 
     init(index: Int){
         //itemImage   = SKTexture(imageNamed: ItemName.allCases[index].rawValue)
         itemImage   = textureManager.itemImages[index]
         itemName    = ItemName.allCases[index]
         itemIndex   = index
+        
+        //Load Selected ItemData//
+        let path = Bundle.main.path(forResource: "ItemData", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!)
+        itemData = dict?.object(forKey: itemName.rawValue) as! [String:Any]
+        
         super.init(texture: itemImage, color: .clear, size: itemImage.size())
+        
+      
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -102,12 +113,17 @@ class Item: SKSpriteNode, Observable, ItemProtocol{
     //Condition to unlock
     
     func BuyItem(){
-        if currencyManager.HeartCounts >= 10{
-            currencyManager.HeartCounts -= price
+
+        let coinRequired = Int(itemData["CoinRequirement"] as! String)
+        
+        if currencyManager.CoinCounts >= coinRequired!{
+            currencyManager.CoinCounts -= coinRequired!
             self.count += 1
             
             itemManager.itemCountInventory[self.itemName] = self.count
-            
+        }else{
+            notEnoughCoin = true
+            NotifyAllObservers()
         }
     }
     

@@ -12,6 +12,7 @@ class SceneBuilder{
         case foodMenuScene
         case equipmentScene
         case petInfoScene
+        case giftScene
         case scenarioShopScene
         case gameSettingScene
         case heartShopScene
@@ -42,6 +43,10 @@ class SceneBuilder{
                 let petInfoScene = PetInfoScene(size: viewSize)
                 petInfoScene.scaleMode = .aspectFill
                 return petInfoScene
+            case .giftScene:
+                let giftScene = GiftScene(size: viewSize)
+                giftScene.scaleMode = .aspectFill
+                return giftScene
             case .scenarioShopScene:
                 let scenarioShopScene = ScenarioShopScene(size: viewSize)
                 scenarioShopScene.scaleMode = .aspectFill

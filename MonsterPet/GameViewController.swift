@@ -27,6 +27,7 @@ class GameViewController: UIViewController {
         let textureManager = TextureManager.sharedInstance
         
         ItemPageManager.sharedInstance.LoadItemSelectionPage()
+        PetInfoPageManager.sharedInstance.LoadPetInfoPages()
     }
 
     override var shouldAutorotate: Bool {

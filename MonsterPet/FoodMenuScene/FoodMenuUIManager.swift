@@ -3,9 +3,6 @@ import SpriteKit
 
 class FoodMenuUIManager: BaseUIManager{
     
-    
-    public var dialogueLabel: BMGlyphLabel!
-    
     private var sceneBuilder        : SceneBuilder!
     private var uiElementBuilder    : UIElementBuilder!
     private var labelBuilder        : LabelBuilder!
@@ -20,6 +17,8 @@ class FoodMenuUIManager: BaseUIManager{
     
     private var font            : BMGlyphFont!
     private var itemMenuBarLabel: BMGlyphLabel!
+    
+    public var dialogueLabel: BMGlyphLabel!
     
     var homeButton          : Button!
     var buyHeartButton      : Button!
@@ -71,7 +70,7 @@ class FoodMenuUIManager: BaseUIManager{
         currentSKScene.addChild(inventoryBackground)
         currentSKScene.addChild(gridBackground)
 
-        font = BMGlyphFont(name: "petText")
+        font = BMGlyphFont(name: "TitleText")
 
         AddBasicImages()
         AddDialogueLabel()
@@ -123,18 +122,18 @@ class FoodMenuUIManager: BaseUIManager{
         windMillBase.position = lowerRightPosition
         windMillBase.position.x -= 60
         windMillBase.position.y += 50
-        windMillBase.setScale(0.25)
-        windMillBase.zPosition = layerManager.layer_7
+        windMillBase.setScale(0.18)
+        windMillBase.zPosition = layerManager.layer_1
         
         currentSKScene.addChild(windMillBase)
         
         propeller = SKSpriteNode(imageNamed: "propeller")
         propeller.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         propeller.position = windMillBase.position
-        propeller.position.x -= 10
-        propeller.position.y += 70
-        propeller.setScale(0.25)
-        propeller.zPosition = layerManager.layer_8
+        propeller.position.x -= 5
+        propeller.position.y += 50
+        propeller.setScale(0.18)
+        propeller.zPosition = layerManager.layer_2
         
         propeller.run(SKAction.repeatForever(SKAction.rotate(byAngle: 1, duration: 1)))
         
@@ -152,16 +151,25 @@ class FoodMenuUIManager: BaseUIManager{
         
         currentSKScene.addChild(cloud)
         
+        let farmBackground = SKSpriteNode(imageNamed: "farmBackground")
+        farmBackground.setScale(0.22)
+        farmBackground.zPosition = layerManager.layer_0
+        farmBackground.position = centerPosition
+        farmBackground.position.y -= 205
+        
+        currentSKScene.addChild(farmBackground)
+        
         
     }
     
     private func AddDialogueLabel(){
-        dialogueLabel = BMGlyphLabel(txt: "Put Text in here", fnt: BMGlyphFont(name: "peng"))
+        //dialogueLabel = BMGlyphLabel(txt: "Put Text in here", fnt: BMGlyphFont(name: "TitleText"))
+        dialogueLabel = BMGlyphLabel(txt: "Choose Something Please.", fnt: BMGlyphFont(name: "hd"))
         dialogueLabel.setHorizontalAlignment(.centered)
         dialogueLabel.position = centerPosition
         dialogueLabel.position.y -= 190
         dialogueLabel.zPosition = 200
-        dialogueLabel.setScale(1.4)
+        dialogueLabel.setScale(0.7)
         
         currentSKScene.addChild(dialogueLabel)
         

@@ -1,9 +1,8 @@
 import SpriteKit
 import Foundation
 
-class PetManager: Observer{
-   
-    var id: Int = 0
+class PetManager: Observable{
+    var observers: [Observer] = []
     
     static let sharedInstance = PetManager()
     let itemManager         : ItemManager           = .sharedInstance
@@ -17,9 +16,9 @@ class PetManager: Observer{
    
     
     static var chicken: Pet!
-    static var fox: Pet!
-    static var chibaDog: Pet!
-    static var littleChicken: Pet!
+    static var rabbit: Pet!
+    static var birdy: Pet!
+    static var take:Pet!
     
     private init(){
         
@@ -28,22 +27,22 @@ class PetManager: Observer{
         PetManager.chicken.SetFavoriteItem(itemName: .cornFlake)
         PetManager.chicken.SetGivenHeart(count: 100)
         
-        PetManager.fox = Pet(petName: .fox)
-        PetManager.fox.SetTime(waitTime: 5, giveHeartTime: 2, onScreenTime: 150)
-        PetManager.fox.SetFavoriteItem(itemName: .apple)
-        PetManager.fox.SetGivenHeart(count: 123)
+        PetManager.take = Pet(petName: .take)
+        PetManager.take.SetTime(waitTime: 5, giveHeartTime: 2, onScreenTime: 150)
+        PetManager.take.SetFavoriteItem(itemName: .apple)
+        PetManager.take.SetGivenHeart(count: 123)
         
-        PetManager.chibaDog = Pet(petName: .chibaDog)
-        PetManager.chibaDog.SetTime(waitTime: 5, giveHeartTime: 2, onScreenTime: 150)
-        PetManager.chibaDog.SetFavoriteItem(itemName: .carrot)
-        PetManager.chibaDog.SetGivenHeart(count: 2)
+        PetManager.birdy = Pet(petName: .birdy)
+        PetManager.birdy.SetTime(waitTime: 5, giveHeartTime: 2, onScreenTime: 150)
+        PetManager.birdy.SetFavoriteItem(itemName: .carrot)
+        PetManager.birdy.SetGivenHeart(count: 2)
         
-        PetManager.littleChicken = Pet(petName: .littleChicken)
-        PetManager.littleChicken.SetTime(waitTime: 5, giveHeartTime: 5, onScreenTime: 150)
-        PetManager.littleChicken.SetFavoriteItem(itemName: .pumpkin)
-        PetManager.littleChicken.SetGivenHeart(count: 3)
+        PetManager.rabbit = Pet(petName: .rabbit)
+        PetManager.rabbit.SetTime(waitTime: 5, giveHeartTime: 5, onScreenTime: 150)
+        PetManager.rabbit.SetFavoriteItem(itemName: .pumpkin)
+        PetManager.rabbit.SetGivenHeart(count: 3)
         
-        InitializePetInStore()
+        self.InitializePetInStore()
         
         //print(placeHolderManager.surroundingPointData[placeHolderManager.pointData[0]]![0])
        // print(placeHolderManager.surroundingPointData[placeHolderManager.pointData[0]])
@@ -52,9 +51,9 @@ class PetManager: Observer{
     
     func InitializePetInStore(){
          petInStore[PetName.chicken]        = PetManager.chicken
-         petInStore[PetName.fox]            = PetManager.fox
-         petInStore[PetName.chibaDog]       = PetManager.chibaDog
-         petInStore[PetName.littleChicken]  = PetManager.littleChicken
+         petInStore[PetName.take]           = PetManager.take
+         petInStore[PetName.birdy]          = PetManager.birdy
+         petInStore[PetName.rabbit]         = PetManager.rabbit
     }
     
     
@@ -65,33 +64,79 @@ class PetManager: Observer{
     
     func ScanItems(at currentTime: CFTimeInterval){
         
-        for point in placeHolderManager.pointData{
+//        for point in placeHolderManager.pointData{
+//
+//            guard let checkingItem = itemManager.itemData[point]?.item else { continue }
+//
+//            let elapsedTime = currentTime - checkingItem.timeWhenPlaced
+//
+////            for pet in petInStore.values{
+////
+////                if pet!.timeWhenLeftScene == nil{
+////                    if !(pet!.isAdded)  && pet!.favoriteItem[0] == checkingItem.itemName{
+////                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
+////                    }
+////                }else{
+////                    let nextCallelapsedTime = currentTime - pet!.timeWhenLeftScene
+////
+////                    if nextCallelapsedTime > pet!.waitTime + 10{
+////                        if !(pet!.isAdded)  && pet!.favoriteItem[0] == checkingItem.itemName{
+////                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
+////                        }
+////                    }
+////                }
+////            }
+//
+//            for pet in petInStore.values{
+//
+//                if pet!.timeWhenLeftScene == nil{
+//                    if !(pet!.isAdded){
+//                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
+//                    }
+//                }else{
+//                    let nextCallelapsedTime = currentTime - pet!.timeWhenLeftScene
+//
+//                    if nextCallelapsedTime > pet!.waitTime + 10{
+//                        if !(pet!.isAdded) {
+//                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
+//                        }
+//                    }
+//                }
+//            }
+//
+//            if !(checkingItem.isBeingEaten) && elapsedTime > checkingItem.timeOnScreen {
+//                Remove(item: checkingItem, at: elapsedTime)
+//            }
+//        }
+        
+        let point = placeHolderManager.pointData[Int.random(in: 0...4)]
+        guard let checkingItem = itemManager.itemData[point]?.item else { return }
+        
+        let elapsedTime = currentTime - checkingItem.timeWhenPlaced
+        
+        for pet in petInStore.values{
             
-            guard let checkingItem = itemManager.itemData[point]?.item else { continue }
+            if pet!.timeWhenLeftScene == nil{
+                if !(pet!.isAdded){
+                    Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
+                    break;
+                }
+            }else{
+                let nextCallelapsedTime = currentTime - pet!.timeWhenLeftScene
             
-            let elapsedTime = currentTime - checkingItem.timeWhenPlaced
-            
-            for pet in petInStore.values{
-                
-                if pet!.timeWhenLeftScene == nil{
-                    if !(pet!.isAdded)  && pet!.favoriteItem[0] == checkingItem.itemName{
+                if nextCallelapsedTime > pet!.waitTime + 10{
+                    if !(pet!.isAdded) {
                         Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
-                    }
-                }else{
-                    let nextCallelapsedTime = currentTime - pet!.timeWhenLeftScene
-                
-                    if nextCallelapsedTime > pet!.waitTime + 10{
-                        if !(pet!.isAdded)  && pet!.favoriteItem[0] == checkingItem.itemName{
-                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
-                        }
+                        break;
                     }
                 }
             }
-            
-            if !(checkingItem.isBeingEaten) && elapsedTime > checkingItem.timeOnScreen {
-                Remove(item: checkingItem, at: elapsedTime)
-            }
         }
+        
+        if !(checkingItem.isBeingEaten) && elapsedTime > checkingItem.timeOnScreen {
+            Remove(item: checkingItem, at: elapsedTime)
+        }
+        
     }
     
     func Call(_ pet: Pet, to point: CGPoint, for eatingItem: Item, elapsedTime: CFTimeInterval){
@@ -99,6 +144,9 @@ class PetManager: Observer{
             eatingItem.eattenByPet = pet
             eatingItem.isBeingEaten = true
             pet.nowEatingItem = eatingItem
+//            if !pet.hasVisited {
+//                pet.hasVisited = true
+//            }
             
             var pointToPlacePet: CGPoint!
             
@@ -148,6 +196,22 @@ class PetManager: Observer{
             
             currentScene.addChild(pet)
             pet.BeingCalled(to: pointToPlacePet)
+            
+            ///not working/ / /not good should not hard code to real position
+            if pet.position.y > placeHolderManager.pointData[0].y{
+                pet.zPosition = 20
+            }else if pet.position.y < placeHolderManager.pointData[0].y && pet.position.y > placeHolderManager.pointData[1].y{
+                pet.zPosition = 21
+            }else if pet.position.y < placeHolderManager.pointData[1].y && pet.position.y > placeHolderManager.pointData[2].y{
+                pet.zPosition = 22
+            }else if pet.position.y < placeHolderManager.pointData[2].y && pet.position.y > placeHolderManager.pointData[3].y{
+                pet.zPosition = 23
+            }else if pet.position.y < placeHolderManager.pointData[3].y && pet.position.y > placeHolderManager.pointData[4].y{
+                pet.zPosition = 24
+            }else if pet.position.y < placeHolderManager.pointData[4].y{
+                pet.zPosition = 25
+            }
+            
             petInScene.append(pet)
         }
     }
@@ -254,8 +318,20 @@ class PetManager: Observer{
         
     }
     
-    func Update() {
+
     
+    func AddObserver(observer: Observer) {
+        observers.append(observer)
+    }
+    
+    func RemoveObserver(observer: Observer) {
+        observers = observers.filter({$0.id != observer.id})
+    }
+
+    func NotifyAllObservers() {
+        for observer in observers{
+            observer.Update()
+        }
     }
 }
 

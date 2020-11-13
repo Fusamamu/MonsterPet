@@ -53,13 +53,13 @@ class EquipmentDetailScene: SKScene, Observer{
         
         uiManager = EquipDetailSceneUIManager(skScene: self)
         
-        coinCountLabel = BMGlyphLabel(txt: String(currenyManager.CoinCounts), fnt: BMGlyphFont(name: "petText"))
+        coinCountLabel = BMGlyphLabel(txt: String(currenyManager.CoinCounts), fnt: BMGlyphFont(name: "TitleText"))
         coinCountLabel.setHorizontalAlignment(.right)
         coinCountLabel.position = uiManager.upperLeftPosition
         coinCountLabel.position.x += 145
         coinCountLabel.position.y -= 38
         coinCountLabel.zPosition = 200
-        coinCountLabel.setScale(0.5)
+        coinCountLabel.setScale(1)
         currenyManager.AddObserver(observer: self)
         addChild(coinCountLabel)
         

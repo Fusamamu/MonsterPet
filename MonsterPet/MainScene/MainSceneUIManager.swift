@@ -63,13 +63,13 @@ class MainSceneUIManager : BaseUIManager{
         
         menuPanel = MainMenuPanel(panelImage: "MenuPanel", skScene: currentSKScene)
         menuPanel.setScale(0.15)
-        menuPanel.zPosition = 10
+        menuPanel.zPosition = 50
         
                         alphaBlack = MainMenuPanel(panelImage: "AlphaBlack", skScene: currentSKScene)
                         alphaBlack.color = .black
                         alphaBlack.size = alphaBlack.texture!.size()
                         alphaBlack.setScale(1.5)
-                        alphaBlack.zPosition = 9
+                        alphaBlack.zPosition = 49
                         alphaBlack.alpha = 0.3
         
         

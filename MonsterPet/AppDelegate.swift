@@ -33,6 +33,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TimerManager.sharedInstance.moveToBackGroundTime = Date.timeIntervalSinceReferenceDate
         //print(TimerManager.sharedInstance.moveToBackGroundTime)
         
+        for key in PetName.allCases{
+            
+            var petInfo = PetInfo(petName: "none", visitedCount: 0, isFirstTime: true, hasGivenSpecialItem: false)
+            if let pet = PetManager.sharedInstance.petInStore[key] {
+                petInfo.petName                 = pet!.petName.rawValue
+                petInfo.isFirstTime             = pet!.isFirstTime
+                petInfo.hasGivenSpecialItem     = pet!.hasGivenSpecialItem
+                petInfo.visitedCount            = pet!.VisitedTime
+            }
+            
+            let jsonData = try! JSONEncoder().encode(petInfo)
+            let saveData = String(data: jsonData, encoding: .utf8)
+            print(saveData!)
+        }
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -48,6 +63,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        let petInfo = PetInfo(petName: "Peng", visitedCount: 2, isFirstTime: true, hasGivenSpecialItem: true)
+        let jsonData = try! JSONEncoder().encode(petInfo)
+        let saveData = String(data: jsonData, encoding: .utf8)!
+        print(saveData)
+        
+       
+        
     }
 
 

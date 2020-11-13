@@ -10,7 +10,7 @@ class LabelManager: BaseUIManager, Observer{
     var heartCountLabel : BMGlyphLabel!
     var coinCountLabel  : BMGlyphLabel!
     
-    private(set) var labelScale: CGFloat = 0.5
+    private(set) var labelScale: CGFloat = 1
     
     
     let AndaleMono: String = "Andale Mono-Bold"
@@ -25,11 +25,12 @@ class LabelManager: BaseUIManager, Observer{
     
     func AddHeartCountLabel(){
         
-        countFont = BMGlyphFont(name: "petText")
+        countFont = BMGlyphFont(name: "TitleText")
         heartCountLabel = BMGlyphLabel(txt: String(currenyManager.HeartCounts), fnt: countFont)
+        
         heartCountLabel.setHorizontalAlignment(.right)
         heartCountLabel.position = CGPoint(x: min_X + 143 , y: max_Y - 28)
-        heartCountLabel.zPosition = 200
+        heartCountLabel.zPosition = 47
         heartCountLabel.setScale(labelScale)
         currentSKScene.addChild(heartCountLabel)
         
@@ -37,7 +38,7 @@ class LabelManager: BaseUIManager, Observer{
         coinCountLabel.setHorizontalAlignment(.right)
         coinCountLabel.position = heartCountLabel.position
         coinCountLabel.position.y -= 47
-        coinCountLabel.zPosition = 200
+        coinCountLabel.zPosition = 47
         coinCountLabel.setScale(labelScale)
         currentSKScene.addChild(coinCountLabel)
         

@@ -8,8 +8,9 @@ class LabelBuilder{
     private var font: BMGlyphFont!
     private var chalkboardRegular : BMGlyphFont!
     
-    private(set) var defaultLabelScale: CGFloat  = 2
-    private(set) var defaultZPosition : CGFloat  = 7
+    private(set) var defaultLabelScale      : CGFloat  = 2
+    private(set) var itemCountLabelScale    : CGFloat   = 5
+    private(set) var defaultZPosition       : CGFloat  = 7
     
     enum LabelTypes {
         case itemCountLabel
@@ -24,7 +25,7 @@ class LabelBuilder{
 
 //        font = BMGlyphFont(name: "petText")
 //        chalkboardRegular = BMGlyphFont(name: "ChalkboardRegular")
-        font = BMGlyphFont(name: "petText")
+        font = BMGlyphFont(name: "TitleText")
         chalkboardRegular = BMGlyphFont(name: "hd")
     }
     
@@ -34,7 +35,7 @@ class LabelBuilder{
             let itemCountLabel = BMGlyphLabel(txt: "Default Text.", fnt: font)
             
             itemCountLabel.setHorizontalAlignment(.right)
-            itemCountLabel.setScale(defaultLabelScale)
+            itemCountLabel.setScale(itemCountLabelScale)
             itemCountLabel.zPosition = defaultZPosition
             itemCountLabel.position  = CGPoint(x: 250, y: -160)
             
@@ -43,7 +44,7 @@ class LabelBuilder{
             let pageCountLabel = BMGlyphLabel(txt: "Default Text", fnt: font)
             
             pageCountLabel.setHorizontalAlignment(.centered)
-            pageCountLabel.setScale(0.5)
+            pageCountLabel.setScale(1)
             pageCountLabel.zPosition = 12
            
             return pageCountLabel

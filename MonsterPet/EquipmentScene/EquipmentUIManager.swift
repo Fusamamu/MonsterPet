@@ -17,6 +17,7 @@ class EquipmentUIManager: BaseUIManager{
     
     public var state: EquipmentUIState = .allClose
     
+    public var dialogueLabel: BMGlyphLabel!
     
     public var homeButton       : Button!
     public var buyHeartButton   : Button!
@@ -56,6 +57,8 @@ class EquipmentUIManager: BaseUIManager{
         currentSKScene.addChild(dialogueBlock)
         currentSKScene.addChild(titleIcon)
         
+        AddMovingCloud()
+        AddDialogueLabel()
         SetUILayers()
         
         let titleLabel = labelBuilder.Build(selectedLabel: .titleLabel)
@@ -79,6 +82,22 @@ class EquipmentUIManager: BaseUIManager{
         }
     }
     
+    private func AddDialogueLabel(){
+        //dialogueLabel = BMGlyphLabel(txt: "Put Text in here", fnt: BMGlyphFont(name: "TitleText"))
+        dialogueLabel = BMGlyphLabel(txt: "Choose Something Please.", fnt: BMGlyphFont(name: "hd"))
+        dialogueLabel.setHorizontalAlignment(.centered)
+        dialogueLabel.position = centerPosition
+        dialogueLabel.position.y -= 190
+        dialogueLabel.zPosition = 200
+        dialogueLabel.setScale(0.7)
+        
+        currentSKScene.addChild(dialogueLabel)
+        
+       // UpdateDialogueLabel(by: 0)
+    }
+    
+  
+    
     private func SetUILayers(){
         titleIcon.zPosition         = layerManager.layer_8
         homeButton.zPosition        = layerManager.layer_9
@@ -90,8 +109,22 @@ class EquipmentUIManager: BaseUIManager{
         pageCountBar.zPosition          = layerManager.layer_8
         background.zPosition            = layerManager.layer_2
         dialogueBlock.zPosition         = layerManager.layer_3
-        
-
 
     }
+    
+    private func AddMovingCloud(){
+        let cloud = SKSpriteNode(imageNamed: "foodCloud")
+        cloud.setScale(0.25)
+        cloud.zPosition = layerManager.layer_1
+        cloud.position = centerPosition
+        cloud.position.y -= 100
+        
+        let moveLeft = SKAction.moveBy(x: -cloud.texture!.size().width, y: 0, duration: 20)
+        let reset    = SKAction.moveTo(x: currentSKScene.frame.width, duration: 0)
+        cloud.run(SKAction.repeatForever(SKAction.sequence([moveLeft, reset])))
+        
+        currentSKScene.addChild(cloud)
+    }
+    
+    
 }

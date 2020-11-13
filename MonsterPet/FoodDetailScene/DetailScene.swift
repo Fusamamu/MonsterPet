@@ -15,7 +15,9 @@ class DetailScene: SKScene, Observer{
     
     var currentItem         : Item!
     var currentItemIndex    : Int!
-    var itemCountLabel      : SKLabelNode = SKLabelNode(text: "Still nil")
+    //var itemCountLabel      : SKLabelNode = SKLabelNode(text: "Still nil")
+    
+    var warningPanel: WarnPanel!
     
     private var coinCountLabel : BMGlyphLabel!
     
@@ -28,7 +30,12 @@ class DetailScene: SKScene, Observer{
         
         self.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 190/255, alpha: 1)
         
-       
+        warningPanel = WarnPanel(panelImage: "notEnoughCoin", skScene: self)
+        warningPanel.setScale(0.15)
+        warningPanel.zPosition = 300
+        uiManager.buyButton.SubscribeButton(target: warningPanel)
+      
+        
         if currentItem == nil{
             currentItem = Item(index: currentItemIndex)
             currentItem.setScale(0.2)
@@ -40,36 +47,27 @@ class DetailScene: SKScene, Observer{
             currentItem.count = itemManager.itemCountInventory[currentItem.itemName]!
         }
  
-       
-        
-        
-        itemCountLabel = SKLabelNode(fontNamed: "Andale Mono-Bold")
-        itemCountLabel.horizontalAlignmentMode = .center
-        itemCountLabel.zPosition = 10
-        
-        itemCountLabel.position = uiManager.centerPosition
-        itemCountLabel.position.x += 100
-        itemCountLabel.position.y -= 190
-        itemCountLabel.fontSize = 25
-        itemCountLabel.fontColor = .black
-        itemCountLabel.text = String(currentItem.count)
-        addChild(itemCountLabel)
-        
-
         itemManager.SetCurrentScene(to: self)
         
         
-        coinCountLabel = BMGlyphLabel(txt: String(currencyManager.CoinCounts), fnt: BMGlyphFont(name: "petText"))
+        coinCountLabel = BMGlyphLabel(txt: String(currencyManager.CoinCounts), fnt: BMGlyphFont(name: "TitleText"))
         coinCountLabel.setHorizontalAlignment(.right)
         coinCountLabel.position = uiManager.upperLeftPosition
         coinCountLabel.position.x += 145
         coinCountLabel.position.y -= 38
         coinCountLabel.zPosition = 200
-        coinCountLabel.setScale(0.5)
+        coinCountLabel.setScale(1)
         currencyManager.AddObserver(observer: self)
         addChild(coinCountLabel)
         
         CreateBackground()
+        
+        let textAnimation = TextAnimation(skScene: self)
+        currencyManager.AddObserver(observer: textAnimation)
+        
+        
+
+        
     }
     
     override func willMove(from view: SKView) {
@@ -81,10 +79,9 @@ class DetailScene: SKScene, Observer{
         
         currencyManager.RemoveObserver(observer: self)
         
-   
+        currencyManager.observers.removeAll()
         
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
@@ -93,6 +90,10 @@ class DetailScene: SKScene, Observer{
         
         uiManager.UpdateTouch(at: location!)
         
+        if warningPanel.isOpened{
+            warningPanel.Invoked()
+        }
+       
         if uiManager.buyButton.contains(location!){
             currentItem.BuyItem()
         }
@@ -103,8 +104,17 @@ class DetailScene: SKScene, Observer{
     }
     
     func Update() {
-        itemCountLabel.text = String(currentItem.count)
+        //Do not know why need to check against nil?
+        if coinCountLabel != nil {
+            coinCountLabel.setGlyphText(String(currencyManager.CoinCounts))
+        }
+        uiManager.quantityLabel.setGlyphText("x" + String(currentItem.count))
         ItemManager.sharedInstance.TempCount = currentItem.count
+        
+        if currentItem.notEnoughCoin {
+            warningPanel.Invoked()
+        }
+    
     }
     
     func LoadGameScene(){
@@ -119,13 +129,8 @@ class DetailScene: SKScene, Observer{
         view?.presentScene(mainScene)
     }
     
-    
-  
-    
     func CreateBackground(){
         let backgroundTexture = SKTexture(imageNamed: "foodScrollBackground")
-        
-        
         
         for i in 0 ... 1 {
             let background = SKSpriteNode(texture: backgroundTexture)
@@ -143,25 +148,6 @@ class DetailScene: SKScene, Observer{
 
             background.run(moveForever)
             
-          
         }
-        
-        
-      
-        
-//        let background = SKSpriteNode(texture: backgroundTexture)
-//        let scale: CGFloat = 0.15
-//        background.zPosition = -30
-//        background.setScale(scale)
-//        background.anchorPoint = CGPoint.zero
-//        background.position = CGPoint(x: (backgroundTexture.size().width*scale * CGFloat(1)) , y: 0)
-//        self.addChild(background)
-//
-//        let moveLeft    = SKAction.moveBy(x: -backgroundTexture.size().width*scale, y: 0, duration: 8)
-//        let moveReset   = SKAction.moveBy(x: backgroundTexture.size().width*scale, y: 0, duration: 0)
-//        let moveLoop    = SKAction.sequence([moveLeft, moveReset])
-//        let moveForever = SKAction.repeatForever(moveLoop)
-//
-//        background.run(moveForever)
     }
 }

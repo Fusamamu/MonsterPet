@@ -64,7 +64,7 @@ class GameSettingUIManager: BaseUIManager{
     }
     
     private func InitializeLabels(){
-        let font = BMGlyphFont(name: "peng")
+        let font = BMGlyphFont(name: "hd")
         
         let gameSettingTitle = BMGlyphLabel(txt: "Game Setting", fnt: font)
         gameSettingTitle.SetParameter(pos: centerPosition, scale: 1.9, layer: layerManager.layer_5)

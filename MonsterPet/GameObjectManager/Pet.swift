@@ -11,22 +11,25 @@ import SpriteKit
 //UI-> Tell moods & needs
 
 enum PetName: String, CaseIterable{
-    case chicken        = "Chicken"
-    case fox            = "fox"
-    case chibaDog       = "chibaDog"
-    case littleChicken  = "littleChicken"
-    case cat            = "Cat"
-    case panda          = "Panda"
+    case chicken        = "chicken"
+    case rabbit         = "rabbit"
+    case birdy          = "birdy"
+//    case littleChicken  = "littleChicken"
+//    case cat            = "Cat"
+//    case panda          = "Panda"
+    case take           = "take"
     
-    static var count: Int { return PetName.panda.hashValue + 1}
+    static var count: Int { return PetName.take.hashValue + 1}
 }
 
-class Pet: SKSpriteNode, Observer{
+class Pet: SKSpriteNode, Observer, Observable{
+    var observers: [Observer] = []
     
     var id: Int = 0
     
     var petName         : PetName!
     var petTexture      : SKTexture!
+    var petLockedTexture: SKTexture!
     var petTextures     : [SKTexture] = []
     
     public enum Direction {
@@ -60,12 +63,17 @@ class Pet: SKSpriteNode, Observer{
     var dropPackage     : Package!
     var dropItem        : ItemName!
     
-    var favoriteItem    : [ItemName] = []
-    var nowEatingItem   : Item!
+    public var favoriteItem    : [ItemName] = []
+    public var nowEatingItem   : Item!
     
-    public var UnfavoriteItem: [ItemName] = []
-    public var Mood         : Int!
+    //public var UnfavoriteItem: [ItemName] = []
+    //public var Mood         : Int!
     public var VisitedTime  : Int!
+    public var isFirstTime  : Bool!
+    public var hasVisited   : Bool = false { didSet { NotifyAllObservers() } }
+    
+    public var gift : Item!
+    public var hasGivenSpecialItem : Bool!
     
     var timeWhenPlaced      : CFTimeInterval!
     var timeWhenLeftScene   : CFTimeInterval!
@@ -82,7 +90,7 @@ class Pet: SKSpriteNode, Observer{
     
     init(petName: PetName){
         self.petName = petName
-        petTexture = SKTexture(imageNamed: petName.rawValue)
+        petTexture = SKTexture(imageNamed: petName.rawValue + "NW")
         petTextures.append(SKTexture(imageNamed: petName.rawValue + "NW"))
         petTextures.append(SKTexture(imageNamed: petName.rawValue + "NE"))
         petTextures.append(SKTexture(imageNamed: petName.rawValue + "SE"))
@@ -90,6 +98,10 @@ class Pet: SKSpriteNode, Observer{
         
         super.init(texture: petTexture, color: .clear, size: petTexture.size())
         SetDropPackage()
+        
+        VisitedTime         = 0
+        isFirstTime         = true
+        hasGivenSpecialItem = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -122,11 +134,10 @@ class Pet: SKSpriteNode, Observer{
         if !floatHeartIsAdded && waitTime > giveHeartTime {
             
             floatingHeart = SKSpriteNode(imageNamed: "floatingHeart")
-            floatingHeart.setScale(0.13)
-            floatingHeart.zPosition = 3
-            floatingHeart.position = self.position
-            floatingHeart.position.x += 20
-            floatingHeart.position.y += 20
+            floatingHeart.setScale(0.08)
+            floatingHeart.zPosition = self.zPosition + 1
+            floatingHeart.position  = self.position
+            floatingHeart.position.y += 60
             
             scene?.addChild(floatingHeart)
             AnimateFloatingHeart()
@@ -158,6 +169,10 @@ class Pet: SKSpriteNode, Observer{
         favoriteItem.append(itemName)
     }
     
+    func SetGiftItem(itemName: ItemName){
+        
+    }
+    
     func SetDropPackage(){
         dropPackage = Package()
     }
@@ -166,7 +181,7 @@ class Pet: SKSpriteNode, Observer{
         
         if !packageIsDropped && whenTimePassed > onScreenTime - 30 {
             //Need logic for dropping package
-            dropPackage.setScale(0.25)
+            dropPackage.setScale(0.05)
             dropPackage.zPosition = 3
             dropPackage.position = position
             scene?.addChild(dropPackage)
@@ -180,29 +195,48 @@ class Pet: SKSpriteNode, Observer{
         
         self.timeWhenPlaced = Date.timeIntervalSinceReferenceDate
         self.isAdded = true
+        self.VisitedTime += 1;
+        
+        if !hasVisited {
+            hasVisited = true
+        }
 
-        self.setScale(0.14)
-        self.zPosition = 1
+        self.setScale(0.1)
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.25)
         self.position = position
-        self.position.x += 40
-        self.position.y += 40
+
         
         let targetPosition = self.position
-        let moveUp = SKAction.moveTo(y: self.position.y + 100, duration: 0.1)
-        let moveDown = SKAction.move(to: targetPosition, duration: 0.1)
+        let moveUp      = SKAction.moveTo(y: self.position.y + 100, duration: 0.1)
+        let moveDown    = SKAction.move(to: targetPosition, duration: 0.1)
         self.run(SKAction.sequence([moveUp, moveDown]))
+        
+       
         
     }
     
     func WaitForNextCall(waitTime: CFTimeInterval){
-        
         let wait = SKAction.wait(forDuration: 10)
         self.run(wait, completion: {})
-        
     }
+    
     
     func Update() {
         
+    }
+    
+    func AddObserver(observer: Observer) {
+        observers.append(observer)
+    }
+    
+    func RemoveObserver(observer: Observer) {
+        observers = observers.filter({$0.id != observer.id})
+    }
+
+    func NotifyAllObservers() {
+        for observer in observers{
+            observer.Update()
+        }
     }
     
 }

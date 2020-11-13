@@ -28,6 +28,8 @@ class RecipeDetailPanel: Panel{
         closeButton.position = CGPoint(x: 1100, y: 1000)
         closeButton.SubscribeButton(target: self)
         self.addChild(closeButton)
+        
+        
     }
     
     override func AddLabels() {
@@ -52,11 +54,8 @@ class RecipeDetailPanel: Panel{
             if ingredientLabels.count <= 4{
                 self.addChild(ingredientLabel)
             }
-            
-            
         }
             
-        
         let x1: CGFloat = -650
         let x2: CGFloat = x1 + 1000
         let y1: CGFloat = 200
@@ -74,7 +73,7 @@ class RecipeDetailPanel: Panel{
             ingredientLabels[i].position.y += 70
         }
         
-        coinRequirementLabel = BMGlyphLabel(txt: "300", fnt: BMGlyphFont(name: "petText"))
+        coinRequirementLabel = BMGlyphLabel(txt: "300", fnt: BMGlyphFont(name: "TitleText"))
         coinRequirementLabel.position = CGPoint(x: 640, y: -760)
         coinRequirementLabel.setScale(2)
         coinRequirementLabel.zPosition = LayerManager.sharedInstance.layer_9
@@ -101,33 +100,26 @@ class RecipeDetailPanel: Panel{
     
     
     override func UpdateLabels() {
+        //have to update selected ingredient based on selected menu
         
-        let path                = Bundle.main.path(forResource: "GameData", ofType: "plist")
-        let dict:NSDictionary   = NSDictionary(contentsOfFile: path!)!
-        let equipmentDict       = dict.object(forKey: "Equipments") as! [String:Any]
+        //current equipment?
+        let Nabe                   = GetEquipmentDicData()["Nabe"] as! [String:Any]
+        //current selected Ingredient?
+        let IngredientRequirements = Nabe["IngredientRequirements"] as! [String:Any]
+        let selectedRecipe         = IngredientRequirements["SalmonNabe"] as! [String:Any]
         
-        let ironPan             = equipmentDict["IronPan"] as! [String:Any]
-
-
-
-        let text = ironPan["QuantityRequirement"] as! [String:Any]
+        let keys = ["quantity-1", "quantity-2", "quantity-3", "quantity-4"]
         
-        let coinRequirement = text["CoinRequirement"] as! Int
-        coinRequirementLabel.setGlyphText("\(String(describing: coinRequirement))")
-    
-        let keys = ["item0", "item1", "item2", "item3"]
-
-        var i = 0;
-        for key in keys{
-
-           let value = text[key] as! Int
-
-        quantityLabels[i].setGlyphText("x\(String(describing: value))")
-
-           i += 1
+        for i in 0...keys.count - 1 {
+            let quantity = selectedRecipe[keys[i]] as! Int
+            quantityLabels[i].setGlyphText("x\(String(describing: quantity))")
         }
-    }
     
+        let coinRequirement = selectedRecipe["coin"] as! Int
+        coinRequirementLabel.setGlyphText("\(String(describing: coinRequirement))")
+        
+        //Ingregient label need to be updated
+    }
     
     override func UpdateImages() {
         
@@ -149,9 +141,6 @@ class RecipeDetailPanel: Panel{
         self.run(SKEase.scale(easeFunction: .curveTypeExpo, easeType: .easeTypeInOut, time: 0.68, from: 0.2, to: 0.13))
     }
     
-
-    
-      
     override func RemoveAllButtonReferences(){
         closeButton.removeFromParent()
         closeButton = nil
@@ -161,10 +150,18 @@ class RecipeDetailPanel: Panel{
         
         for i in 0...quantityLabels.count - 1{
             quantityLabels[i].removeFromParent()
-            
         }
         
         quantityLabels.removeAll()
     }
+    
+    private func GetEquipmentDicData() -> [String:Any]{
+        let path                = Bundle.main.path(forResource: "GameData", ofType: "plist")
+        let dict:NSDictionary   = NSDictionary(contentsOfFile: path!)!
+        let equipmentDict       = dict.object(forKey: "Equipments") as! [String:Any]
+        return equipmentDict
+    }
+    
+
 
 }

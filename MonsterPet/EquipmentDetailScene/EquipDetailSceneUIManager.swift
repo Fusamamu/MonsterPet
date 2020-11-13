@@ -251,7 +251,7 @@ class EquipDetailSceneUIManager: BaseUIManager{
             currentSKScene.addChild(recipeLabel)
 
             let quantityLabel       = labelBuilder.Build(selectedLabel: .itemCountLabel)
-            quantityLabel.setScale(0.3)
+            quantityLabel.setScale(0.7)
             quantityLabel.zPosition = layerManager.layer_4
             quantityLabel.position = recipeLabel.position
             quantityLabel.position.x += 85

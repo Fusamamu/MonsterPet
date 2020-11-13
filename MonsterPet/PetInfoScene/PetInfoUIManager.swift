@@ -7,9 +7,10 @@ class PetInfoUIManager: BaseUIManager{
 
     private var uiElementBuilder    : UIElementBuilder!
     private var sceneBuilder        : SceneBuilder!
+    private var labelBuilder        : LabelBuilder!
     
     public var homeButton: Button!
-    public var buyHeartButton: Button!
+    public var giftButton: Button!
     
     var nextPageLeftButton  : Button!
     var nextPageRightButton : Button!
@@ -23,15 +24,16 @@ class PetInfoUIManager: BaseUIManager{
         super.init(skScene: skScene)
         sceneBuilder        = SceneBuilder(currentSKScene: currentSKScene)
         uiElementBuilder    = UIElementBuilder(currentSKScene: skScene, baseUIManager: self)
+        labelBuilder        = LabelBuilder()
         
         homeButton      = uiElementBuilder.Build(selectedButton: .menuButton)
-        buyHeartButton  = uiElementBuilder.Build(selectedButton: .buyHeartButton)
+        giftButton  = uiElementBuilder.Build(selectedButton: .giftButton)
         
         nextPageLeftButton  = uiElementBuilder.Build(selectedButton: .nextPageLeftButton)
         nextPageRightButton = uiElementBuilder.Build(selectedButton: .nextPageRightButton)
         
         currentSKScene.addChild(homeButton)
-        currentSKScene.addChild(buyHeartButton)
+        currentSKScene.addChild(giftButton)
         currentSKScene.addChild(nextPageLeftButton)
         currentSKScene.addChild(nextPageRightButton)
         
@@ -42,24 +44,22 @@ class PetInfoUIManager: BaseUIManager{
         bottomBar.position.y += 29
         currentSKScene.addChild(bottomBar)
         
-        petInfoPanel = SKSpriteNode(imageNamed: "PetInfoPanel-1")
-        petInfoPanel.zPosition = 200 //set back to 15 please
-        petInfoPanel.setScale(0.15)
-        petInfoPanel.position = CGPoint(x: mid_X, y: min_Y)
-       // petInfoPanel.position.y -= 100
-        currentSKScene.addChild(petInfoPanel)
         
-        petInfoPanelSupport = SKSpriteNode(imageNamed: "PetInfoPanelSupport")
-        petInfoPanelSupport.zPosition = 5
-        petInfoPanelSupport.setScale(0.2)
-        petInfoPanelSupport.position.x = mid_X
-        petInfoPanelSupport.position.y = min_Y + 50
-        currentSKScene.addChild(petInfoPanelSupport)
+        let titleIcon = uiElementBuilder.Build(seletedUiIcon: .petInfoTitleIcon)
+        currentSKScene.addChild(titleIcon)
+        //need to link with iconBuilder!!!! see example in other UIscene
+        let titleLabel = labelBuilder.Build(selectedLabel: .titleLabel)
+        titleLabel.setGlyphText("PETINFO")
+        titleLabel.zPosition = 20
+        titleLabel.setScale(0.8)
+        titleLabel.position = titleIcon.position
+        titleLabel.position.x += 40
+        titleLabel.position.y -= 30
+        currentSKScene.addChild(titleLabel)
+        
         
     }
-    
 
-    
     func CreateBackground(){
         let background = SKSpriteNode(imageNamed: "inventoryBackground")
         background.setScale(0.25)
@@ -74,6 +74,10 @@ class PetInfoUIManager: BaseUIManager{
         if homeButton.contains(location){
             currentSKScene.view?.presentScene(sceneBuilder.Create(selectedScene: .mainScene))
         }
+        
+        if giftButton.contains(location){
+            currentSKScene.view?.presentScene(sceneBuilder.Create(selectedScene: .giftScene))
+        }
     }
     
     func DisplayPetInfoPanel(){
@@ -81,7 +85,6 @@ class PetInfoUIManager: BaseUIManager{
     }
     
     func UnDisplayPetInfoPanel(){
-        
         petInfoPanel.run(SKEase.move(easeFunction: .curveTypeElastic, easeType: .easeTypeInOut, time: 1, from: petInfoPanel.position, to: CGPoint(x: mid_X, y: min_Y - 150 )))
     }
     

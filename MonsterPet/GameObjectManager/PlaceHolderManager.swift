@@ -18,8 +18,13 @@ class PlaceHolderManager{
     let point_4 = CGPoint(x: 290, y: 250)
     let point_5 = CGPoint(x: 205, y: 160)
     
-    let NW_point = CGPoint(x: -40, y: 40)
-    let NE_point = CGPoint(x: 40, y: 40)
+//    let NW_point = CGPoint(x: -40, y: 40)
+//    let NE_point = CGPoint(x: 40, y: 40)
+//    let SE_point = CGPoint(x: 40, y: -40)
+//    let SW_point = CGPoint(x: -40, y: -40)
+    
+    let NW_point = CGPoint(x: -40, y: 20)
+    let NE_point = CGPoint(x: 40, y: 20)
     let SE_point = CGPoint(x: 40, y: -40)
     let SW_point = CGPoint(x: -40, y: -40)
     

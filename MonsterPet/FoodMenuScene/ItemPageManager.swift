@@ -38,6 +38,7 @@ class ItemPageManager{
         for page in pages{
             for slot in page.slots{
                 slot.ItemCount  = itemManager.itemCountInventory[ItemName.allCases[slot.slotIndex]]!
+                //slot.itemInSlot.isUnlock = itemManager.slotUpdateUnpackState[slot.slotIndex]!
                 slot.countLabel.setGlyphText("x\(String(describing: slot.ItemCount))")
             }
         }

@@ -10,7 +10,7 @@ class ItemSelectionPage: Page {
     let column: Int = 2
     
     let slotOffset_X: CGFloat = 83
-    let slotOffset_Y: CGFloat = 508
+    let slotOffset_Y: CGFloat = 525
     
     let slotScale       : CGFloat = 0.15
     let slotZposition   : CGFloat = 40
