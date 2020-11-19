@@ -63,14 +63,14 @@ class Tree: SKSpriteNode{
         let node = Animation().GetAnimatedObject(by: .coin)
         
         node.zPosition = self.zPosition + 1
-        node.setScale(0.14)
+        node.setScale(0.07)
         node.position = CGPoint(x: self.position.x, y: self.position.y + 80)
 
         currentSKScene.addChild(node)
         
         //currentScenario.addChild(node)
         
-        let popUpHeight: CGFloat = 300
+        let popUpHeight: CGFloat = 180
         
         let up = SKEase.move(easeFunction: .curveTypeExpo, easeType: .easeTypeOut, time: 0.5, from: node.position, to: CGPoint(x: position.x, y: position.y + popUpHeight))
         let down = SKEase.move(easeFunction: .curveTypeExpo, easeType: .easeTypeIn, time: 0.5, from: CGPoint(x: position.x, y: position.y + popUpHeight), to: node.position)

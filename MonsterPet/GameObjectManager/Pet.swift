@@ -181,10 +181,12 @@ class Pet: SKSpriteNode, Observer, Observable{
         
         if !packageIsDropped && whenTimePassed > onScreenTime - 30 {
             //Need logic for dropping package
-            dropPackage.setScale(0.05)
+            dropPackage.setScale(0.1)
             dropPackage.zPosition = 3
             dropPackage.position = position
             scene?.addChild(dropPackage)
+            
+            (scene as! MainScene).SortObjectsLayerAfterAdded()
             
             packageIsDropped = true
         }

@@ -17,6 +17,8 @@ class MainScene: SKScene {
     
     var sceneEnvironment: SceneEnvironment!
     
+//    var SortedObjects: [SKSpriteNode] = []
+    
     override func didMove(to view: SKView) {
         
         LoadGameEnvironment()
@@ -49,23 +51,23 @@ class MainScene: SKScene {
    
 
         
-        let text = BMGlyphLabel(txt: "TEST", fnt: BMGlyphFont(name: "TitleText"))
-        text.position = CGPoint(x: frame.midX, y: frame.midY)
-        text.zPosition  = 200
-        addChild(text)
-        
-        let modelName = UIDevice.modelName
-        if modelName == "Simulator iPhone 8"{
-            text.setGlyphText("This is iPhone 8")
-        }
-        
-        if modelName == "Simulator iPhone 11 Pro Max"{
-            text.setGlyphText("This is iPhone 11 Pro Max")
-        }
-        
-        if modelName == "Simulator iPhone 12 Pro Max"{
-            text.setGlyphText("This is iPhone 12 Pro Max")
-        }
+//        let text = BMGlyphLabel(txt: "TEST", fnt: BMGlyphFont(name: "TitleText"))
+//        text.position = CGPoint(x: frame.midX, y: frame.midY)
+//        text.zPosition  = 200
+//        addChild(text)
+//        
+//        let modelName = UIDevice.modelName
+//        if modelName == "Simulator iPhone 8"{
+//            text.setGlyphText("This is iPhone 8")
+//        }
+//        
+//        if modelName == "Simulator iPhone 11 Pro Max"{
+//            text.setGlyphText("This is iPhone 11 Pro Max")
+//        }
+//        
+//        if modelName == "Simulator iPhone 12 Pro Max"{
+//            text.setGlyphText("This is iPhone 12 Pro Max")
+//        }
         
     }
     
@@ -81,28 +83,26 @@ class MainScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        //        let click = SKAudioNode(fileNamed: "Pen Click Sfx.wav")
+        //        addChild(click)
 
         let touch       = touches.first
         let location    = touch?.location(in: self)
         
         UI_Manager.UpdateTouch(at: location!)
         
-        PlaceItem(in: location!)
-
         petManager.UpdateTouch(at: location!)
-        //Temp testing Code//
-       // currencyManager.HeartCounts += 10
-        /////////////////////
-        
-        //let locationInScenarioBackground = touch?.location(in: sceneEnvironment.mainBackground)
-        
+
         if UI_Manager.uiState != .menuPanelOpened{
             sceneEnvironment.UpdateTouched(on: location!)
         }
         
-//        let click = SKAudioNode(fileNamed: "Pen Click Sfx.wav")
-//        addChild(click)
         
+        PlaceItem(in: location!)
+        
+        if UI_Manager.uiState == .menuPanelOpened{
+            placeHolderManager.RemoveAllArrow()
+        }
         
     }
     
@@ -128,11 +128,9 @@ class MainScene: SKScene {
                         itemManager.itemCountInventory[item.itemName] = updatedItemCount
                         
                         animateSmoke(at: item.position)
+                        
                     }
                     
-                    
-                    
-                   
                     if equipmentManager.tempEquipmentHolder != nil{
                         
                         let equipment = EquipmentManager.sharedInstance.tempEquipmentHolder!
@@ -144,7 +142,7 @@ class MainScene: SKScene {
                         equipmentManager.StoreEquipmentData(equipment: equipment, at: arrow!.position)
                     }
                     
-                    
+                    SortObjectsLayerAfterAdded()
                 }
             }
         }
@@ -161,6 +159,22 @@ class MainScene: SKScene {
         }
     }
     
+    
+    public func SortObjectsLayerAfterAdded(){
+        var SortedObjs: [SKSpriteNode] = []
+        
+        for obj in scene!.children{
+            if obj is Tree || obj is Pet || obj is Equipment{
+                SortedObjs.append(obj as! SKSpriteNode)
+            }
+        }
+        
+        SortedObjs = SortedObjs.sorted(by: { $0.position.y > $1.position.y })
+    
+        for i in 0...SortedObjs.count - 1{
+            SortedObjs[i].zPosition = CGFloat(i) + 1
+        }
+    }
 
     
     func LoadGameEnvironment(){
@@ -219,7 +233,7 @@ class MainScene: SKScene {
         smoke.setScale(0.15)
         smoke.zPosition = 2
         smoke.position = position
-        smoke.position.y -= 35
+        smoke.position.y -= 20
         addChild(smoke)
         
         let smokeAnimate = SKAction.animate(with: smokeFrames, timePerFrame: 0.1, resize: false, restore: true)
@@ -268,6 +282,8 @@ class MainScene: SKScene {
         let popUpAnimation = SKAction.group([upNDown, waitNFadeOut])
         node.run(popUpAnimation, completion: {node.removeFromParent()})
     }
+    
+    
 }
 
 

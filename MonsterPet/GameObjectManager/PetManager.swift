@@ -64,51 +64,6 @@ class PetManager: Observable{
     
     func ScanItems(at currentTime: CFTimeInterval){
         
-//        for point in placeHolderManager.pointData{
-//
-//            guard let checkingItem = itemManager.itemData[point]?.item else { continue }
-//
-//            let elapsedTime = currentTime - checkingItem.timeWhenPlaced
-//
-////            for pet in petInStore.values{
-////
-////                if pet!.timeWhenLeftScene == nil{
-////                    if !(pet!.isAdded)  && pet!.favoriteItem[0] == checkingItem.itemName{
-////                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
-////                    }
-////                }else{
-////                    let nextCallelapsedTime = currentTime - pet!.timeWhenLeftScene
-////
-////                    if nextCallelapsedTime > pet!.waitTime + 10{
-////                        if !(pet!.isAdded)  && pet!.favoriteItem[0] == checkingItem.itemName{
-////                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
-////                        }
-////                    }
-////                }
-////            }
-//
-//            for pet in petInStore.values{
-//
-//                if pet!.timeWhenLeftScene == nil{
-//                    if !(pet!.isAdded){
-//                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
-//                    }
-//                }else{
-//                    let nextCallelapsedTime = currentTime - pet!.timeWhenLeftScene
-//
-//                    if nextCallelapsedTime > pet!.waitTime + 10{
-//                        if !(pet!.isAdded) {
-//                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
-//                        }
-//                    }
-//                }
-//            }
-//
-//            if !(checkingItem.isBeingEaten) && elapsedTime > checkingItem.timeOnScreen {
-//                Remove(item: checkingItem, at: elapsedTime)
-//            }
-//        }
-        
         let point = placeHolderManager.pointData[Int.random(in: 0...4)]
         guard let checkingItem = itemManager.itemData[point]?.item else { return }
         
@@ -196,21 +151,22 @@ class PetManager: Observable{
             
             currentScene.addChild(pet)
             pet.BeingCalled(to: pointToPlacePet)
+            (currentScene as! MainScene).SortObjectsLayerAfterAdded()
             
             ///not working/ / /not good should not hard code to real position
-            if pet.position.y > placeHolderManager.pointData[0].y{
-                pet.zPosition = 20
-            }else if pet.position.y < placeHolderManager.pointData[0].y && pet.position.y > placeHolderManager.pointData[1].y{
-                pet.zPosition = 21
-            }else if pet.position.y < placeHolderManager.pointData[1].y && pet.position.y > placeHolderManager.pointData[2].y{
-                pet.zPosition = 22
-            }else if pet.position.y < placeHolderManager.pointData[2].y && pet.position.y > placeHolderManager.pointData[3].y{
-                pet.zPosition = 23
-            }else if pet.position.y < placeHolderManager.pointData[3].y && pet.position.y > placeHolderManager.pointData[4].y{
-                pet.zPosition = 24
-            }else if pet.position.y < placeHolderManager.pointData[4].y{
-                pet.zPosition = 25
-            }
+//            if pet.position.y > placeHolderManager.pointData[0].y{
+//                pet.zPosition = 20
+//            }else if pet.position.y < placeHolderManager.pointData[0].y && pet.position.y > placeHolderManager.pointData[1].y{
+//                pet.zPosition = 21
+//            }else if pet.position.y < placeHolderManager.pointData[1].y && pet.position.y > placeHolderManager.pointData[2].y{
+//                pet.zPosition = 22
+//            }else if pet.position.y < placeHolderManager.pointData[2].y && pet.position.y > placeHolderManager.pointData[3].y{
+//                pet.zPosition = 23
+//            }else if pet.position.y < placeHolderManager.pointData[3].y && pet.position.y > placeHolderManager.pointData[4].y{
+//                pet.zPosition = 24
+//            }else if pet.position.y < placeHolderManager.pointData[4].y{
+//                pet.zPosition = 25
+//            }
             
             petInScene.append(pet)
         }

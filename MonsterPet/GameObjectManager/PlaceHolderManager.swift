@@ -70,9 +70,10 @@ class PlaceHolderManager{
             if itemData.isPlacable && equipmentData.isPlacable{
                 arrowImages[i] = SKSpriteNode(imageNamed: "HereOK")
                 arrowImages[i]?.name = "arrow" + String(i)
+                arrowImages[i]?.anchorPoint = CGPoint(x: 0.2, y: 0.2)
                 arrowImages[i]?.position = pointData[i]
                 arrowImages[i]?.setScale(0.47)
-                arrowImages[i]?.zPosition = 2
+                arrowImages[i]?.zPosition = 6
                 scene!.addChild(arrowImages[i]!)
             }else{
                 
