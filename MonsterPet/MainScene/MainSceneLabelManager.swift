@@ -4,16 +4,18 @@ import SpriteKit
 class LabelManager: BaseUIManager, Observer{
     
     var id: Int = 0;
+    
+    var device: DeviceDependency = .sharedInstance
     var currenyManager: CurrencyManager = .sharedInstance
     
     var countFont       : BMGlyphFont!
     var heartCountLabel : BMGlyphLabel!
     var coinCountLabel  : BMGlyphLabel!
     
-    private(set) var labelScale: CGFloat = 1
+    private(set) var labelScale: CGFloat = DeviceDependency.sharedInstance.heart_n_coin_LabelScale
     
     
-    let AndaleMono: String = "Andale Mono-Bold"
+    //let AndaleMono: String = "Andale Mono-Bold"
     
 
     override init(skScene: SKScene) {
@@ -26,10 +28,17 @@ class LabelManager: BaseUIManager, Observer{
     func AddHeartCountLabel(){
         
         countFont = BMGlyphFont(name: "TitleText")
+       
         heartCountLabel = BMGlyphLabel(txt: String(currenyManager.HeartCounts), fnt: countFont)
         
+       
+        
+       
+        
         heartCountLabel.setHorizontalAlignment(.right)
-        heartCountLabel.position = CGPoint(x: min_X + 143 , y: max_Y - 28)
+        heartCountLabel.position = CGPoint(x: min_X, y: max_Y)
+        heartCountLabel.position.x += device.hearCountLabelPosition.x
+        heartCountLabel.position.y -= device.hearCountLabelPosition.y
         heartCountLabel.zPosition = 47
         heartCountLabel.setScale(labelScale)
         currentSKScene.addChild(heartCountLabel)

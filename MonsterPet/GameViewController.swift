@@ -28,6 +28,7 @@ class GameViewController: UIViewController {
         
         ItemPageManager.sharedInstance.LoadItemSelectionPage()
         PetInfoPageManager.sharedInstance.LoadPetInfoPages()
+        GiftPageManager.sharedInstance.LoadGiftPage()
     }
 
     override var shouldAutorotate: Bool {

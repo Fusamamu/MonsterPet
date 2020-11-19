@@ -3,6 +3,8 @@ import SpriteKit
 
 class UIElementBuilder{
     
+    private let device: DeviceDependency = .sharedInstance
+    
     public var currentSKScene       : SKScene!
     public var baseUIManager        : BaseUIManager!
     
@@ -41,6 +43,7 @@ class UIElementBuilder{
         case heart
         case coin
         case petInfoTitleIcon
+        case giftIcon
         case foodTitleIcon
         case equipmentTitleIcon
         case scenarioTitleIcon
@@ -82,7 +85,7 @@ class UIElementBuilder{
             
             menuButton.position = baseUIManager.upperRightPosition
             menuButton.position.x -= 50
-            menuButton.position.y -= 50
+            menuButton.position.y -= device.menuButtonPosition_Y
             
             return menuButton
             
@@ -99,7 +102,7 @@ class UIElementBuilder{
             
             petInfoButton.position = baseUIManager.upperRightPosition
             petInfoButton.position.x -= 100
-            petInfoButton.position.y -= 50
+            petInfoButton.position.y -= device.petInfoButtonPosition_Y
             
             return petInfoButton
             
@@ -198,22 +201,32 @@ class UIElementBuilder{
         switch seletedUiIcon {
         case .heart:
             let heart = SKSpriteNode(imageNamed: "Heart")
-            heart.setScale(iconScale)
             heart.zPosition = iconZPosition
-            heart.position = baseUIManager.upperLeftPosition
-            heart.position.x += 50
-            heart.position.y -= 30
+            heart.setScale(0.4)
+            heart.position.x += 80
+//            heart.position = baseUIManager.upperLeftPosition
+//            heart.position.x += device.heartIconPosition_X
+//            heart.position.y -= device.heartIconPosition_Y
             return heart
         case .coin:
             let coin = SKSpriteNode(imageNamed: "currencyIcon")
-            coin.setScale(iconScale)
             coin.zPosition = iconZPosition
-            coin.position = baseUIManager.upperLeftPosition
-            coin.position.x += 50
-            coin.position.y -= 73
+            coin.setScale(0.4)
+            coin.position.x += 80
+//            coin.position = baseUIManager.upperLeftPosition
+//            coin.position.x += 50
+//            coin.position.y -= 73
             return coin
         case.petInfoTitleIcon:
             let petInfoTitleIcon = SKSpriteNode(imageNamed: "petInfoIcon")
+            petInfoTitleIcon.setScale(0.092)
+            petInfoTitleIcon.zPosition = defaultUi_Zposition
+            petInfoTitleIcon.position = baseUIManager.upperLeftPosition
+            petInfoTitleIcon.position.x += 60
+            petInfoTitleIcon.position.y -= 45
+            return petInfoTitleIcon
+        case.giftIcon:
+            let petInfoTitleIcon = SKSpriteNode(imageNamed: "giftIcon")
             petInfoTitleIcon.setScale(0.092)
             petInfoTitleIcon.zPosition = defaultUi_Zposition
             petInfoTitleIcon.position = baseUIManager.upperLeftPosition
@@ -261,12 +274,12 @@ class UIElementBuilder{
         switch seletedUiElement {
         case .bar:
             let bar = SKSpriteNode(imageNamed: "bar")
-            bar.anchorPoint = CGPoint(x: 0, y: 0)
+            bar.anchorPoint = CGPoint(x: 0, y: 1)
             bar.setScale(0.3)
             bar.zPosition = defaultUi_Zposition
             bar.position = baseUIManager.upperLeftPosition
             bar.position.x += 22
-            bar.position.y -= 60
+            bar.position.y -= device.barPosition_Y
             return bar
         case .bottomBar:
             let bottomBar = SKSpriteNode(imageNamed: "bottomBar")

@@ -9,39 +9,29 @@ class PetInfoScene : SKScene{
     private var uiManager   : PetInfoUIManager!
     private var swipeManager: SwipeManager!
     
-//    var page_1: PetInfoPage!
-//    var page_2: PetInfoPage!
-//    var page_3: PetInfoPage!
-//    var pages:[PetInfoPage] = []
-    
     var currentPage: PetInfoPage!
     var currentPageIndex: Int = 0
+    let maxPageNumber: Int = 3
+    
+    private var pageCountLabel = LabelBuilder().Build(selectedLabel: .pageCountLabel)
 
     override func didMove(to view: SKView) {
         uiManager       = PetInfoUIManager(skScene: self)
         swipeManager    = SwipeManager(skScene: self)
         swipeManager.AddSwipeGesture(target: self, swipeRightAction: #selector(self.swipedRight(sender:)), swipeLeftAction: #selector(self.swipedLeft(sender:)))
         
-//        page_1 = PetInfoPage(pageIndex: 0, skScene: self as SKScene)
-//        page_2 = PetInfoPage(pageIndex: 1, skScene: self as SKScene)
-//        page_3 = PetInfoPage(pageIndex: 2, skScene: self as SKScene)
-//        pages.append(contentsOf:[page_1, page_2, page_3])
-        
         petInfoPageManager.pages[currentPageIndex].position.x = 0;
         currentPage = petInfoPageManager.pages[currentPageIndex]
         addChild(currentPage)
 
-        self.backgroundColor = UIColor(red: 228/255, green: 226/255, blue: 175/255, alpha: 1)
-        
         CreateBackground()
+        AddPageCountLabel()
+        self.backgroundColor = UIColor(red: 228/255, green: 226/255, blue: 175/255, alpha: 1)
     }
-    
-    //var isFirstTouched: Bool = true
-    
+        
     override func willMove(from view: SKView) {
         currentPage.removeFromParent()
         petInfoPageManager.pages[currentPageIndex].removeFromParent()
-      //  itemPageManager.pages[currentPage.pageIndex].removeFromParent()
         currentPage = nil
         swipeManager.RemoveSwipeGesture()
     }
@@ -51,6 +41,14 @@ class PetInfoScene : SKScene{
         let location = touch?.location(in: self)
         
         uiManager.UpdateTouch(at: location!)
+    }
+    
+    private func AddPageCountLabel(){
+        pageCountLabel.zPosition    = 200
+        pageCountLabel.position.x   = uiManager.mid_X
+        pageCountLabel.position.y += 40
+        pageCountLabel.setGlyphText("1|\(String(describing: maxPageNumber))")
+        addChild(pageCountLabel)
     }
     
     func CreateBackground(){

@@ -25,6 +25,13 @@
 		AE1D81C6247411A7003EBB96 /* EquipMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D81C5247411A7003EBB96 /* EquipMenuScene.swift */; };
 		AE1D81C824741238003EBB96 /* EquipmentUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D81C724741238003EBB96 /* EquipmentUIManager.swift */; };
 		AE1D81CA2474148E003EBB96 /* EquipmentSelectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D81C92474148E003EBB96 /* EquipmentSelectionPage.swift */; };
+		AE1EAEED25657ADA0035A849 /* hd.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE1EAEEA25657ADA0035A849 /* hd.atlas */; };
+		AE1EAEEE25657ADA0035A849 /* hd@2x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE1EAEEB25657ADA0035A849 /* hd@2x.xml */; };
+		AE1EAEEF25657ADA0035A849 /* hd@3x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE1EAEEC25657ADA0035A849 /* hd@3x.xml */; };
+		AE1EAEF725657AEE0035A849 /* peng.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE1EAEF325657AED0035A849 /* peng.atlas */; };
+		AE1EAEF825657AEE0035A849 /* peng@4x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE1EAEF425657AEE0035A849 /* peng@4x.xml */; };
+		AE1EAEF925657AEE0035A849 /* peng.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE1EAEF525657AEE0035A849 /* peng.xml */; };
+		AE1EAEFA25657AEE0035A849 /* peng@2x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE1EAEF625657AEE0035A849 /* peng@2x.xml */; };
 		AE2264EB241B6BC600E6CB84 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2264EA241B6BC600E6CB84 /* Page.swift */; };
 		AE279FCC248011170037DAAE /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE279FCB248011170037DAAE /* LabelBuilder.swift */; };
 		AE28B717240B7B6800A49B23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28B716240B7B6800A49B23 /* AppDelegate.swift */; };
@@ -66,13 +73,8 @@
 		AE706FE024C7F9FE00AA45EB /* SKMultilineLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE706FDF24C7F9FE00AA45EB /* SKMultilineLabelNode.swift */; };
 		AE71B07A248E81E200AC3B21 /* PetCharacterDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE71B079248E81E200AC3B21 /* PetCharacterDisplay.swift */; };
 		AE73D6C4255BC8A4003EB9A7 /* WarnPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73D6C3255BC8A4003EB9A7 /* WarnPanel.swift */; };
-		AE76679A24C7573E00F006A3 /* peng@2x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE76679624C7573E00F006A3 /* peng@2x.xml */; };
-		AE76679B24C7573E00F006A3 /* peng.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE76679724C7573E00F006A3 /* peng.atlas */; };
-		AE76679C24C7573E00F006A3 /* peng@4x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE76679824C7573E00F006A3 /* peng@4x.xml */; };
-		AE76679D24C7573E00F006A3 /* peng.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE76679924C7573E00F006A3 /* peng.xml */; };
-		AE7667C624C75EF000F006A3 /* hd@2x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE7667C324C75EF000F006A3 /* hd@2x.xml */; };
-		AE7667C724C75EF000F006A3 /* hd@3x.xml in Resources */ = {isa = PBXBuildFile; fileRef = AE7667C424C75EF000F006A3 /* hd@3x.xml */; };
-		AE7667C824C75EF000F006A3 /* hd.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE7667C524C75EF000F006A3 /* hd.atlas */; };
+		AE7BB4002564D8A700ACD2D6 /* GiftPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7BB3FF2564D8A700ACD2D6 /* GiftPageManager.swift */; };
+		AE7BB4082564E50300ACD2D6 /* DeviceDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7BB4072564E50300ACD2D6 /* DeviceDependency.swift */; };
 		AE7C064424C1A0DB00FF1079 /* RecipeDetailPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C064324C1A0DB00FF1079 /* RecipeDetailPanel.swift */; };
 		AE7EC62824937A7500E70A28 /* TextureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EC62724937A7500E70A28 /* TextureManager.swift */; };
 		AE7EC62A24939D9700E70A28 /* ItemPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EC62924939D9700E70A28 /* ItemPageManager.swift */; };
@@ -91,6 +93,8 @@
 		AE95327F2484F1BA00370C8D /* EquipmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE95327E2484F1BA00370C8D /* EquipmentManager.swift */; };
 		AE9532812484F40700370C8D /* PlaceHolderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9532802484F40700370C8D /* PlaceHolderManager.swift */; };
 		AE9625482410D76500AFCF9A /* MainSceneLabelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9625472410D76500AFCF9A /* MainSceneLabelManager.swift */; };
+		AE96D7F3255F9D6800E96D22 /* GiftManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE96D7F2255F9D6800E96D22 /* GiftManager.swift */; };
+		AE96D7F8255F9E8200E96D22 /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE96D7F7255F9E8200E96D22 /* Gift.swift */; };
 		AE9BBDA724CE9C3A00AA5CA8 /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9BBDA624CE9C3A00AA5CA8 /* PlistManager.swift */; };
 		AE9BBDA924CEC37500AA5CA8 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9BBDA824CEC37500AA5CA8 /* GameData.swift */; };
 		AE9C1F4B243A145A008B5FB2 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9C1F4A243A145A008B5FB2 /* Package.swift */; };
@@ -154,6 +158,13 @@
 		AE1D81C5247411A7003EBB96 /* EquipMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipMenuScene.swift; sourceTree = "<group>"; };
 		AE1D81C724741238003EBB96 /* EquipmentUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentUIManager.swift; sourceTree = "<group>"; };
 		AE1D81C92474148E003EBB96 /* EquipmentSelectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentSelectionPage.swift; sourceTree = "<group>"; };
+		AE1EAEEA25657ADA0035A849 /* hd.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = hd.atlas; sourceTree = "<group>"; };
+		AE1EAEEB25657ADA0035A849 /* hd@2x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hd@2x.xml"; sourceTree = "<group>"; };
+		AE1EAEEC25657ADA0035A849 /* hd@3x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "hd@3x.xml"; sourceTree = "<group>"; };
+		AE1EAEF325657AED0035A849 /* peng.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = peng.atlas; sourceTree = "<group>"; };
+		AE1EAEF425657AEE0035A849 /* peng@4x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "peng@4x.xml"; sourceTree = "<group>"; };
+		AE1EAEF525657AEE0035A849 /* peng.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = peng.xml; sourceTree = "<group>"; };
+		AE1EAEF625657AEE0035A849 /* peng@2x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "peng@2x.xml"; sourceTree = "<group>"; };
 		AE2264EA241B6BC600E6CB84 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		AE279FCB248011170037DAAE /* LabelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBuilder.swift; sourceTree = "<group>"; };
 		AE28B713240B7B6800A49B23 /* MonsterPet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonsterPet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,13 +212,8 @@
 		AE706FDF24C7F9FE00AA45EB /* SKMultilineLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKMultilineLabelNode.swift; sourceTree = "<group>"; };
 		AE71B079248E81E200AC3B21 /* PetCharacterDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCharacterDisplay.swift; sourceTree = "<group>"; };
 		AE73D6C3255BC8A4003EB9A7 /* WarnPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnPanel.swift; sourceTree = "<group>"; };
-		AE76679624C7573E00F006A3 /* peng@2x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "peng@2x.xml"; path = "../../../../pengfont/peng@2x.xml"; sourceTree = "<group>"; };
-		AE76679724C7573E00F006A3 /* peng.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = peng.atlas; path = ../../../../pengfont/peng.atlas; sourceTree = "<group>"; };
-		AE76679824C7573E00F006A3 /* peng@4x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "peng@4x.xml"; path = "../../../../pengfont/peng@4x.xml"; sourceTree = "<group>"; };
-		AE76679924C7573E00F006A3 /* peng.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = peng.xml; path = ../../../../pengfont/peng.xml; sourceTree = "<group>"; };
-		AE7667C324C75EF000F006A3 /* hd@2x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "hd@2x.xml"; path = "../../../../PhoneHD/hd@2x.xml"; sourceTree = "<group>"; };
-		AE7667C424C75EF000F006A3 /* hd@3x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "hd@3x.xml"; path = "../../../../PhoneHD/hd@3x.xml"; sourceTree = "<group>"; };
-		AE7667C524C75EF000F006A3 /* hd.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = hd.atlas; path = ../../../../PhoneHD/hd.atlas; sourceTree = "<group>"; };
+		AE7BB3FF2564D8A700ACD2D6 /* GiftPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftPageManager.swift; sourceTree = "<group>"; };
+		AE7BB4072564E50300ACD2D6 /* DeviceDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDependency.swift; sourceTree = "<group>"; };
 		AE7C064324C1A0DB00FF1079 /* RecipeDetailPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailPanel.swift; sourceTree = "<group>"; };
 		AE7EC62724937A7500E70A28 /* TextureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureManager.swift; sourceTree = "<group>"; };
 		AE7EC62924939D9700E70A28 /* ItemPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPageManager.swift; sourceTree = "<group>"; };
@@ -226,6 +232,8 @@
 		AE95327E2484F1BA00370C8D /* EquipmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentManager.swift; sourceTree = "<group>"; };
 		AE9532802484F40700370C8D /* PlaceHolderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderManager.swift; sourceTree = "<group>"; };
 		AE9625472410D76500AFCF9A /* MainSceneLabelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneLabelManager.swift; sourceTree = "<group>"; };
+		AE96D7F2255F9D6800E96D22 /* GiftManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftManager.swift; sourceTree = "<group>"; };
+		AE96D7F7255F9E8200E96D22 /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
 		AE9BBDA624CE9C3A00AA5CA8 /* PlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
 		AE9BBDA824CEC37500AA5CA8 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		AE9C1F4A243A145A008B5FB2 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -488,10 +496,10 @@
 		AE76678B24C7553200F006A3 /* PengFont */ = {
 			isa = PBXGroup;
 			children = (
-				AE76679724C7573E00F006A3 /* peng.atlas */,
-				AE76679924C7573E00F006A3 /* peng.xml */,
-				AE76679624C7573E00F006A3 /* peng@2x.xml */,
-				AE76679824C7573E00F006A3 /* peng@4x.xml */,
+				AE1EAEF325657AED0035A849 /* peng.atlas */,
+				AE1EAEF525657AEE0035A849 /* peng.xml */,
+				AE1EAEF625657AEE0035A849 /* peng@2x.xml */,
+				AE1EAEF425657AEE0035A849 /* peng@4x.xml */,
 			);
 			path = PengFont;
 			sourceTree = "<group>";
@@ -499,9 +507,9 @@
 		AE76679E24C75ABD00F006A3 /* HD */ = {
 			isa = PBXGroup;
 			children = (
-				AE7667C524C75EF000F006A3 /* hd.atlas */,
-				AE7667C324C75EF000F006A3 /* hd@2x.xml */,
-				AE7667C424C75EF000F006A3 /* hd@3x.xml */,
+				AE1EAEEA25657ADA0035A849 /* hd.atlas */,
+				AE1EAEEB25657ADA0035A849 /* hd@2x.xml */,
+				AE1EAEEC25657ADA0035A849 /* hd@3x.xml */,
 			);
 			path = HD;
 			sourceTree = "<group>";
@@ -549,8 +557,11 @@
 			children = (
 				AEA34B9925284EDA003FDCD5 /* GiftScene.swift */,
 				AEA34B9E25284EF2003FDCD5 /* GIftUIManager.swift */,
+				AE96D7F7255F9E8200E96D22 /* Gift.swift */,
+				AE96D7F2255F9D6800E96D22 /* GiftManager.swift */,
 				AEA34BA325284F16003FDCD5 /* GiftSlot.swift */,
 				AEA34BA825284F39003FDCD5 /* GiftPage.swift */,
+				AE7BB3FF2564D8A700ACD2D6 /* GiftPageManager.swift */,
 			);
 			path = GiftScene;
 			sourceTree = "<group>";
@@ -610,6 +621,7 @@
 				AE81AF9024CBF00A0028D8FD /* Animation.swift */,
 				AE9BBDA824CEC37500AA5CA8 /* GameData.swift */,
 				AE9BBDA624CE9C3A00AA5CA8 /* PlistManager.swift */,
+				AE7BB4072564E50300ACD2D6 /* DeviceDependency.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -728,32 +740,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE95327B2484C95200370C8D /* ChalkboardRegular@3x.xml in Resources */,
-				AE76679D24C7573E00F006A3 /* peng.xml in Resources */,
 				AE28B722240B7B6800A49B23 /* Main.storyboard in Resources */,
+				AE1EAEFA25657AEE0035A849 /* peng@2x.xml in Resources */,
 				AE28B724240B7B6900A49B23 /* Assets.xcassets in Resources */,
 				AE28B727240B7B6900A49B23 /* LaunchScreen.storyboard in Resources */,
+				AE1EAEF725657AEE0035A849 /* peng.atlas in Resources */,
 				AE95327D2484C95600370C8D /* ChalkboardRegular.atlas in Resources */,
 				AEE1261724E52442006C7535 /* Pen Click Sfx.wav in Resources */,
 				AE0E4F1224B97A5A00AB26FC /* GameData.plist in Resources */,
-				AE7667C724C75EF000F006A3 /* hd@3x.xml in Resources */,
+				AE1EAEEF25657ADA0035A849 /* hd@3x.xml in Resources */,
 				AE92F50D24D1635500904A73 /* ItemData.plist in Resources */,
 				AE28B71B240B7B6800A49B23 /* Actions.sks in Resources */,
 				AE4F3C3A24D47BC7006A2BAB /* gotItAffect.atlas in Resources */,
+				AE1EAEF925657AEE0035A849 /* peng.xml in Resources */,
+				AE1EAEEE25657ADA0035A849 /* hd@2x.xml in Resources */,
 				AE4746E5243D971600BDD3D2 /* petText.atlas in Resources */,
-				AE7667C624C75EF000F006A3 /* hd@2x.xml in Resources */,
-				AE76679B24C7573E00F006A3 /* peng.atlas in Resources */,
 				AEE1261524E522A5006C7535 /* bensound-ukulele.mp3 in Resources */,
 				AE95327A2484C95200370C8D /* ChalkboardRegular@2x.xml in Resources */,
+				AE1EAEF825657AEE0035A849 /* peng@4x.xml in Resources */,
 				AE87764A2449669B00779C34 /* MainScene.sks in Resources */,
 				AE94B92C24CC0C050010441E /* flare.sks in Resources */,
+				AE1EAEED25657ADA0035A849 /* hd.atlas in Resources */,
 				AE9532772484C94300370C8D /* ChalkboardRegular.xml in Resources */,
 				AE00CA4D244895EE005B7342 /* Smoke.atlas in Resources */,
 				AEA9AB4F24D7D6C100922166 /* TitleText@2x.xml in Resources */,
-				AE7667C824C75EF000F006A3 /* hd.atlas in Resources */,
 				AE4F3C3824D47B98006A2BAB /* coin.atlas in Resources */,
-				AE76679C24C7573E00F006A3 /* peng@4x.xml in Resources */,
 				AEA9AB5024D7D6C100922166 /* TitleText.atlas in Resources */,
-				AE76679A24C7573E00F006A3 /* peng@2x.xml in Resources */,
 				AEA9AB4E24D7D6C100922166 /* TitleText@3x.xml in Resources */,
 				AE4746E7243D973500BDD3D2 /* petText@2x.xml in Resources */,
 				AE94B92824CC0B9E0010441E /* Assets.xcassets in Resources */,
@@ -783,6 +795,7 @@
 			files = (
 				AE73D6C4255BC8A4003EB9A7 /* WarnPanel.swift in Sources */,
 				AE0AB0742557D5E90018D314 /* ItemInfo.swift in Sources */,
+				AE7BB4002564D8A700ACD2D6 /* GiftPageManager.swift in Sources */,
 				AE0A57532478F745002C6CA4 /* PetInfoUIManager.swift in Sources */,
 				AE7EC62A24939D9700E70A28 /* ItemPageManager.swift in Sources */,
 				AE0A57512478F6FC002C6CA4 /* PetInfoScene.swift in Sources */,
@@ -796,6 +809,7 @@
 				AEA34B9F25284EF2003FDCD5 /* GIftUIManager.swift in Sources */,
 				AE0AB06F2557D1AA0018D314 /* PetInfo.swift in Sources */,
 				AEA4D28A242738AE0031868D /* Item.swift in Sources */,
+				AE96D7F3255F9D6800E96D22 /* GiftManager.swift in Sources */,
 				AE2264EB241B6BC600E6CB84 /* Page.swift in Sources */,
 				AEEAA191248E35C30016A8FB /* BuyHeartSlot.swift in Sources */,
 				AE0A574E2478DC24002C6CA4 /* EquipmentSlot.swift in Sources */,
@@ -833,6 +847,7 @@
 				AE28B71F240B7B6800A49B23 /* GameViewController.swift in Sources */,
 				AE81785B24D59C7E000DC0F9 /* Tree.swift in Sources */,
 				AE28B717240B7B6800A49B23 /* AppDelegate.swift in Sources */,
+				AE96D7F8255F9E8200E96D22 /* Gift.swift in Sources */,
 				AEB2B3DE2490D5E200B23033 /* SKEase.swift in Sources */,
 				AE9625482410D76500AFCF9A /* MainSceneLabelManager.swift in Sources */,
 				AE95327F2484F1BA00370C8D /* EquipmentManager.swift in Sources */,
@@ -850,6 +865,7 @@
 				AE1D81C824741238003EBB96 /* EquipmentUIManager.swift in Sources */,
 				AE28B74B240B7E1400A49B23 /* Button.swift in Sources */,
 				AEC82129247BD2DC0077E57D /* UiBuilder.swift in Sources */,
+				AE7BB4082564E50300ACD2D6 /* DeviceDependency.swift in Sources */,
 				AE9C1F4B243A145A008B5FB2 /* Package.swift in Sources */,
 				AE71B07A248E81E200AC3B21 /* PetCharacterDisplay.swift in Sources */,
 				AE9BBDA724CE9C3A00AA5CA8 /* PlistManager.swift in Sources */,

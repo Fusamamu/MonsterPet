@@ -115,10 +115,11 @@ class DetailSceneUIManager: BaseUIManager{
         
         let currencyIcon    = uiElementBuilder.Build(seletedUiIcon: .coin)
         let bar_1           = uiElementBuilder.Build(seletedUiElement: .bar)
-        currencyIcon.position.y += 33
-        bar_1.position.y -= 10
 
-        currentSKScene.addChild(currencyIcon)
+        bar_1.position.y -= 10
+        bar_1.addChild(currencyIcon)
+
+
         currentSKScene.addChild(bar_1)
 
         let itemFloorImage = SKSpriteNode(imageNamed: "equipmentFloor")

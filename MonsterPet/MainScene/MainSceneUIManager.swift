@@ -47,12 +47,14 @@ class MainSceneUIManager : BaseUIManager{
         bar_2           = uiElementBuilder.Build(seletedUiElement: .bar)
         bar_2.position.y -= 45
         
+        bar_1.addChild(heartIcon)
+        bar_2.addChild(currencyIcon)
+        
         menuButton      = uiElementBuilder.Build(selectedButton: .menuButton)
         petInfoButton   = uiElementBuilder.Build(selectedButton: .petInfoButton)
         cameraButton    = uiElementBuilder.Build(selectedButton: .cameraButton)
         
-                currentSKScene.addChild(heartIcon)
-                currentSKScene.addChild(currencyIcon)
+
                 currentSKScene.addChild(bar_1)
                 currentSKScene.addChild(bar_2)
                 currentSKScene.addChild(menuButton)

@@ -67,8 +67,8 @@ class Slot: SKSpriteNode, Observer{
         countLabel = labelBuilder.Build(selectedLabel: .itemCountLabel)
         countLabel.setGlyphText("x\(String(describing: ItemCount))")
         
-        itemInSlot.AddObserver(observer: self)
-        itemInSlot.isUnlock = itemManager.slotUpdateUnpackState[slotIndex]!
+//        itemInSlot.AddObserver(observer: self)
+//        itemInSlot.isUnlock = itemManager.slotUpdateUnpackState[slotIndex]!
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -79,6 +79,9 @@ class Slot: SKSpriteNode, Observer{
         itemInSlot = Item(index: index)
         itemInSlot.setScale(0.5)
         itemInSlot.zPosition = 5
+        
+        itemInSlot.AddObserver(observer: self)
+        itemInSlot.isUnlock = itemManager.slotUpdateUnpackState[slotIndex]!
     }
     
     func SetLockImage(by index: Int){

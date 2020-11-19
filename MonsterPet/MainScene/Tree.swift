@@ -16,6 +16,7 @@ class Tree: SKSpriteNode{
     public var textureImage: SKTexture!
     
     private var currentSKScene: SKScene!
+    private var currentScenario: SKSpriteNode!
     
     private var coinLimitCount   : Int = 10
     private var heartLimitCount  : Int = 10
@@ -29,7 +30,10 @@ class Tree: SKSpriteNode{
         self.setScale(0.47)
         
         
+       // currentScenario = scenario
         currentSKScene = skScene
+        
+        
         
 
         self.run(GetIdleTreeAnimation(), withKey: "IdleAnimation")
@@ -59,12 +63,14 @@ class Tree: SKSpriteNode{
         let node = Animation().GetAnimatedObject(by: .coin)
         
         node.zPosition = self.zPosition + 1
-        node.setScale(0.08)
-        node.position = CGPoint(x: self.position.x, y: self.position.y + 60)
+        node.setScale(0.14)
+        node.position = CGPoint(x: self.position.x, y: self.position.y + 80)
 
         currentSKScene.addChild(node)
         
-        let popUpHeight: CGFloat = 150
+        //currentScenario.addChild(node)
+        
+        let popUpHeight: CGFloat = 300
         
         let up = SKEase.move(easeFunction: .curveTypeExpo, easeType: .easeTypeOut, time: 0.5, from: node.position, to: CGPoint(x: position.x, y: position.y + popUpHeight))
         let down = SKEase.move(easeFunction: .curveTypeExpo, easeType: .easeTypeIn, time: 0.5, from: CGPoint(x: position.x, y: position.y + popUpHeight), to: node.position)
@@ -85,7 +91,7 @@ class Tree: SKSpriteNode{
         
         let duration = 0.3
         let scaleUp        = SKAction.scaleY(to: 0.49, duration: duration)
-        let scaleDown      = SKAction.scaleY(to: 0.43, duration: duration)
+        let scaleDown      = SKAction.scaleY(to: 0.42, duration: duration)
         let idleAnimation  = SKAction.repeatForever(SKAction.sequence([scaleUp, scaleDown]))
         
         return idleAnimation
@@ -97,7 +103,7 @@ class Tree: SKSpriteNode{
         easeFunction: .curveTypeSine,
         easeType: .easeTypeOut,
         time: 0.025,
-        from: 0.47, to: 0.55)
+            from: 0.47, to: 0.55)
 
         return whenTouchedAnimation
     }

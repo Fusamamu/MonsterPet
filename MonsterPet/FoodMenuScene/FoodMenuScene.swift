@@ -21,7 +21,7 @@ class FoodMenuScene: SKScene, Observer{
     unowned var currentPage: ItemSelectionPage!
     var currentPageIndex: Int = 0
     
-    private var pages:[ItemSelectionPage] = []
+   // private var pages:[ItemSelectionPage] = []
     
 
     private var pageCountLabel = LabelBuilder().Build(selectedLabel: .pageCountLabel)

@@ -11,6 +11,8 @@ import SpriteKit
 
 class SceneEnvironment{
     
+    private let device: DeviceDependency = .sharedInstance
+    
     public var currentSKScene: SKScene!
     
     private var treeCount: Int = 9
@@ -19,22 +21,41 @@ class SceneEnvironment{
     public var allTrees: [Tree] = []
     
     private var allEnvironmentObjects: [SKSpriteNode] = []
+    
+    public var mainBackground: SKSpriteNode!
+    
     private var house: SKSpriteNode!
     private var wall: SKSpriteNode!
     
     
     private var treePositions: [CGPoint] = [
-        CGPoint(x: 88, y: 308),
-        CGPoint(x: 131, y: 13),
-        CGPoint(x: 320, y: -135),
-        CGPoint(x: 340, y: 420),
         
-        CGPoint(x: 208, y: 495),
-        CGPoint(x: 35, y: 340),
-        CGPoint(x: 280, y: 448),
-        CGPoint(x: 385, y: -15),
         
-        CGPoint(x: 360, y: 500)
+        CGPoint(x: -195, y: -50),
+        
+        
+        CGPoint(x: -100, y: -750),
+        
+        CGPoint(x: 220, y: -1000),
+        
+        
+        CGPoint(x: 320, y: 150),
+        
+        CGPoint(x: 50, y: 340),
+        
+        
+        
+        
+        CGPoint(x: -320, y: 20),
+        
+        
+        CGPoint(x: 200, y: 250),
+        
+        
+        CGPoint(x: 330, y: -800),
+        
+        CGPoint(x: 310, y: 300)
+        
     ]
     
     
@@ -44,30 +65,39 @@ class SceneEnvironment{
         LoadEnvironment()
         LoadTrees()
         SortTreesLayer()
+        
+        MoveNodesToScene()
+        wall.setScale(0.47)
+        wall.move(toParent: currentSKScene)
     }
     
     private func LoadEnvironment(){
         
-        let mainBackground = SKSpriteNode(imageNamed: "CleanBackground")
+        mainBackground = SKSpriteNode(imageNamed: "CleanBackground")
         mainBackground.position = CGPoint(x: currentSKScene.frame.midX, y: currentSKScene.frame.midY)
-        mainBackground.zPosition = -1
-        mainBackground.setScale(0.47)
+        mainBackground.position.x += device.mainBackground_Pos.x
+        mainBackground.position.y += device.mainBackground_Pos.y
+        
+        mainBackground.zPosition = -20
+        mainBackground.setScale(device.mainBackground_Scale)
         currentSKScene.addChild(mainBackground)
         
         
         house = SKSpriteNode(imageNamed: "house")
         house.anchorPoint = CGPoint(x: 0.5, y: 0)
-        house.setScale(0.47)
-        house.zPosition = 0
-        house.position = CGPoint(x: 90, y: 466)
-        currentSKScene.addChild(house)
+        house.setScale(1)
+        house.zPosition = 0.5
+        house.position = CGPoint(x: -205, y: 295)
+        mainBackground.addChild(house)
+        //currentSKScene.addChild(house)
         
         wall = SKSpriteNode(imageNamed: "wall")
         wall.anchorPoint = CGPoint(x: 0.5, y: 0)
-        wall.setScale(0.47)
+        wall.setScale(1)
         wall.zPosition = 10
-        wall.position = CGPoint(x: 98, y: -153)
-        currentSKScene.addChild(wall)
+        wall.position = CGPoint(x: -200, y: -1000)
+        mainBackground.addChild(wall)
+        //currentSKScene.addChild(wall)
         
         allEnvironmentObjects.append(contentsOf: [house, wall])
     }
@@ -78,8 +108,9 @@ class SceneEnvironment{
             let tree = Tree(imageNamed: "tree" + "\(i + 1)", skScene: currentSKScene)
             tree.position = treePositions[i]
             tree.zPosition = 20
-            tree.setScale(0.47)
-            currentSKScene.addChild(tree)
+            tree.setScale(1)
+            mainBackground.addChild(tree)
+            //currentSKScene.addChild(tree)
             allTrees.append(tree)
             
             allEnvironmentObjects.append(tree)
@@ -92,7 +123,7 @@ class SceneEnvironment{
         allTrees = allTrees.sorted(by: { $0.position.y > $1.position.y })
         
         for i in 0...allTrees.count - 1{
-            allTrees[i].zPosition = CGFloat(i)
+            allTrees[i].zPosition = CGFloat(i) + 1
         }
     }
     
@@ -115,5 +146,14 @@ class SceneEnvironment{
 
     private func GetCGPointDistance(from: CGPoint, to: CGPoint) -> CGFloat {
         return sqrt(GetCGPointDistanceSquared(from: from, to: to))
+    }
+    
+    private func MoveNodesToScene(){
+        for tree in allTrees{
+            tree.setScale(0.47)
+            tree.move(toParent: currentSKScene)
+
+            
+        }
     }
 }
