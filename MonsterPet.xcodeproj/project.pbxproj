@@ -64,6 +64,8 @@
 		AE4F3C3824D47B98006A2BAB /* coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE4F3C3724D47B98006A2BAB /* coin.atlas */; };
 		AE4F3C3A24D47BC7006A2BAB /* gotItAffect.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE4F3C3924D47BC7006A2BAB /* gotItAffect.atlas */; };
 		AE4F614524C5D9870091C805 /* LayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F614424C5D9870091C805 /* LayerManager.swift */; };
+		AE4FB6C7256790D500D08EF5 /* RefreshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4FB6C6256790D500D08EF5 /* RefreshManager.swift */; };
+		AE4FB6D42567BFAA00D08EF5 /* getBonusPanel.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE4FB6D32567BFAA00D08EF5 /* getBonusPanel.atlas */; };
 		AE5AF5D32423C64600C61262 /* DetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5AF5D22423C64600C61262 /* DetailScene.swift */; };
 		AE6279F5240D817B0016AC8B /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6279F4240D817B0016AC8B /* Pet.swift */; };
 		AE64070F2488B7AF00309E82 /* ScenarioShopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64070E2488B7AF00309E82 /* ScenarioShopPage.swift */; };
@@ -114,6 +116,7 @@
 		AEC82124247BBF580077E57D /* SceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC82123247BBF580077E57D /* SceneBuilder.swift */; };
 		AEC82129247BD2DC0077E57D /* UiBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC82128247BD2DC0077E57D /* UiBuilder.swift */; };
 		AEC8212B247BD5A10077E57D /* BaseUiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC8212A247BD5A10077E57D /* BaseUiManager.swift */; };
+		AECA3EA82567C0FE0048AEC5 /* BonusPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */; };
 		AEE1261524E522A5006C7535 /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */; };
 		AEE1261724E52442006C7535 /* Pen Click Sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEE1261624E52442006C7535 /* Pen Click Sfx.wav */; };
 		AEEAA191248E35C30016A8FB /* BuyHeartSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEAA190248E35C30016A8FB /* BuyHeartSlot.swift */; };
@@ -203,6 +206,8 @@
 		AE4F3C3724D47B98006A2BAB /* coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = coin.atlas; sourceTree = "<group>"; };
 		AE4F3C3924D47BC7006A2BAB /* gotItAffect.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = gotItAffect.atlas; sourceTree = "<group>"; };
 		AE4F614424C5D9870091C805 /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
+		AE4FB6C6256790D500D08EF5 /* RefreshManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshManager.swift; sourceTree = "<group>"; };
+		AE4FB6D32567BFAA00D08EF5 /* getBonusPanel.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = getBonusPanel.atlas; sourceTree = "<group>"; };
 		AE5AF5D22423C64600C61262 /* DetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScene.swift; sourceTree = "<group>"; };
 		AE6279F4240D817B0016AC8B /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		AE64070E2488B7AF00309E82 /* ScenarioShopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioShopPage.swift; sourceTree = "<group>"; };
@@ -253,6 +258,7 @@
 		AEC82123247BBF580077E57D /* SceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBuilder.swift; sourceTree = "<group>"; };
 		AEC82128247BD2DC0077E57D /* UiBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiBuilder.swift; sourceTree = "<group>"; };
 		AEC8212A247BD5A10077E57D /* BaseUiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUiManager.swift; sourceTree = "<group>"; };
+		AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusPanel.swift; sourceTree = "<group>"; };
 		AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bensound-ukulele.mp3"; path = "../../../GameSounds/bensound-ukulele.mp3"; sourceTree = "<group>"; };
 		AEE1261624E52442006C7535 /* Pen Click Sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Pen Click Sfx.wav"; path = "../../../GameSounds/Pen Click Sfx.wav"; sourceTree = "<group>"; };
 		AEEAA190248E35C30016A8FB /* BuyHeartSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyHeartSlot.swift; sourceTree = "<group>"; };
@@ -308,6 +314,7 @@
 				AEB1EED924D67EF500EFD010 /* SceneEnvironment.swift */,
 				AE81785A24D59C7E000DC0F9 /* Tree.swift */,
 				AEB1EEDB24D6BCB800EFD010 /* TextAnimation.swift */,
+				AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */,
 			);
 			path = MainScene;
 			sourceTree = "<group>";
@@ -517,6 +524,7 @@
 		AE81AF8924CBEEBE0028D8FD /* Atlas */ = {
 			isa = PBXGroup;
 			children = (
+				AE4FB6D32567BFAA00D08EF5 /* getBonusPanel.atlas */,
 				AE4F3C3924D47BC7006A2BAB /* gotItAffect.atlas */,
 				AE4F3C3724D47B98006A2BAB /* coin.atlas */,
 			);
@@ -622,6 +630,7 @@
 				AE9BBDA824CEC37500AA5CA8 /* GameData.swift */,
 				AE9BBDA624CE9C3A00AA5CA8 /* PlistManager.swift */,
 				AE7BB4072564E50300ACD2D6 /* DeviceDependency.swift */,
+				AE4FB6C6256790D500D08EF5 /* RefreshManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -749,6 +758,7 @@
 				AEE1261724E52442006C7535 /* Pen Click Sfx.wav in Resources */,
 				AE0E4F1224B97A5A00AB26FC /* GameData.plist in Resources */,
 				AE1EAEEF25657ADA0035A849 /* hd@3x.xml in Resources */,
+				AE4FB6D42567BFAA00D08EF5 /* getBonusPanel.atlas in Resources */,
 				AE92F50D24D1635500904A73 /* ItemData.plist in Resources */,
 				AE28B71B240B7B6800A49B23 /* Actions.sks in Resources */,
 				AE4F3C3A24D47BC7006A2BAB /* gotItAffect.atlas in Resources */,
@@ -810,6 +820,7 @@
 				AE0AB06F2557D1AA0018D314 /* PetInfo.swift in Sources */,
 				AEA4D28A242738AE0031868D /* Item.swift in Sources */,
 				AE96D7F3255F9D6800E96D22 /* GiftManager.swift in Sources */,
+				AE4FB6C7256790D500D08EF5 /* RefreshManager.swift in Sources */,
 				AE2264EB241B6BC600E6CB84 /* Page.swift in Sources */,
 				AEEAA191248E35C30016A8FB /* BuyHeartSlot.swift in Sources */,
 				AE0A574E2478DC24002C6CA4 /* EquipmentSlot.swift in Sources */,
@@ -831,6 +842,7 @@
 				AEA34B9A25284EDA003FDCD5 /* GiftScene.swift in Sources */,
 				AE28B71D240B7B6800A49B23 /* MainScene.swift in Sources */,
 				AE40560524810D8C002F8450 /* GameSettingUIManager.swift in Sources */,
+				AECA3EA82567C0FE0048AEC5 /* BonusPanel.swift in Sources */,
 				AE28B74D240B82DE00A49B23 /* Panel.swift in Sources */,
 				AEB2B3E02490D5F300B23033 /* easing.swift in Sources */,
 				AE9BBDA924CEC37500AA5CA8 /* GameData.swift in Sources */,

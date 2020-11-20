@@ -18,10 +18,13 @@ class Tree: SKSpriteNode{
     private var currentSKScene: SKScene!
     private var currentScenario: SKSpriteNode!
     
-    private var coinLimitCount   : Int = 10
+    private var maxCoinPerHour   : Int = 3
+    private var collectedCount   : Int = 0
     private var heartLimitCount  : Int = 10
     
 //    public var positionY:CGFloat!
+    
+    public var tapArea: SKSpriteNode!
     
     init(imageNamed: String, skScene: SKScene){
         textureImage = SKTexture(imageNamed: imageNamed)
@@ -33,7 +36,12 @@ class Tree: SKSpriteNode{
        // currentScenario = scenario
         currentSKScene = skScene
         
-        
+        tapArea = SKSpriteNode(imageNamed: "tapArea")
+        tapArea.zPosition = 10
+        tapArea.setScale(0.7)
+        tapArea.position.y += self.frame.height * 1.2
+        tapArea.alpha = 0.2
+        self.addChild(tapArea)
         
 
         self.run(GetIdleTreeAnimation(), withKey: "IdleAnimation")
@@ -46,17 +54,23 @@ class Tree: SKSpriteNode{
     }
     
     public func OnTouched(at location: CGPoint){
-        if self.contains(location){
-            PopUpCoin(at: self.position)
+        
+        if collectedCount < maxCoinPerHour{
             
-            self.removeAction(forKey: "IdleAnimation")
-            self.run(GetWhenTouchedTreeAnimation(), completion: {
-                self.run(self.GetIdleTreeAnimation(), withKey: "IdleAnimation")
+            if  let convertedLoc = scene?.convert(location, to: self),
                 
-            })
+                tapArea.contains(convertedLoc){
+                
+                collectedCount += 1
+                
+                PopUpCoin(at: self.position)
+                self.removeAction(forKey: "IdleAnimation")
+                self.run(GetWhenTouchedTreeAnimation(), completion: {
+                    self.run(self.GetIdleTreeAnimation(), withKey: "IdleAnimation")
+                })
+            }
         }
     }
-    
     
     //make this function to be able popup Heart//
     private func PopUpCoin(at position: CGPoint){
@@ -106,5 +120,9 @@ class Tree: SKSpriteNode{
             from: 0.47, to: 0.55)
 
         return whenTouchedAnimation
+    }
+    
+    public func ResetCoin(isNeeded: Bool){
+        collectedCount = 0
     }
 }

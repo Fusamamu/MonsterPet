@@ -94,7 +94,7 @@ class SceneEnvironment{
         wall = SKSpriteNode(imageNamed: "wall")
         wall.anchorPoint = CGPoint(x: 0.5, y: 0)
         wall.setScale(1)
-        wall.zPosition = 10
+        wall.zPosition = 20
         wall.position = CGPoint(x: -200, y: -1000)
         mainBackground.addChild(wall)
         //currentSKScene.addChild(wall)

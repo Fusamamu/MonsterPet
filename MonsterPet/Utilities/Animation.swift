@@ -60,7 +60,20 @@ class Animation{
             
                 return animatedNode
         }
+    }
+    
+    public func GetAnimatedObject(from frames: [SKTexture]) -> SKSpriteNode{
+        let animatedNode = SKSpriteNode(texture: frames[0])
+        let animation   = SKAction.repeatForever(SKAction.animate(with: frames, timePerFrame: 0.085, resize: false, restore: true))
+        animatedNode.run(animation, withKey: "default")
+        return animatedNode
+    }
+    
+    public func GetAnimatedAction(from frames: [SKTexture], timePerFrame: TimeInterval = 0.085) -> SKAction{
+       
+        let animation   = SKAction.repeatForever(SKAction.animate(with: frames, timePerFrame: timePerFrame, resize: false, restore: true))
         
+        return animation
     }
     
 }

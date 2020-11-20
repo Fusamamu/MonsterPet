@@ -33,6 +33,8 @@ class MainSceneUIManager : BaseUIManager{
     var menuPanel           : MainMenuPanel!
     var alphaBlack          : MainMenuPanel!
     
+    var getBonusButton      : Panel!
+    
 
     override init(skScene: SKScene) {
         
@@ -142,18 +144,17 @@ class MainSceneUIManager : BaseUIManager{
         menuPanel.addChild(GameSettingLabel)
         
         
-        
-        
-        
-        
         //Shoudl refac?
         menuButton.SubscribeButton(target: menuPanel)
         menuButton.SubscribeButton(target: alphaBlack)
 
-        
         SetInMenuButtons()
-        
         SetUILayers()
+        
+        
+        getBonusButton = Panel(panelImage: "getBonusPanel_1", skScene: currentSKScene)
+        menuButton.SubscribeButton(target: getBonusButton)
+        
     }
     
     func UpdateTouch(at location: CGPoint){

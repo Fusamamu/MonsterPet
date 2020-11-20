@@ -69,6 +69,13 @@ class MainScene: SKScene {
 //            text.setGlyphText("This is iPhone 12 Pro Max")
 //        }
         
+        
+//        for tree in sceneEnvironment.allTrees{
+//            RefreshManager.shared.loadDataIfNeeded(){
+//                success in tree.ResetCoin(isNeeded: success)
+//            }
+//
+        
     }
     
     override func willMove(from view: SKView) {
