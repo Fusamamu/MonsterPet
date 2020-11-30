@@ -105,7 +105,7 @@ class SceneEnvironment{
     
     private func LoadTrees(){
         for i in 0...treeCount - 1{
-            let tree = Tree(imageNamed: "tree" + "\(i + 1)", skScene: currentSKScene)
+            let tree = Tree(index: i, imageNamed: "tree" + "\(i + 1)", skScene: currentSKScene)
             tree.position = treePositions[i]
             tree.zPosition = 20
             tree.setScale(1)

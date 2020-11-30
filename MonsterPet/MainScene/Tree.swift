@@ -9,9 +9,27 @@
 import Foundation
 import SpriteKit
 
+class CoinCollectedCount{
+    
+    static let sharedInstance = CoinCollectedCount()
+    
+    public var collectedCount = 0;
+    
+    public var collectedCount_s:[Int] = []
+    
+    private init(){
+        for _ in 0...8{
+            collectedCount_s.append(0)
+        }
+    }
+}
+
 class Tree: SKSpriteNode{
     
     private let currency: CurrencyManager = .sharedInstance
+    private let coinCollected: CoinCollectedCount = .sharedInstance
+    
+    public var index: Int!
     
     public var textureImage: SKTexture!
     
@@ -19,14 +37,19 @@ class Tree: SKSpriteNode{
     private var currentScenario: SKSpriteNode!
     
     private var maxCoinPerHour   : Int = 3
-    private var collectedCount   : Int = 0
+   // private var collectedCount   : Int = CoinCollectedCount.sharedInstance.collectedCount
+    
+    
     private var heartLimitCount  : Int = 10
     
 //    public var positionY:CGFloat!
     
     public var tapArea: SKSpriteNode!
     
-    init(imageNamed: String, skScene: SKScene){
+    init(index: Int, imageNamed: String, skScene: SKScene){
+        
+        self.index = index
+        
         textureImage = SKTexture(imageNamed: imageNamed)
         super.init(texture: textureImage , color: .clear, size: textureImage.size())
         self.anchorPoint = CGPoint(x: 0.5, y: 0)
@@ -46,6 +69,8 @@ class Tree: SKSpriteNode{
 
         self.run(GetIdleTreeAnimation(), withKey: "IdleAnimation")
         
+      //  collectedCount = CoinCollectedCount.sharedInstance.collectedCount
+        
 //        positionY = self.position.y
     }
     
@@ -55,13 +80,16 @@ class Tree: SKSpriteNode{
     
     public func OnTouched(at location: CGPoint){
         
-        if collectedCount < maxCoinPerHour{
+        
+        print(CoinCollectedCount.sharedInstance.collectedCount)
+        
+        if coinCollected.collectedCount_s[index] < maxCoinPerHour{
             
             if  let convertedLoc = scene?.convert(location, to: self),
                 
                 tapArea.contains(convertedLoc){
                 
-                collectedCount += 1
+                coinCollected.collectedCount_s[index]  += 1
                 
                 PopUpCoin(at: self.position)
                 self.removeAction(forKey: "IdleAnimation")
@@ -123,6 +151,6 @@ class Tree: SKSpriteNode{
     }
     
     public func ResetCoin(isNeeded: Bool){
-        collectedCount = 0
+        coinCollected.collectedCount_s[index]  = 0
     }
 }

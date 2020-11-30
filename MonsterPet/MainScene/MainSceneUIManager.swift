@@ -33,7 +33,7 @@ class MainSceneUIManager : BaseUIManager{
     var menuPanel           : MainMenuPanel!
     var alphaBlack          : MainMenuPanel!
     
-    var getBonusButton      : Panel!
+    var getBonusButton      : BonusPanel!
     
 
     override init(skScene: SKScene) {
@@ -152,8 +152,11 @@ class MainSceneUIManager : BaseUIManager{
         SetUILayers()
         
         
-        getBonusButton = Panel(panelImage: "getBonusPanel_1", skScene: currentSKScene)
+        getBonusButton = BonusPanel(panelImage: "getBonusPanel", skScene: currentSKScene)
         menuButton.SubscribeButton(target: getBonusButton)
+      
+        
+        
         
     }
     
@@ -171,8 +174,14 @@ class MainSceneUIManager : BaseUIManager{
                 if petInfoButton != nil && petInfoButton.contains(location){
                     currentSKScene.view?.presentScene(sceneBuilder.Create(selectedScene: .petInfoScene))
                 }
+                
+                
             
             case .menuPanelOpened:
+                
+                if !(menuPanel.closeButton.buttonDelegates?.last is BonusPanel){
+                    menuPanel.closeButton.SubscribeButton(target: getBonusButton)
+                }
                 
                 let menuPanelLocation = currentSKScene.convert(location, to: menuPanel)
                 
@@ -197,6 +206,8 @@ class MainSceneUIManager : BaseUIManager{
                 if gameSettingButton != nil && gameSettingButton.contains(menuPanelLocation){
                     currentSKScene.view?.presentScene(sceneBuilder.Create(selectedScene: .gameSettingScene))
                 }
+                
+                
         }
     }
     

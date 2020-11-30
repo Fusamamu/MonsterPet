@@ -20,7 +20,9 @@ class BonusPanel: Panel{
         texture        = animatedFrames[0]
         size           = texture!.size()
         
-        self.run(Animation().GetAnimatedAction(from: animatedFrames, timePerFrame: 0.085), withKey: "bonusPanelAnimation")
+        self.run(Animation().GetAnimatedAction(from: animatedFrames, timePerFrame: 0.17), withKey: "bonusPanelAnimation")
+        self.setScale(0.25)
+        self.zPosition = 200
         
     }
     
@@ -29,10 +31,20 @@ class BonusPanel: Panel{
     }
     
     override func Open() {
+        self.position = CGPoint(x: currentSKscene.frame.midX, y: 0 - self.texture!.size().width)
         
+        let moveUp = SKEase.move(easeFunction: .curveTypeCubic, easeType: .easeTypeOut, time:0.4, from: self.position, to: CGPoint(x: currentSKscene.frame.midX, y: 150))
+        
+       
+        self.run(moveUp)
+        
+        currentSKscene.addChild(self)
+        isOpened = true
     }
     
-    override func Close() {
-        
+    override func Close(){
+        self.removeFromParent()
+        isOpened = false
+        RemoveAllButtonReferences()
     }
 }

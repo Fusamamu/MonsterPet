@@ -12,6 +12,7 @@ import Foundation
 class RefreshManager: NSObject {
 
     static let  shared          = RefreshManager()
+    
     private let defaults        = UserDefaults.standard
     private let defaultsKey     = "lastRefresh"
     private let calender        = Calendar.current
@@ -63,18 +64,18 @@ class RefreshManager: NSObject {
         }
     }
     
-    private func isRefreshRequired(passingHour: Int) -> Bool{
-        
-        guard let lastRefreshDate = defaults.object(forKey: defaultsKey) as? Date else {
-            return true
-        }
-
-        if let diff = calender.dateComponents([.hour], from: lastRefreshDate, to: Date()).hour, diff > 1 {
-            return true
-        } else {
-            return false
-        }
-    }
+//    private func isRefreshRequired(passingHour: Int) -> Bool{
+//
+//        guard let lastRefreshDate = defaults.object(forKey: defaultsKey) as? Date else {
+//            return true
+//        }
+//
+//        if let diff = calender.dateComponents([.hour], from: lastRefreshDate, to: Date()).hour, diff > 1 {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
     
     private func isRefreshRequired(passingMinute: Int) -> Bool{
         
@@ -82,7 +83,7 @@ class RefreshManager: NSObject {
             return true
         }
 
-        if let diff = calender.dateComponents([.hour], from: lastRefreshDate, to: Date()).minute, diff > 1 {
+        if let diff = calender.dateComponents([.minute], from: lastRefreshDate, to: Date()).minute, diff > passingMinute {
             return true
         } else {
             return false

@@ -2,18 +2,19 @@ import SpriteKit
 import Foundation
 
 class PetManager: Observable{
-    var observers: [Observer] = []
     
     static let sharedInstance = PetManager()
-    let itemManager         : ItemManager           = .sharedInstance
-    let placeHolderManager  : PlaceHolderManager    = .sharedInstance
-    let currencyManager     : CurrencyManager       = .sharedInstance
     
-    var currentScene: SKScene!
-    var petInStore: [PetName: Pet?] = [:]
-    var petInScene: [Pet?] = []
-    var packageInScene: [Package?] = []
-   
+    let currencyManager     : CurrencyManager       = .sharedInstance
+    let placeHolderManager  : PlaceHolderManager    = .sharedInstance
+    let itemManager         : ItemManager           = .sharedInstance
+    let packageManager      : PackageManager        = .sharedInstance
+    
+    var observers: [Observer] = []
+    
+    public var currentScene: SKScene!
+    public var petInStore: [PetName: Pet?] = [:]
+    public var petInScene: [Pet?] = []
     
     static var chicken: Pet!
     static var rabbit: Pet!
@@ -44,9 +45,6 @@ class PetManager: Observable{
         
         self.InitializePetInStore()
         
-        //print(placeHolderManager.surroundingPointData[placeHolderManager.pointData[0]]![0])
-       // print(placeHolderManager.surroundingPointData[placeHolderManager.pointData[0]])
-   
     }
     
     func InitializePetInStore(){
@@ -56,11 +54,9 @@ class PetManager: Observable{
          petInStore[PetName.rabbit]         = PetManager.rabbit
     }
     
-    
     func SetCurrentScene(gameScene: SKScene){
         currentScene = gameScene
     }
-    
     
     func ScanItems(at currentTime: CFTimeInterval){
         
@@ -96,18 +92,14 @@ class PetManager: Observable{
     
     func Call(_ pet: Pet, to point: CGPoint, for eatingItem: Item, elapsedTime: CFTimeInterval){
         if elapsedTime > pet.waitTime{
+            
             eatingItem.eattenByPet = pet
             eatingItem.isBeingEaten = true
             pet.nowEatingItem = eatingItem
-//            if !pet.hasVisited {
-//                pet.hasVisited = true
-//            }
             
             var pointToPlacePet: CGPoint!
             
-            print(placeHolderManager.surroundingPointData[point]![0])
-            
-            
+        
             for index in 0...3{
                 
                 if placeHolderManager.surroundingPointData[point]![index]{
@@ -153,21 +145,6 @@ class PetManager: Observable{
             pet.BeingCalled(to: pointToPlacePet)
             (currentScene as! MainScene).SortObjectsLayerAfterAdded()
             
-            ///not working/ / /not good should not hard code to real position
-//            if pet.position.y > placeHolderManager.pointData[0].y{
-//                pet.zPosition = 20
-//            }else if pet.position.y < placeHolderManager.pointData[0].y && pet.position.y > placeHolderManager.pointData[1].y{
-//                pet.zPosition = 21
-//            }else if pet.position.y < placeHolderManager.pointData[1].y && pet.position.y > placeHolderManager.pointData[2].y{
-//                pet.zPosition = 22
-//            }else if pet.position.y < placeHolderManager.pointData[2].y && pet.position.y > placeHolderManager.pointData[3].y{
-//                pet.zPosition = 23
-//            }else if pet.position.y < placeHolderManager.pointData[3].y && pet.position.y > placeHolderManager.pointData[4].y{
-//                pet.zPosition = 24
-//            }else if pet.position.y < placeHolderManager.pointData[4].y{
-//                pet.zPosition = 25
-//            }
-            
             petInScene.append(pet)
         }
     }
@@ -185,7 +162,8 @@ class PetManager: Observable{
                     // Logic to give Heart and Pakage HERE!!!
                     checkingPet.AddFloatingHeartPopUp(waitTime: elapsedTime)
                     checkingPet.DropItemPackage(at: checkingPet.nowEatingItem.position, whenTimePassed: elapsedTime)
-                    packageInScene.append(checkingPet.dropPackage)
+                    
+                    packageManager.packageInScene.append(checkingPet.dropPackage)
                     
                     Remove(pet: checkingPet, at_Index: i, at: elapsedTime)
                     Remove(item: checkingPet.nowEatingItem, at: elapsedTime)
@@ -197,9 +175,9 @@ class PetManager: Observable{
     
     func Remove(pet: Pet, at_Index index: Int, at elapsedTime:CFTimeInterval){
         if elapsedTime > petInScene[index]!.onScreenTime{
-            //petInStore[petInScene[index]!.petName] = nil
             
             guard let refPet = petInScene[index] else { return }
+            
             placeHolderManager.surroundingPointData[refPet.currentPointInPointData]![refPet.currentIndexSurroundingPointData] = true
             refPet.currentPointInPointData          = nil
             refPet.currentIndexSurroundingPointData = nil
@@ -217,14 +195,17 @@ class PetManager: Observable{
             let fadeOut = SKAction.fadeOut(withDuration: 1)
             
             item.run(fadeOut, completion: {
-                self.itemManager.itemData[item.position]?.isPlacable = true
+                
+                
+                //self.itemManager.itemData[item.position]?.isPlacable = true
+                
+                
                 self.itemManager.itemData[item.position]?.item = nil
                 item.removeFromParent()
                 
                 if item.eattenByPet != nil{
                  //   item.eattenByPet.isAdded = false
                 }
-                
             })
         }
     }
@@ -243,24 +224,21 @@ class PetManager: Observable{
             }
         }
         
-        for package in packageInScene{
-            if package!.contains(location){
-                Remove(package: package!)
-                
-            }
-        }
         
     }
     
-    func Remove(package: Package){
-        package.texture = package.openedImage
-        let wait    = SKAction.wait(forDuration: 3)
-        let fadeOut = SKAction.fadeOut(withDuration: 1)
-        package.run(SKAction.sequence([wait, fadeOut]),completion: {
-            package.removeFromParent()
-        })
-    }
-    
+//    func Remove(package: Package){
+//        package.texture = package.openedImage
+//
+//        let wait        = SKAction.wait(forDuration: 3)
+//        let fadeOut     = SKAction.fadeOut(withDuration: 1)
+//
+//        package.run(SKAction.sequence([wait, fadeOut, wait])){
+//            package.removeFromParent()
+//            self.itemManager.itemData[package.position]!.isPlacable = true
+//        }
+//    }
+//
 
     func LoadPetData(){
         for pet in petInScene{

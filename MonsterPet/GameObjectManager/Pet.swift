@@ -23,9 +23,12 @@ enum PetName: String, CaseIterable{
 }
 
 class Pet: SKSpriteNode, Observer, Observable{
-    var observers: [Observer] = []
+    
+    let itemManager         : ItemManager           = .sharedInstance
+    let placeHolderManager  : PlaceHolderManager    = .sharedInstance
     
     var id: Int = 0
+    var observers: [Observer] = []
     
     var petName         : PetName!
     var petTexture      : SKTexture!
@@ -66,8 +69,6 @@ class Pet: SKSpriteNode, Observer, Observable{
     public var favoriteItem    : [ItemName] = []
     public var nowEatingItem   : Item!
     
-    //public var UnfavoriteItem: [ItemName] = []
-    //public var Mood         : Int!
     public var VisitedTime  : Int!
     public var isFirstTime  : Bool!
     public var hasVisited   : Bool = false { didSet { NotifyAllObservers() } }
@@ -75,8 +76,9 @@ class Pet: SKSpriteNode, Observer, Observable{
     public var gift : Item!
     public var hasGivenSpecialItem : Bool!
     
-    var timeWhenPlaced      : CFTimeInterval!
-    var timeWhenLeftScene   : CFTimeInterval!
+    var timeWhenPlaced      : CFTimeInterval = 0
+    var timeWhenLeftScene   : CFTimeInterval = 0
+    
     var waitTime            : CFTimeInterval = 5
     var giveHeartTime       : CFTimeInterval = 5
     var dropPackageTime     : CFTimeInterval = 5
@@ -178,19 +180,27 @@ class Pet: SKSpriteNode, Observer, Observable{
     }
     
     func DropItemPackage(at position: CGPoint, whenTimePassed: CFTimeInterval){
+        //Checking Surrounding pets. Make sure the last to be the one that drop the package.
+        let petSurrounding: [Bool] = placeHolderManager.surroundingPointData[position]!.filter{ bool in return !bool }
         
+        guard petSurrounding.count == 1                     else { return }
+       // guard itemManager.itemData[position]!.isPlacable    else { return }
+         
         if !packageIsDropped && whenTimePassed > onScreenTime - 30 {
-            //Need logic for dropping package
-            dropPackage.setScale(0.1)
-            dropPackage.zPosition = 3
-            dropPackage.position = position
-            scene?.addChild(dropPackage)
+                //Need logic for dropping package
+                //Ex drop 1 / 30 visited count
+                //random item in package
+                dropPackage.setScale(0.1)
+                dropPackage.zPosition = 3
+                dropPackage.position = position
+                scene?.addChild(dropPackage)
             
-            (scene as! MainScene).SortObjectsLayerAfterAdded()
-            
-            packageIsDropped = true
+                itemManager.itemData[position]!.isPlacable = false
+                
+                (scene as! MainScene).SortObjectsLayerAfterAdded()
+                
+                packageIsDropped = true
         }
-        
     }
     
     func BeingCalled(to position: CGPoint){
@@ -207,14 +217,10 @@ class Pet: SKSpriteNode, Observer, Observable{
         self.anchorPoint = CGPoint(x: 0.5, y: 0.25)
         self.position = position
 
-        
-        let targetPosition = self.position
-        let moveUp      = SKAction.moveTo(y: self.position.y + 100, duration: 0.1)
-        let moveDown    = SKAction.move(to: targetPosition, duration: 0.1)
+        let targetPosition  = self.position
+        let moveUp          = SKAction.moveTo(y: self.position.y + 100, duration: 0.1)
+        let moveDown        = SKAction.move(to: targetPosition, duration: 0.1)
         self.run(SKAction.sequence([moveUp, moveDown]))
-        
-       
-        
     }
     
     func WaitForNextCall(waitTime: CFTimeInterval){

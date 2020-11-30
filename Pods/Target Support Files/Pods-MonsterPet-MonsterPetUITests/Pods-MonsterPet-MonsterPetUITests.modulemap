@@ -1,0 +1,6 @@
+framework module Pods_MonsterPet_MonsterPetUITests {
+  umbrella header "Pods-MonsterPet-MonsterPetUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

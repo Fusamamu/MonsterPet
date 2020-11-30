@@ -1,14 +1,16 @@
 import Foundation
 import SpriteKit
 import UIKit
+import GoogleMobileAds
 
 
-class MainScene: SKScene {
+class MainScene: SKScene, GADRewardedAdDelegate {
     
     let timeManager         : TimerManager           = .sharedInstance
     let itemManager         : ItemManager           = .sharedInstance
     let equipmentManager    : EquipmentManager      = .sharedInstance
     let petManager          : PetManager            = .sharedInstance
+    let packageManager      : PackageManager        = .sharedInstance
     let placeHolderManager  : PlaceHolderManager    = .sharedInstance
     let currencyManager     : CurrencyManager       = .sharedInstance
     
@@ -19,12 +21,14 @@ class MainScene: SKScene {
     
 //    var SortedObjects: [SKSpriteNode] = []
     
+    var rewardedAd: GADRewardedAd!
+    
     override func didMove(to view: SKView) {
         
         LoadGameEnvironment()
 
         UI_Manager      = MainSceneUIManager     (skScene: self)
-        labelManager   = LabelManager  (skScene: self)
+        labelManager    = LabelManager  (skScene: self)
 
         itemManager.SetCurrentScene(to: self)
         itemManager.LoadObjectData(pointData: placeHolderManager.pointData)
@@ -33,11 +37,10 @@ class MainScene: SKScene {
         equipmentManager.LoadObjectData(pointData: placeHolderManager.pointData)
 
         petManager.SetCurrentScene(gameScene: self)
+        //PetSaveDataManager.sharedInstance.LoadPetInScene()
         petManager.LoadPetData()
 
         currencyManager.AddObserver(observer: labelManager)
-
-
 
         sceneEnvironment = SceneEnvironment(skScene: self)
 
@@ -76,6 +79,45 @@ class MainScene: SKScene {
 //            }
 //
         
+//        let gameData = GameDataStorage.sharedInstance
+//
+//        let currencyDate = GameCurrency(heart: currencyManager.HeartCounts, coin: currencyManager.CoinCounts)
+//
+//
+//        let encoded_CurrencyData = gameData.EncodeGameData(data: currencyDate)!
+//
+//        let dataToWrite = encoded_CurrencyData.data(using: .utf8)
+        
+//        gameData.createFileToURL(withData: dataToWrite, withName: "currencyData.txt", withSubDirectory: "SaveGameData")
+//
+        
+//        let function: (Bool)->Void = {
+//            success in if success{
+//                for i in 0...8{
+//                    CoinCollectedCount.sharedInstance.collectedCount_s[i] = 0
+//                }
+//            }
+//        }
+        
+     //   RefreshManager.shared.loadDataIfNeeded(completion: function)
+        RefreshManager.shared.loadDataIfNeeded(){
+            success in if success{
+                for i in 0...8{
+                    CoinCollectedCount.sharedInstance.collectedCount_s[i] = 0
+                }
+            }
+        }
+        
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+        
+        rewardedAd.load(GADRequest()){
+            error in if let error = error{
+                print("success ad loaded")
+            }else{
+                print("failed")
+            }
+        }
+        
     }
     
     override func willMove(from view: SKView) {
@@ -90,6 +132,15 @@ class MainScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        
+        //Display AD!!//
+//        guard let controller = self.view?.window?.rootViewController as? GameViewController else {return}
+//        if rewardedAd?.isReady == true {
+//            rewardedAd?.present(fromRootViewController: controller, delegate: self)
+//
+//        }
+        
+        
         //        let click = SKAudioNode(fileNamed: "Pen Click Sfx.wav")
         //        addChild(click)
 
@@ -99,6 +150,7 @@ class MainScene: SKScene {
         UI_Manager.UpdateTouch(at: location!)
         
         petManager.UpdateTouch(at: location!)
+        packageManager.UpdateTouch(at: location!)
 
         if UI_Manager.uiState != .menuPanelOpened{
             sceneEnvironment.UpdateTouched(on: location!)
@@ -171,7 +223,7 @@ class MainScene: SKScene {
         var SortedObjs: [SKSpriteNode] = []
         
         for obj in scene!.children{
-            if obj is Tree || obj is Pet || obj is Equipment{
+            if obj is Tree || obj is Pet || obj is Equipment || obj is Item || obj is Package{
                 SortedObjs.append(obj as! SKSpriteNode)
             }
         }
@@ -290,6 +342,23 @@ class MainScene: SKScene {
         node.run(popUpAnimation, completion: {node.removeFromParent()})
     }
     
+    
+    /// Tells the delegate that the user earned a reward.
+    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+      print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+    }
+    /// Tells the delegate that the rewarded ad was presented.
+    func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {
+      print("Rewarded ad presented.")
+    }
+    /// Tells the delegate that the rewarded ad was dismissed.
+    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
+      print("Rewarded ad dismissed.")
+    }
+    /// Tells the delegate that the rewarded ad failed to present.
+    func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
+      print("Rewarded ad failed to present.")
+    }
     
 }
 

@@ -15,6 +15,10 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SaveNLoadManager.sharedInstance.LoadCurrencyData()
+        //PetSaveDataManager.sharedInstance.LoadPetInfo()
+        
+        
         let view = self.view as! SKView
         view.ignoresSiblingOrder = true
         view.showsFPS = true
@@ -24,7 +28,7 @@ class GameViewController: UIViewController {
         mainScene.scaleMode = .aspectFill
         view.presentScene(mainScene)
         
-        let textureManager = TextureManager.sharedInstance
+        //let textureManager = TextureManager.sharedInstance
         
         ItemPageManager.sharedInstance.LoadItemSelectionPage()
         PetInfoPageManager.sharedInstance.LoadPetInfoPages()

@@ -4,8 +4,11 @@ import SpriteKit
 class ItemManager: Observable{
     
     static let sharedInstance = ItemManager()
+    
+    lazy var petManager: PetManager = { return PetManager.sharedInstance }()
    
     var observers: [Observer] = []
+    
     var currentScene: SKScene?
     
     public var tempItemHolder: Item!
@@ -22,8 +25,6 @@ class ItemManager: Observable{
     
 
     public var itemData    :[CGPoint: (item: Item?, isPlacable: Bool)] = [:]
-   // var petData     :[CGPoint: (pet: Pet?, isPlacable: Bool)] = [:]
-    
     public var itemCountInventory: [ItemName: Int] = [:]
     public var slotUpdateUnpackState: [Int: Bool] = [:]
     
@@ -31,20 +32,6 @@ class ItemManager: Observable{
         itemData  = Dictionary(minimumCapacity: 5)
         InitializeItemCountInventory()
         InitializeSlotUpdateUnpackState()
-    }
-    
-    func AddObserver(observer: Observer) {
-        observers.append(observer)
-    }
-    
-    func RemoveObserver(observer: Observer) {
-        observers = observers.filter({$0.id != observer.id})
-    }
-    
-    func NotifyAllObservers() {
-        for observer in observers{
-            observer.Update()
-        }
     }
     
     func InitilizeObjectData(pointData: [CGPoint]){
@@ -56,6 +43,10 @@ class ItemManager: Observable{
     func SetCurrentScene(to currentScene: SKScene){
         self.currentScene = currentScene
     }
+    
+    
+    
+    
     
     
     func StoreObjectData(item: Item, at location: CGPoint){
@@ -89,6 +80,20 @@ class ItemManager: Observable{
         let allItemTypeCount = 27
         for index in 0...allItemTypeCount - 1{
             slotUpdateUnpackState[index] = false
+        }
+    }
+    
+    func AddObserver(observer: Observer) {
+        observers.append(observer)
+    }
+    
+    func RemoveObserver(observer: Observer) {
+        observers = observers.filter({$0.id != observer.id})
+    }
+    
+    func NotifyAllObservers() {
+        for observer in observers{
+            observer.Update()
         }
     }
 }

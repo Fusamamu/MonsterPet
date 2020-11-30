@@ -1,0 +1,6 @@
+framework module Pods_MonsterPet {
+  umbrella header "Pods-MonsterPet-umbrella.h"
+
+  export *
+  module * { export * }
+}

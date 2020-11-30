@@ -14,4 +14,26 @@ struct PetInfo: Codable {
     var visitedCount        : Int
     var isFirstTime         : Bool
     var hasGivenSpecialItem : Bool
+    
+    var timeWhenPlaced      : CGFloat
+    var timeWhenLeftScene   : CGFloat
+    
+    var isAdded             : Bool
+    
+    var scale               : CGFloat
+    var position            : CGPoint
+    
+    init(){
+        petName                 = "Nil"
+        visitedCount            = 0
+        isFirstTime             = true
+        hasGivenSpecialItem     = false
+        timeWhenPlaced          = 0
+        timeWhenLeftScene       = 0
+        isAdded                 = false
+        
+        scale                   = 1
+        position                = CGPoint(x: 0, y: 0)
+    }
+    
 }
