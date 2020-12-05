@@ -8,6 +8,7 @@ enum PackageName: String, CaseIterable{
 
 class Package: SKSpriteNode{
     
+    var Index: Int = -1
     var packageName: PackageName!
     
     var closedImage: SKTexture!
@@ -21,8 +22,8 @@ class Package: SKSpriteNode{
         openedImage = SKTexture(imageNamed: "openedWoodPackage")
         
         super.init(texture: closedImage, color: .clear, size: closedImage.size())
-        self.setScale(0.13)
-        self.zPosition = 2
+        self.setScale(0.1)
+        self.zPosition = 3
     }
     
     required init?(coder aDecoder: NSCoder) {

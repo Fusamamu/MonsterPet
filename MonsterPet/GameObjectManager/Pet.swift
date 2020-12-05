@@ -1,22 +1,10 @@
 import Foundation
 import SpriteKit
 
-//How often they will come
-//How many Hearts they will give
-//How are their moods
-
-//Growth-Upgrade
-//Change Animation
-//Give Heart Animation
-//UI-> Tell moods & needs
-
 enum PetName: String, CaseIterable{
     case chicken        = "chicken"
     case rabbit         = "rabbit"
     case birdy          = "birdy"
-//    case littleChicken  = "littleChicken"
-//    case cat            = "Cat"
-//    case panda          = "Panda"
     case take           = "take"
     
     static var count: Int { return PetName.take.hashValue + 1}
@@ -24,8 +12,11 @@ enum PetName: String, CaseIterable{
 
 class Pet: SKSpriteNode, Observer, Observable{
     
+    //let petManager          : PetManager            = .sharedInstance
     let itemManager         : ItemManager           = .sharedInstance
     let placeHolderManager  : PlaceHolderManager    = .sharedInstance
+    let packageManager      : PackageManager        = .sharedInstance
+    
     
     var id: Int = 0
     var observers: [Observer] = []
@@ -115,6 +106,26 @@ class Pet: SKSpriteNode, Observer, Observable{
            // GivingHeartAnimation()
         }
     }
+    
+    func BeingCalled(to position: CGPoint){
+        
+        self.timeWhenPlaced = Date.timeIntervalSinceReferenceDate
+        self.isAdded = true
+        self.VisitedTime += 1;
+        
+        if !hasVisited {
+            hasVisited = true
+        }
+
+        self.setScale(0.1)
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.25)
+        self.position = position
+
+        let targetPosition  = self.position
+        let moveUp          = SKAction.moveTo(y: self.position.y + 100, duration: 0.1)
+        let moveDown        = SKAction.move(to: targetPosition, duration: 0.1)
+        self.run(SKAction.sequence([moveUp, moveDown]))
+    }
 
 //    func GivingHeartAnimation(){
 //
@@ -132,6 +143,8 @@ class Pet: SKSpriteNode, Observer, Observable{
 //
 //    }
     
+
+    
     func AddFloatingHeartPopUp(waitTime: CFTimeInterval){
         if !floatHeartIsAdded && waitTime > giveHeartTime {
             
@@ -145,7 +158,35 @@ class Pet: SKSpriteNode, Observer, Observable{
             AnimateFloatingHeart()
             
             floatHeartIsAdded = true
+            
+            //shoul be lazy var ???
+            PetManager.sharedInstance.heartInScene.append(floatingHeart)
         }
+    }
+    
+    func DropItemPackage(at position: CGPoint, whenTimePassed: CFTimeInterval){
+        //Checking Surrounding pets. Make sure the last to be the one that drop the package.
+        let petSurrounding: [Bool] = placeHolderManager.surroundingPointData[position]!.filter{ bool in return !bool }
+        
+        guard petSurrounding.count == 1     else { return }
+        guard !packageIsDropped             else { return }
+         
+        if !packageIsDropped && whenTimePassed > onScreenTime - 30 {
+                //Need logic for dropping package//Ex drop 1 / 30 visited count//random item in package
+                dropPackage.position = position
+                scene?.addChild(dropPackage)
+                (scene as! MainScene).SortObjectsLayerAfterAdded()
+            
+                itemManager.itemData[position]!.isPlacable = false
+            
+                packageIsDropped = true
+                packageManager.packageInScene.append(dropPackage)
+        }
+    }
+    
+    func WaitForNextCall(waitTime: CFTimeInterval){
+        let wait = SKAction.wait(forDuration: 10)
+        self.run(wait, completion: {})
     }
     
     func AnimateFloatingHeart(){
@@ -177,55 +218,6 @@ class Pet: SKSpriteNode, Observer, Observable{
     
     func SetDropPackage(){
         dropPackage = Package()
-    }
-    
-    func DropItemPackage(at position: CGPoint, whenTimePassed: CFTimeInterval){
-        //Checking Surrounding pets. Make sure the last to be the one that drop the package.
-        let petSurrounding: [Bool] = placeHolderManager.surroundingPointData[position]!.filter{ bool in return !bool }
-        
-        guard petSurrounding.count == 1                     else { return }
-       // guard itemManager.itemData[position]!.isPlacable    else { return }
-         
-        if !packageIsDropped && whenTimePassed > onScreenTime - 30 {
-                //Need logic for dropping package
-                //Ex drop 1 / 30 visited count
-                //random item in package
-                dropPackage.setScale(0.1)
-                dropPackage.zPosition = 3
-                dropPackage.position = position
-                scene?.addChild(dropPackage)
-            
-                itemManager.itemData[position]!.isPlacable = false
-                
-                (scene as! MainScene).SortObjectsLayerAfterAdded()
-                
-                packageIsDropped = true
-        }
-    }
-    
-    func BeingCalled(to position: CGPoint){
-        
-        self.timeWhenPlaced = Date.timeIntervalSinceReferenceDate
-        self.isAdded = true
-        self.VisitedTime += 1;
-        
-        if !hasVisited {
-            hasVisited = true
-        }
-
-        self.setScale(0.1)
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.25)
-        self.position = position
-
-        let targetPosition  = self.position
-        let moveUp          = SKAction.moveTo(y: self.position.y + 100, duration: 0.1)
-        let moveDown        = SKAction.move(to: targetPosition, duration: 0.1)
-        self.run(SKAction.sequence([moveUp, moveDown]))
-    }
-    
-    func WaitForNextCall(waitTime: CFTimeInterval){
-        let wait = SKAction.wait(forDuration: 10)
-        self.run(wait, completion: {})
     }
     
     

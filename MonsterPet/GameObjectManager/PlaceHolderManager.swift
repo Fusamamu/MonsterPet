@@ -18,11 +18,6 @@ class PlaceHolderManager{
     let point_4 = CGPoint(x: 290, y: 250)
     let point_5 = CGPoint(x: 205, y: 160)
     
-//    let NW_point = CGPoint(x: -40, y: 40)
-//    let NE_point = CGPoint(x: 40, y: 40)
-//    let SE_point = CGPoint(x: 40, y: -40)
-//    let SW_point = CGPoint(x: -40, y: -40)
-    
     let NW_point = CGPoint(x: -40, y: 20)
     let NE_point = CGPoint(x: 40, y: 20)
     let SE_point = CGPoint(x: 40, y: -40)
@@ -32,38 +27,29 @@ class PlaceHolderManager{
     var arrowIsAdded: Bool = false
     var arrowCount  : Int  = 5
     
-    
     private init(){
         
         arrowImages = Array(repeating: SKSpriteNode(imageNamed: "HereOK"), count: 5)
         
         pointData.append(contentsOf: [point_1, point_2, point_3, point_4, point_5])
         
-        itemManager.InitilizeObjectData(pointData: pointData)
-        equipmentManager.InitilizeObjectData(pointData: pointData)
-        
-    
-            
         surroundingPointData = Dictionary(minimumCapacity: 5)
-        
         surroundingPointData =
             [point_1: [true, true, true, true],
-            point_2: [true, true, true, true],
-            point_3: [true, true, true, true],
-            point_4: [true, true, true, true],
-            point_5: [true, true, true, true]]
+             point_2: [true, true, true, true],
+             point_3: [true, true, true, true],
+             point_4: [true, true, true, true],
+             point_5: [true, true, true, true]]
         
-       
-        
-        
-
+        itemManager.InitilizeObjectData(pointData: pointData)
+        equipmentManager.InitilizeObjectData(pointData: pointData)
     }
-    
     
     func AddArrowImages(to scene: SKScene?){
         
+        arrowIsAdded = true
+        
         for i in 0...4{
-            
             guard let itemData      = itemManager.itemData[pointData[i]]            else { continue }
             guard let equipmentData = equipmentManager.equipmentData[pointData[i]]  else { continue }
             
@@ -76,14 +62,12 @@ class PlaceHolderManager{
                 arrowImages[i]?.zPosition = 6
                 scene!.addChild(arrowImages[i]!)
             }else{
-                
                 // this is wrong on so many levels
-                if itemData.item == nil{
-                    itemManager.itemData[pointData[i]]?.isPlacable = true
-                }
+//                if itemData.item == nil{
+//                    itemManager.itemData[pointData[i]]?.isPlacable = true
+//                }
             }
         }
-        arrowIsAdded = true
     }
     
     func RemoveAllArrow(){
@@ -95,7 +79,6 @@ class PlaceHolderManager{
         }
         arrowIsAdded = false
     }
-    
 }
 
 

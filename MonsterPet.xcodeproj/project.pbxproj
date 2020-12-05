@@ -121,6 +121,7 @@
 		AECA3EA82567C0FE0048AEC5 /* BonusPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */; };
 		AEE1261524E522A5006C7535 /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */; };
 		AEE1261724E52442006C7535 /* Pen Click Sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEE1261624E52442006C7535 /* Pen Click Sfx.wav */; };
+		AEE1EEB92575F43400C53E64 /* CoreObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE1EEB82575F43400C53E64 /* CoreObjectManager.swift */; };
 		AEEAA191248E35C30016A8FB /* BuyHeartSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEAA190248E35C30016A8FB /* BuyHeartSlot.swift */; };
 		AEEAA193248E36B60016A8FB /* HeartShopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEAA192248E36B60016A8FB /* HeartShopPage.swift */; };
 		AEF0F29F24138EEB002ABFFF /* FoodMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF0F29E24138EEB002ABFFF /* FoodMenuScene.swift */; };
@@ -272,6 +273,7 @@
 		AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusPanel.swift; sourceTree = "<group>"; };
 		AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bensound-ukulele.mp3"; path = "../../../GameSounds/bensound-ukulele.mp3"; sourceTree = "<group>"; };
 		AEE1261624E52442006C7535 /* Pen Click Sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Pen Click Sfx.wav"; path = "../../../GameSounds/Pen Click Sfx.wav"; sourceTree = "<group>"; };
+		AEE1EEB82575F43400C53E64 /* CoreObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreObjectManager.swift; sourceTree = "<group>"; };
 		AEEAA190248E35C30016A8FB /* BuyHeartSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyHeartSlot.swift; sourceTree = "<group>"; };
 		AEEAA192248E36B60016A8FB /* HeartShopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartShopPage.swift; sourceTree = "<group>"; };
 		AEF0F29E24138EEB002ABFFF /* FoodMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenuScene.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				AE174B2D2574C85300B89200 /* PackageManager.swift */,
 				AE95327E2484F1BA00370C8D /* EquipmentManager.swift */,
 				AE9532802484F40700370C8D /* PlaceHolderManager.swift */,
+				AEE1EEB82575F43400C53E64 /* CoreObjectManager.swift */,
 			);
 			path = GameObjectManager;
 			sourceTree = "<group>";
@@ -996,6 +999,7 @@
 				AE40560524810D8C002F8450 /* GameSettingUIManager.swift in Sources */,
 				AECA3EA82567C0FE0048AEC5 /* BonusPanel.swift in Sources */,
 				AE28B74D240B82DE00A49B23 /* Panel.swift in Sources */,
+				AEE1EEB92575F43400C53E64 /* CoreObjectManager.swift in Sources */,
 				AEB2B3E02490D5F300B23033 /* easing.swift in Sources */,
 				AEB1EEDA24D67EF500EFD010 /* SceneEnvironment.swift in Sources */,
 				AEA34BA925284F39003FDCD5 /* GiftPage.swift in Sources */,

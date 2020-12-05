@@ -14,7 +14,9 @@ class PetManager: Observable{
     
     public var currentScene: SKScene!
     public var petInStore: [PetName: Pet?] = [:]
+    
     public var petInScene: [Pet?] = []
+    public var heartInScene: [SKSpriteNode?] = []
     
     static var chicken: Pet!
     static var rabbit: Pet!
@@ -58,40 +60,10 @@ class PetManager: Observable{
         currentScene = gameScene
     }
     
-    func ScanItems(at currentTime: CFTimeInterval){
-        
-        let point = placeHolderManager.pointData[Int.random(in: 0...4)]
-        guard let checkingItem = itemManager.itemData[point]?.item else { return }
-        
-        let elapsedTime = currentTime - checkingItem.timeWhenPlaced
-        
-        for pet in petInStore.values{
-            
-            if pet!.timeWhenLeftScene == nil{
-                if !(pet!.isAdded){
-                    Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
-                    break;
-                }
-            }else{
-                let nextCallelapsedTime = currentTime - pet!.timeWhenLeftScene
-            
-                if nextCallelapsedTime > pet!.waitTime + 10{
-                    if !(pet!.isAdded) {
-                        Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
-                        break;
-                    }
-                }
-            }
-        }
-        
-        if !(checkingItem.isBeingEaten) && elapsedTime > checkingItem.timeOnScreen {
-            Remove(item: checkingItem, at: elapsedTime)
-        }
-        
-    }
-    
     func Call(_ pet: Pet, to point: CGPoint, for eatingItem: Item, elapsedTime: CFTimeInterval){
-        if elapsedTime > pet.waitTime{
+        
+            guard elapsedTime > pet.waitTime else { return }
+            guard !pet.isAdded else { return }
             
             eatingItem.eattenByPet = pet
             eatingItem.isBeingEaten = true
@@ -99,9 +71,7 @@ class PetManager: Observable{
             
             var pointToPlacePet: CGPoint!
             
-        
             for index in 0...3{
-                
                 if placeHolderManager.surroundingPointData[point]![index]{
                     
                     if index == 0 {
@@ -137,42 +107,15 @@ class PetManager: Observable{
                         break
                     }
                 }
-                    
             }
-           // pointToPlacePet = point + placeHolderManager.NW_point
             
             currentScene.addChild(pet)
             pet.BeingCalled(to: pointToPlacePet)
             (currentScene as! MainScene).SortObjectsLayerAfterAdded()
             
             petInScene.append(pet)
-        }
     }
-    
-    func ScanPets(at currentTime: CFTimeInterval){
-        
-        if petInScene.count != 0{
-            for i in 0...petInScene.count - 1{
-                
-                guard let checkingPet = petInScene[i] else { continue }
-        
-                if checkingPet.isAdded{
-                    let elapsedTime = currentTime - checkingPet.timeWhenPlaced
-                    
-                    // Logic to give Heart and Pakage HERE!!!
-                    checkingPet.AddFloatingHeartPopUp(waitTime: elapsedTime)
-                    checkingPet.DropItemPackage(at: checkingPet.nowEatingItem.position, whenTimePassed: elapsedTime)
-                    
-                    packageManager.packageInScene.append(checkingPet.dropPackage)
-                    
-                    Remove(pet: checkingPet, at_Index: i, at: elapsedTime)
-                    Remove(item: checkingPet.nowEatingItem, at: elapsedTime)
-                }
-            }
-        }
-        
-    }
-    
+
     func Remove(pet: Pet, at_Index index: Int, at elapsedTime:CFTimeInterval){
         if elapsedTime > petInScene[index]!.onScreenTime{
             
@@ -182,64 +125,58 @@ class PetManager: Observable{
             refPet.currentPointInPointData          = nil
             refPet.currentIndexSurroundingPointData = nil
             
+            RemoveHeart(from: refPet)
+            petInScene[index]?.floatHeartIsAdded = false
+            
             petInScene[index]?.timeWhenLeftScene = Date.timeIntervalSinceReferenceDate
             petInScene[index]?.isAdded = false
             petInScene[index]?.removeFromParent()
             petInScene[index] = nil
+           // petInScene.remove(at: index)
+            
+            
+        }
+    }
+    
+    func RemoveHeart(from pet: Pet){
+        if pet.floatHeartIsAdded && pet.floatingHeart != nil {
+            heartInScene = heartInScene.filter({ $0 != pet.floatingHeart})
+            pet.floatingHeart.removeFromParent()
+            pet.floatingHeart = nil
+            //pet.floatHeartIsAdded  = false
         }
     }
     
     func Remove(item: Item, at elapsedTime: CFTimeInterval){
-        if elapsedTime > item.timeOnScreen{
-            
-            let fadeOut = SKAction.fadeOut(withDuration: 1)
-            
-            item.run(fadeOut, completion: {
-                
-                
-                //self.itemManager.itemData[item.position]?.isPlacable = true
-                
-                
-                self.itemManager.itemData[item.position]?.item = nil
-                item.removeFromParent()
-                
-                if item.eattenByPet != nil{
-                 //   item.eattenByPet.isAdded = false
-                }
-            })
+        
+        guard elapsedTime > item.timeOnScreen else { return }
+        
+        item.run(SKAction.fadeOut(withDuration: 1)){
+            self.itemManager.itemData[item.position]?.item = nil
+            item.removeFromParent()
         }
     }
 
     
     func UpdateTouch(at location: CGPoint){
-        
         for pet in petInStore.values{
-            
-            //guard let checkingFloatingHeart = pet!.floatingHeart else { return }
-            
             if pet!.floatingHeart != nil && pet!.floatingHeart.contains(location){
-                pet?.floatingHeart.removeFromParent()
-               // pet?.floatHeartIsAdded = false
+                
+//                heartInScene = heartInScene.filter({ $0 != pet?.floatingHeart })
+//                pet?.floatingHeart.removeFromParent()
+//                pet?.floatingHeart      = nil
+//                pet?.floatHeartIsAdded  = false
+//
+               // heartInScene = heartInScene.filter({ $0 != pet!.floatingHeart })
+                
+                RemoveHeart(from: pet!)
+                
+                
                 currencyManager.HeartCounts += pet!.givenHeart
             }
         }
-        
-        
     }
     
-//    func Remove(package: Package){
-//        package.texture = package.openedImage
-//
-//        let wait        = SKAction.wait(forDuration: 3)
-//        let fadeOut     = SKAction.fadeOut(withDuration: 1)
-//
-//        package.run(SKAction.sequence([wait, fadeOut, wait])){
-//            package.removeFromParent()
-//            self.itemManager.itemData[package.position]!.isPlacable = true
-//        }
-//    }
-//
-
     func LoadPetData(){
         for pet in petInScene{
             if pet != nil{
@@ -248,11 +185,18 @@ class PetManager: Observable{
         }
     }
     
+    func LoadHeartInScene(){
+        for heart in heartInScene{
+            if heart != nil{
+                currentScene.addChild(heart!)
+            }
+        }
+    }
+    
+    
     func StorePetData(){
         
     }
-    
-
     
     func AddObserver(observer: Observer) {
         observers.append(observer)

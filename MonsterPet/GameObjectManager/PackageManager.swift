@@ -28,14 +28,26 @@ class PackageManager: Observable{
         currentScene = gameScene
     }
     
-    func ScanPackages(at currentTime: CFTimeInterval){
-        
-    }
+//    func ScanPackages(at currentTime: CFTimeInterval){
+//
+//    }
     
     func UpdateTouch(at location: CGPoint){
         for package in packageInScene{
             if package!.contains(location){
                 Remove(package: package!)
+            }
+        }
+    }
+
+    
+    func LoadPackageInScene(){
+        for package in packageInScene{
+            if package != nil{
+//                if !currentScene.children.contains(package!){
+                    
+                    currentScene.addChild(package!)
+                //}
             }
         }
     }
@@ -49,9 +61,9 @@ class PackageManager: Observable{
         package.run(SKAction.sequence([wait, fadeOut])){
             self.itemManager.itemData[package.position]!.isPlacable = true
             package.removeFromParent()
+            self.packageInScene = self.packageInScene.filter({ $0 != package })
         }
     }
-    
     
     func AddObserver(observer: Observer) {
         observers.append(observer)

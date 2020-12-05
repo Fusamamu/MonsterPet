@@ -6,13 +6,16 @@ import GoogleMobileAds
 
 class MainScene: SKScene, GADRewardedAdDelegate {
     
-    let timeManager         : TimerManager           = .sharedInstance
+    let timeManager         : TimerManager          = .sharedInstance
+    let currencyManager     : CurrencyManager       = .sharedInstance
+    
+    let CORE_MG             : CoreObjectManager     = .sharedInstance
+    
     let itemManager         : ItemManager           = .sharedInstance
     let equipmentManager    : EquipmentManager      = .sharedInstance
     let petManager          : PetManager            = .sharedInstance
     let packageManager      : PackageManager        = .sharedInstance
     let placeHolderManager  : PlaceHolderManager    = .sharedInstance
-    let currencyManager     : CurrencyManager       = .sharedInstance
     
     var UI_Manager      : MainSceneUIManager!
     var labelManager    : LabelManager!
@@ -37,8 +40,12 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         equipmentManager.LoadObjectData(pointData: placeHolderManager.pointData)
 
         petManager.SetCurrentScene(gameScene: self)
+        packageManager.SetCurrentScene(gameScene: self)
         //PetSaveDataManager.sharedInstance.LoadPetInScene()
         petManager.LoadPetData()
+        petManager.LoadHeartInScene()
+        packageManager.LoadPackageInScene()
+        
 
         currencyManager.AddObserver(observer: labelManager)
 
@@ -47,6 +54,7 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         let textAnimation = TextAnimation(skScene: self)
         currencyManager.AddObserver(observer: textAnimation)
         
+
 //        let bgMusic = SKAudioNode(fileNamed: "bensound-ukulele.mp3")
 //        bgMusic.run(SKAction.changeVolume(to: 0.2, duration: 0))
 //        addChild(bgMusic)
@@ -149,8 +157,9 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         
         UI_Manager.UpdateTouch(at: location!)
         
-        petManager.UpdateTouch(at: location!)
-        packageManager.UpdateTouch(at: location!)
+        CORE_MG.UpdateTouch(at: location!)
+        //petManager.UpdateTouch(at: location!)
+        //packageManager.UpdateTouch(at: location!)
 
         if UI_Manager.uiState != .menuPanelOpened{
             sceneEnvironment.UpdateTouched(on: location!)
@@ -209,12 +218,11 @@ class MainScene: SKScene, GADRewardedAdDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         timeManager.UpdateTimer(countTarget: 100)
-        
-       
-        
+
         if timeManager.timePassed(Target: 100){
-            petManager.ScanItems(at: Date.timeIntervalSinceReferenceDate)
-            petManager.ScanPets(at: Date.timeIntervalSinceReferenceDate)
+            CORE_MG.ScanObjects(at: Date.timeIntervalSinceReferenceDate)
+//            petManager.ScanPets(at: Date.timeIntervalSinceReferenceDate)
+//            petManager.ScanItems(at: Date.timeIntervalSinceReferenceDate)
         }
     }
     
