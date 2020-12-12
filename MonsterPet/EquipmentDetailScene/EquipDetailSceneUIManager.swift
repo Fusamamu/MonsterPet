@@ -52,6 +52,7 @@ class EquipDetailSceneUIManager: BaseUIManager{
         case allClosed
         case requirementPanelOpened
         case gotItPanelOpened
+        case warningPanelOpened
     }
     public var uiState : UIState = .allClosed
     
@@ -148,6 +149,9 @@ class EquipDetailSceneUIManager: BaseUIManager{
                 }
             case .gotItPanelOpened:
                 print("gotItPanelOpened")
+                
+            case .warningPanelOpened:
+                print("warningPanelOpened")
             }
     }
     
@@ -162,10 +166,11 @@ class EquipDetailSceneUIManager: BaseUIManager{
     private func InitializeBasicUIElements(){
         currencyIcon    = uiElementBuilder.Build(seletedUiIcon: .coin)
         bar_1           = uiElementBuilder.Build(seletedUiElement: .bar)
-        currencyIcon.position.y += 33
+       // currencyIcon.position.y += 33
+        
         bar_1.position.y -= 10
-
-        currentSKScene.addChild(currencyIcon)
+        bar_1.addChild(currencyIcon)
+        
         currentSKScene.addChild(bar_1)
 
         equipmentFloorImage = SKSpriteNode(imageNamed: "equipmentFloor")

@@ -99,7 +99,10 @@ class DetailScene: SKScene, Observer{
         }
         
         if uiManager.placeButton.contains(location!){
-           LoadGameScene()
+            if currentItem.count > 0{
+                LoadGameScene()
+            }
+           
         }
     }
     

@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SaveNLoadManager.sharedInstance.LoadCurrencyData()
+        //SaveNLoadManager.sharedInstance.LoadCurrencyData()
         //PetSaveDataManager.sharedInstance.LoadPetInfo()
         
         

@@ -180,7 +180,8 @@ class Pet: SKSpriteNode, Observer, Observable{
                 itemManager.itemData[position]!.isPlacable = false
             
                 packageIsDropped = true
-                packageManager.packageInScene.append(dropPackage)
+               // packageManager.packageInScene.append(dropPackage)
+            packageManager.packageInScaneData[position] = dropPackage
         }
     }
     

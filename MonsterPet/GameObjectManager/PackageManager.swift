@@ -18,10 +18,18 @@ class PackageManager: Observable{
     var observers: [Observer] = []
     
     public var currentScene: SKScene!
-    public var packageInScene: [Package?] = []
+    
+//public var packageInScene: [Package?] = []
+    public var packageInScaneData: [CGPoint: Package?] = [:]
     
     private init(){
-        
+        packageInScaneData = Dictionary(minimumCapacity: 5)
+    }
+    
+    public func InitializePackageInSceneDataPoint(pointData: [CGPoint]){
+        for point in pointData{
+            packageInScaneData[point] = nil
+        }
     }
     
     func SetCurrentScene(gameScene: SKScene){
@@ -33,7 +41,12 @@ class PackageManager: Observable{
 //    }
     
     func UpdateTouch(at location: CGPoint){
-        for package in packageInScene{
+//        for package in packageInScene{
+//            if package!.contains(location){
+//                Remove(package: package!)
+//            }
+//        }
+        for package in packageInScaneData.values{
             if package!.contains(location){
                 Remove(package: package!)
             }
@@ -42,7 +55,15 @@ class PackageManager: Observable{
 
     
     func LoadPackageInScene(){
-        for package in packageInScene{
+//        for package in packageInScene{
+//            if package != nil{
+////                if !currentScene.children.contains(package!){
+//
+//                    currentScene.addChild(package!)
+//                //}
+//            }
+//        }
+        for package in packageInScaneData.values{
             if package != nil{
 //                if !currentScene.children.contains(package!){
                     
@@ -53,15 +74,20 @@ class PackageManager: Observable{
     }
     
     func Remove(package: Package){
+        
+        self.itemManager.itemData[package.position]!.isPlacable = true
+        
         package.texture = package.openedImage
         
         let wait        = SKAction.wait(forDuration: 3)
         let fadeOut     = SKAction.fadeOut(withDuration: 1)
         
         package.run(SKAction.sequence([wait, fadeOut])){
-            self.itemManager.itemData[package.position]!.isPlacable = true
+            
             package.removeFromParent()
-            self.packageInScene = self.packageInScene.filter({ $0 != package })
+            //self.packageInScene = self.packageInScene.filter({ $0 != package })
+            
+            self.packageInScaneData[package.position] = nil
         }
     }
     

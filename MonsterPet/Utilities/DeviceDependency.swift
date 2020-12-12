@@ -45,6 +45,22 @@ class DeviceDependency{
     
     private func AlignToPhoneDevice(){
         switch modelName {
+        
+        case "iPhone 8":
+            heartIconPosition_X     = 50;
+            heartIconPosition_Y     = 30;
+            
+            barPosition_Y           = 30;
+            
+            menuButtonPosition_Y    = 50
+            petInfoButtonPosition_Y = 50
+            
+            hearCountLabelPosition  = CGPoint(x: 143, y: 28)
+            heart_n_coin_LabelScale = 1
+            
+            //Environment (houst, tree, etc//
+            mainBackground_Scale    = 0.47
+            mainBackground_Pos      = CGPoint(x: 0, y: 0)
         case "Simulator iPhone 8":
             heartIconPosition_X     = 50;
             heartIconPosition_Y     = 30;

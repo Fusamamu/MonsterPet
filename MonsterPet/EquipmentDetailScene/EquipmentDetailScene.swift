@@ -32,6 +32,11 @@ class EquipmentDetailScene: SKScene, Observer{
     private var backgroundImage: SKSpriteNode!
     
     
+    private var notEnoughCoinWarning        : WarnPanel!
+    private var notEnoughIngredientWarning  : WarnPanel!
+    private var notEnoughInventoryWarning    : WarnPanel!
+    
+    
 
 
     
@@ -66,6 +71,18 @@ class EquipmentDetailScene: SKScene, Observer{
         LoadRecipeImages()
         CreateBackground()
         
+        
+        notEnoughCoinWarning = WarnPanel(panelImage: "notEnoughCoin", skScene: self)
+        notEnoughCoinWarning.setScale(0.15)
+        notEnoughCoinWarning.zPosition = 300
+        
+        notEnoughIngredientWarning = WarnPanel(panelImage: "missingIngredientPanel", skScene: self)
+        notEnoughIngredientWarning.setScale(0.15)
+        notEnoughIngredientWarning.zPosition = 300
+        
+        notEnoughInventoryWarning = WarnPanel(panelImage: "outOfStockPanel", skScene: self)
+        notEnoughInventoryWarning.setScale(0.15)
+        notEnoughInventoryWarning.zPosition = 300
 
        
                                
@@ -81,35 +98,94 @@ class EquipmentDetailScene: SKScene, Observer{
             case .allClosed:
                 if uiManager.currentSelectedButton != nil && uiManager.currentSelectedButton.isSeleted{
                     
+                    //When press "PlaceButton"//
                     if uiManager.placeButton.contains(location!){
-                        let equipmentWithCompleteRecipe = Equipment(WithRecipeName: uiManager.currentSelectedButton.itemName)
-                        LoadGameScene(with: equipmentWithCompleteRecipe)
-                    }
-                    
-                    if uiManager.buyButton.contains(location!){
-                        print("buyButton was Clicked")
-                        if currenyManager.CoinCounts >= 10{
-                            currenyManager.CoinCounts -= 10
-                        }
                         
                         let recipeName = uiManager.currentSelectedButton.itemName
-
-                    //    equipmentManager.IncreaseRecipeQuantity(for: recipeName, by: 1)
+                        let recipeCount = equipmentManager.RecipeCountInventory[RecipeName.init(rawValue: recipeName)!]!
                         
-                        
-                        for buttonDelegate in uiManager.buyButton.buttonDelegates!{
-                            if buttonDelegate is GotItPanel{
-                                (buttonDelegate as! GotItPanel).gotIt_Item.texture = SKTexture(imageNamed: recipeName)
+                        if recipeCount > 0 {
+                            
+                            //This logic should be called when place on Arrow image//
+                            equipmentManager.RecipeCountInventory[RecipeName.init(rawValue: recipeName)!]! -= 1
+                            //-------------------------------------------------//
+                            
+                            let equipmentWithCompleteRecipe = Equipment(WithRecipeName: uiManager.currentSelectedButton.itemName)
+                            LoadGameScene(with: equipmentWithCompleteRecipe)
+                        }else{
+                            if !notEnoughInventoryWarning.isOpened{
+                                notEnoughInventoryWarning.Invoked()
                             }
+                            uiManager.uiState = .warningPanelOpened
                         }
-
-                        uiManager.buyButton.OnClicked(at: location!)
-                        uiManager.uiState = .gotItPanelOpened
+                        
+                        
+                     
                     }
+                    //------------------------//
                     
+                    
+                    
+                    
+                    //When press"BuyButton"//
+                    if uiManager.buyButton.contains(location!){
+                        
+                        
+                        let selectedEquipment = GetEquipmentDic(by: "Nabe")
+                        let IngredientRequirements = selectedEquipment["IngredientRequirements"] as! [String:Any]
+                        let selectedRecipe         = IngredientRequirements["SalmonNabe"] as! [String:Any]
+                        let coinRequired = selectedRecipe["coin"] as! Int
+                     
+                        
+                        let isEnougCoin =  currenyManager.CoinCounts > coinRequired ? true : false
+                        
+                        if isEnougCoin {
+                            print("buyButton was Clicked")
+                
+                            currenyManager.CoinCounts -= coinRequired
+                            
+                            let recipeName = uiManager.currentSelectedButton.itemName
+                            equipmentManager.IncreaseRecipeQuantity(for: recipeName, by: 1)
+                            
+                            for buttonDelegate in uiManager.buyButton.buttonDelegates!{
+                                if buttonDelegate is GotItPanel{
+                                    (buttonDelegate as! GotItPanel).gotIt_Item.texture = SKTexture(imageNamed: recipeName)
+                                }
+                            }
+
+                            uiManager.buyButton.OnClicked(at: location!)
+                            uiManager.uiState = .gotItPanelOpened
+                        }else{
+                            
+                            
+                            //Show warning Panel Not enough Coin
+                            
+                            if !notEnoughCoinWarning.isOpened {
+                                notEnoughCoinWarning.Invoked()
+                            }
+                            uiManager.uiState = .warningPanelOpened
+                            
+                        }
+                        
+                        
+                    }
+                    //----------------------//
+                    
+                    
+                    
+                    
+                    
+                    //When press "MakeButton"//
                     if uiManager.makeButton.contains(location!){
                         print("MakeButton was Clicked")
+                        
+                        if !notEnoughIngredientWarning.isOpened{
+                            notEnoughIngredientWarning.Invoked()
+                        }
+                        uiManager.uiState = .warningPanelOpened
+                        
                     }
+                    //-----------------------//
                 }
                 
       
@@ -124,6 +200,24 @@ class EquipmentDetailScene: SKScene, Observer{
                 uiManager.UpdateQuantityCount()
                 print("gotItPanelOpend")
                 
+                
+            case .warningPanelOpened:
+                if notEnoughCoinWarning.isOpened {
+                    notEnoughCoinWarning.Invoked()
+                }
+                
+                if notEnoughIngredientWarning.isOpened {
+                    notEnoughIngredientWarning.Invoked()
+                }
+                
+                if notEnoughInventoryWarning.isOpened {
+                    notEnoughInventoryWarning.Invoked()
+                }
+                
+                uiManager.uiState = .allClosed
+                
+                print("warningPanelOpened")
+                
         }
         
         uiManager.UpdateTouch(at: location!)
@@ -137,10 +231,7 @@ class EquipmentDetailScene: SKScene, Observer{
     
     private func LoadRecipeImages(){
 
-        let path = Bundle.main.path(forResource: "GameData", ofType: "plist")
-        let dict:NSDictionary = NSDictionary(contentsOfFile: path!)!
-        let equipmentDict   = dict.object(forKey: "Equipments") as! [String:Any]
-        let nabe    = equipmentDict["Nabe"] as! [String:Any]
+        let nabe = GetEquipmentDic(by: "Nabe")
         let text = nabe["Text"] as! [String:Any]
         let keys = ["recipe1", "recipe2", "recipe3"]
         
@@ -165,6 +256,15 @@ class EquipmentDetailScene: SKScene, Observer{
             
             
         }
+    }
+    
+    private func GetEquipmentDic(by name: String)->[String:Any]{
+        
+        let path = Bundle.main.path(forResource: "GameData", ofType: "plist")
+        let dict:NSDictionary = NSDictionary(contentsOfFile: path!)!
+        let equipmentDict   = dict.object(forKey: "Equipments") as! [String:Any]
+        
+        return equipmentDict[name] as! [String:Any]
     }
     
 

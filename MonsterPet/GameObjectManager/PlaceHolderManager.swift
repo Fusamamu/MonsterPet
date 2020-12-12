@@ -6,6 +6,7 @@ class PlaceHolderManager{
     static let sharedInstance = PlaceHolderManager()
     
     private let itemManager         = ItemManager.sharedInstance
+    private let packageManager      = PackageManager.sharedInstance
     private let equipmentManager    = EquipmentManager.sharedInstance
     
     var pointData               : [CGPoint] = []
@@ -42,10 +43,20 @@ class PlaceHolderManager{
              point_5: [true, true, true, true]]
         
         itemManager.InitilizeObjectData(pointData: pointData)
+        packageManager.InitializePackageInSceneDataPoint(pointData: pointData)
         equipmentManager.InitilizeObjectData(pointData: pointData)
     }
     
     func AddArrowImages(to scene: SKScene?){
+        //Check place available// need to make it cleaner
+        for point in pointData{
+            itemManager.itemData[point]?.isPlacable = isPlaceAvailable(at: point)
+            
+            if itemManager.itemData[point]!.item != nil {
+                itemManager.itemData[point]?.isPlacable = false
+            }
+        }
+        
         
         arrowIsAdded = true
         
@@ -66,6 +77,8 @@ class PlaceHolderManager{
 //                if itemData.item == nil{
 //                    itemManager.itemData[pointData[i]]?.isPlacable = true
 //                }
+
+                
             }
         }
     }
@@ -78,6 +91,22 @@ class PlaceHolderManager{
             }
         }
         arrowIsAdded = false
+    }
+    
+    func isPlaceAvailable(at point: CGPoint) -> Bool{
+        var _isPlacable: Bool = true
+        
+        for index in 0...3 {
+            if surroundingPointData[point]![index] == false {
+                _isPlacable = false
+            }
+        }
+ 
+        if packageManager.packageInScaneData[point] != nil {
+            _isPlacable = false
+        }
+        
+        return _isPlacable
     }
 }
 

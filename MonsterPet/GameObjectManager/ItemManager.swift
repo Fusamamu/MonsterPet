@@ -25,6 +25,7 @@ class ItemManager: Observable{
     
 
     public var itemData    :[CGPoint: (item: Item?, isPlacable: Bool)] = [:]
+   
     public var itemCountInventory: [ItemName: Int] = [:]
     public var slotUpdateUnpackState: [Int: Bool] = [:]
     
