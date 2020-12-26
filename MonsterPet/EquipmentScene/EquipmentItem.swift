@@ -9,7 +9,7 @@ enum EquipmentName: String, CaseIterable{
     case whiteBowl      = "WhiteBowl"
     
     case blueBowl       = "BlueBowl"
-    case nabe           = "nabe"
+    case nabe           = "Nabe"
     case b              = "b"
     case c              = "c"
     

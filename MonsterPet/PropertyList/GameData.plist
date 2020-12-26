@@ -13,11 +13,11 @@
 Simple, riable and easy to use.
 Recommended for frying stuff.</string>
 				<key>recipe1</key>
-				<string>recipe1</string>
+				<string>timsum</string>
 				<key>recipe2</key>
-				<string>recipe2</string>
+				<string>friedPotato</string>
 				<key>recipe3</key>
-				<string>recipe3</string>
+				<string>friedMushroom</string>
 			</dict>
 			<key>IngredientRequirements</key>
 			<dict>
@@ -55,8 +55,113 @@ Recommended for frying stuff.</string>
 		</dict>
 		<key>BaseRock</key>
 		<dict/>
-		<key>Banto</key>
-		<dict/>
+		<key>Bento</key>
+		<dict>
+			<key>Text</key>
+			<dict>
+				<key>Description</key>
+				<string>Nabe bowl. Great for party with pet friends.</string>
+				<key>recipe1</key>
+				<string>tempuraBento</string>
+				<key>recipe2</key>
+				<string>ricePickleBento</string>
+				<key>recipe3</key>
+				<string>onigiriBento</string>
+			</dict>
+			<key>IngredientRequirements</key>
+			<dict>
+				<key>SalmonNabe</key>
+				<dict>
+					<key>ingredient-1</key>
+					<string>Salmon</string>
+					<key>ingredient-2</key>
+					<string>Tofu</string>
+					<key>ingredient-3</key>
+					<string>Mushroom</string>
+					<key>ingredient-4</key>
+					<string>None</string>
+					<key>quantity-1</key>
+					<integer>5</integer>
+					<key>quantity-2</key>
+					<integer>2</integer>
+					<key>quantity-3</key>
+					<integer>2</integer>
+					<key>quantity-4</key>
+					<integer>0</integer>
+					<key>coin</key>
+					<integer>100</integer>
+				</dict>
+				<key>GImjiNabe</key>
+				<dict>
+					<key>ingredient-1</key>
+					<string>Salmon</string>
+					<key>ingredient-2</key>
+					<string>Tofu</string>
+					<key>ingredient-3</key>
+					<string>Mushroom</string>
+					<key>ingredient-4</key>
+					<string>None</string>
+					<key>quantity-1</key>
+					<integer>5</integer>
+					<key>quantity-2</key>
+					<integer>2</integer>
+					<key>quantity-3</key>
+					<integer>2</integer>
+					<key>quantity-4</key>
+					<integer>0</integer>
+					<key>coin</key>
+					<integer>100</integer>
+				</dict>
+				<key>recipe3</key>
+				<dict>
+					<key>ingredient-1</key>
+					<string>Salmon</string>
+					<key>ingredient-2</key>
+					<string>Tofu</string>
+					<key>ingredient-3</key>
+					<string>Mushroom</string>
+					<key>ingredient-4</key>
+					<string>None</string>
+					<key>quantity-1</key>
+					<integer>5</integer>
+					<key>quantity-2</key>
+					<integer>2</integer>
+					<key>quantity-3</key>
+					<integer>2</integer>
+					<key>quantity-4</key>
+					<integer>0</integer>
+					<key>coin</key>
+					<integer>100</integer>
+				</dict>
+			</dict>
+			<key>QuantityRequirement</key>
+			<dict>
+				<key>SalmonNabe</key>
+				<dict>
+					<key>New item</key>
+					<integer>0</integer>
+					<key>New item - 4</key>
+					<string></string>
+					<key>New item - 3</key>
+					<string></string>
+					<key>New item - 2</key>
+					<string></string>
+				</dict>
+				<key>GImjiNabe</key>
+				<string></string>
+				<key>recipe3</key>
+				<string></string>
+			</dict>
+			<key>RecipeInventory</key>
+			<dict>
+				<key>recipe1</key>
+				<integer>0</integer>
+				<key>recipe2</key>
+				<integer>0</integer>
+				<key>recipe3</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
 		<key>WhiteBowl</key>
 		<dict/>
 		<key>Nabe</key>

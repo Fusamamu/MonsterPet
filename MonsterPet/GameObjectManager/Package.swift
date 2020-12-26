@@ -16,6 +16,11 @@ class Package: SKSpriteNode{
     
     var itemInside: Item!
     
+    
+    //random Type(wooden , silver, gold)
+    //random Item Besed On Type
+    //How to add Gift??
+    
     init(){
         
         closedImage = SKTexture(imageNamed: "closedWoodPackage")

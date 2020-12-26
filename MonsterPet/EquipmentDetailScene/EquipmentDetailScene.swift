@@ -11,7 +11,6 @@ import SpriteKit
 
 class EquipmentDetailScene: SKScene, Observer{
     
-    
     var id: Int = 0
     
     private var currenyManager      : CurrencyManager       = .sharedInstance
@@ -30,7 +29,6 @@ class EquipmentDetailScene: SKScene, Observer{
     
     private var coinCountLabel : BMGlyphLabel!
     private var backgroundImage: SKSpriteNode!
-    
     
     private var notEnoughCoinWarning        : WarnPanel!
     private var notEnoughIngredientWarning  : WarnPanel!
@@ -231,31 +229,47 @@ class EquipmentDetailScene: SKScene, Observer{
     
     private func LoadRecipeImages(){
 
-        let nabe = GetEquipmentDic(by: "Nabe")
-        let text = nabe["Text"] as! [String:Any]
-        let keys = ["recipe1", "recipe2", "recipe3"]
+//        let nabe = GetEquipmentDic(by: "Nabe")
+//        let text = nabe["Text"] as! [String:Any]
+////        let keys = ["recipe1", "recipe2", "recipe3"]
+//
+//        for i in 0...uiManager.recipeSelectButtons.count - 1{
+//            if(EquipmentName.allCases[currentEquipment.equipmentIndex].rawValue == "nabe"){
+//                let recipeName = text[keys[i]] as! String
+//
+//                let recipeImage = SKSpriteNode(imageNamed: recipeName)
+//                recipeImage.setScale(0.4)
+//                recipeImage.zPosition = layerManager.layer_2
+//                recipeImage.position = CGPoint(x: -530, y: -20)
+//                uiManager.recipeSelectButtons[i].addChild(recipeImage)
+//                uiManager.recipeSelectButtons[i].itemName = recipeName
+//
+//            }else{
+//                let recipeImage = SKSpriteNode(imageNamed: EquipmentName.allCases[currentEquipment.equipmentIndex].rawValue)
+//                recipeImage.setScale(0.4)
+//                recipeImage.zPosition = layerManager.layer_2
+//                recipeImage.position = CGPoint(x: -530, y: -20)
+//                uiManager.recipeSelectButtons[i].addChild(recipeImage)
+//            }
+            
+            let selectedEquipment = GetEquipmentDic(by: currentEquipment.equipmentName.rawValue)
+            let test_fromPlist = selectedEquipment["Text"] as! [String:Any]
+            let keys = ["recipe1", "recipe2", "recipe3"]
         
         for i in 0...uiManager.recipeSelectButtons.count - 1{
-            if(EquipmentName.allCases[currentEquipment.equipmentIndex].rawValue == "nabe"){
-                let recipeName = text[keys[i]] as! String
-                
-                let recipeImage = SKSpriteNode(imageNamed: recipeName)
-                recipeImage.setScale(0.4)
-                recipeImage.zPosition = layerManager.layer_2
-                recipeImage.position = CGPoint(x: -530, y: -20)
-                uiManager.recipeSelectButtons[i].addChild(recipeImage)
-                uiManager.recipeSelectButtons[i].itemName = recipeName
-                
-            }else{
-                let recipeImage = SKSpriteNode(imageNamed: EquipmentName.allCases[currentEquipment.equipmentIndex].rawValue)
-                recipeImage.setScale(0.4)
-                recipeImage.zPosition = layerManager.layer_2
-                recipeImage.position = CGPoint(x: -530, y: -20)
-                uiManager.recipeSelectButtons[i].addChild(recipeImage)
-            }
+            let recipeName = test_fromPlist[keys[i]] as! String
             
-            
+            let recipeImage = SKSpriteNode(imageNamed: recipeName)
+            recipeImage.setScale(0.4)
+            recipeImage.zPosition = layerManager.layer_2
+            recipeImage.position = CGPoint(x: -530, y: -20)
+            uiManager.recipeSelectButtons[i].addChild(recipeImage)
+            uiManager.recipeSelectButtons[i].itemName = recipeName
         }
+            
+            
+            
+        
     }
     
     private func GetEquipmentDic(by name: String)->[String:Any]{

@@ -16,6 +16,7 @@ class RecipeDetailPanel: Panel{
     public var closeButton: Button!
     
     private var coin: SKSpriteNode!
+    private var ingredientImages: [SKSpriteNode] = []
     
     public var coinRequirementLabel: BMGlyphLabel!
     public var ingredientLabels: [BMGlyphLabel] = []
@@ -36,7 +37,7 @@ class RecipeDetailPanel: Panel{
         for _ in 0...3{
             let quantityLabel = LabelBuilder().Build(selectedLabel: .itemCountLabel)
             quantityLabel.position = CGPoint(x: 0, y: 0)
-            quantityLabel.setScale(1.8)
+            quantityLabel.setScale(3.5)
             quantityLabel.zPosition = LayerManager.sharedInstance.layer_9
             quantityLabel.setGlyphText("x5")
             
@@ -75,7 +76,7 @@ class RecipeDetailPanel: Panel{
         
         coinRequirementLabel = BMGlyphLabel(txt: "300", fnt: BMGlyphFont(name: "TitleText"))
         coinRequirementLabel.position = CGPoint(x: 640, y: -760)
-        coinRequirementLabel.setScale(2)
+        coinRequirementLabel.setScale(5)
         coinRequirementLabel.zPosition = LayerManager.sharedInstance.layer_9
         self.addChild(coinRequirementLabel)
     }
@@ -95,6 +96,7 @@ class RecipeDetailPanel: Panel{
             requiredItemImage.setScale(0.4)
             requiredItemImage.zPosition = LayerManager.sharedInstance.layer_8
             self.addChild(requiredItemImage)
+            ingredientImages.append(requiredItemImage)
         }
     }
     
@@ -141,6 +143,12 @@ class RecipeDetailPanel: Panel{
         self.run(SKEase.scale(easeFunction: .curveTypeExpo, easeType: .easeTypeInOut, time: 0.68, from: 0.2, to: 0.13))
     }
     
+//    override func Close() {
+//        self.removeFromParent()
+//        isOpened = false
+//        RemoveAllButtonReferences()
+//    }
+    
     override func RemoveAllButtonReferences(){
         closeButton.removeFromParent()
         closeButton = nil
@@ -151,8 +159,12 @@ class RecipeDetailPanel: Panel{
         for i in 0...quantityLabels.count - 1{
             quantityLabels[i].removeFromParent()
         }
-        
         quantityLabels.removeAll()
+        
+        for i in 0...ingredientImages.count - 1{
+            ingredientImages[i].removeFromParent()
+        }
+        ingredientImages.removeAll()
     }
     
     private func GetEquipmentDicData() -> [String:Any]{
