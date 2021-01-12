@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 enum UnpackMenuName: String, CaseIterable{
-    case green      = "GreenUnpackMenu"
+    case green      = "PackageLevel_1"
     case yellow     = "YellowUnpackMenu"
     case orange     = "OrangeUnpackMenu"
     case purple     = "PurpleUnpackMenu"
@@ -28,7 +28,7 @@ class UnpackPanel: Panel {
     init(index: Int, skScene: SKScene){
         self.index = index
         super.init(panelImage: UnpackMenuName.green.rawValue, skScene: skScene)
-        self.setScale(0.23)
+        self.setScale(0.20)
         self.zPosition = 50;
         
         
@@ -49,7 +49,7 @@ class UnpackPanel: Panel {
     override func AddButtons() {
         unpackButton = Button(DefaultImage: "UnpackButton", PressedImage: "UnpackButton", skScene: currentSKscene)
         unpackButton.zPosition = 60
-        unpackButton.setScale(0.23)
+        unpackButton.setScale(0.21)
         unpackButton.position = CGPoint(x: currentSKscene.frame.midX, y: currentSKscene.frame.midY)
         unpackButton.position.x -= 50
         unpackButton.position.y -= 60
@@ -61,7 +61,7 @@ class UnpackPanel: Panel {
         
         cancelButton = Button(DefaultImage: "UnpackCancelButton", PressedImage: "UnpackCancelButton", skScene: currentSKscene)
         cancelButton.zPosition = 60
-        cancelButton.setScale(0.23)
+        cancelButton.setScale(0.21)
         cancelButton.position = CGPoint(x: currentSKscene.frame.midX, y: currentSKscene.frame.midY)
         cancelButton.position.x += 50
         cancelButton.position.y -= 60

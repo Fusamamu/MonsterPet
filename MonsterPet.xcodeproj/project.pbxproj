@@ -14,6 +14,7 @@
 		AE0A574E2478DC24002C6CA4 /* EquipmentSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A574D2478DC24002C6CA4 /* EquipmentSlot.swift */; };
 		AE0A57512478F6FC002C6CA4 /* PetInfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A57502478F6FC002C6CA4 /* PetInfoScene.swift */; };
 		AE0A57532478F745002C6CA4 /* PetInfoUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A57522478F745002C6CA4 /* PetInfoUIManager.swift */; };
+		AE0A581225A974FD008642C2 /* take.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AE0A581125A974FD008642C2 /* take.atlas */; };
 		AE0AB05E2557BFD80018D314 /* PetInfoPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0AB05D2557BFD80018D314 /* PetInfoPageManager.swift */; };
 		AE0AB0642557CB9C0018D314 /* PetSaveDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0AB0632557CB9C0018D314 /* PetSaveDataManager.swift */; };
 		AE0AB06F2557D1AA0018D314 /* PetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0AB06E2557D1AA0018D314 /* PetInfo.swift */; };
@@ -160,6 +161,7 @@
 		AE0A574D2478DC24002C6CA4 /* EquipmentSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentSlot.swift; sourceTree = "<group>"; };
 		AE0A57502478F6FC002C6CA4 /* PetInfoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoScene.swift; sourceTree = "<group>"; };
 		AE0A57522478F745002C6CA4 /* PetInfoUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoUIManager.swift; sourceTree = "<group>"; };
+		AE0A581125A974FD008642C2 /* take.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = take.atlas; sourceTree = "<group>"; };
 		AE0AB05D2557BFD80018D314 /* PetInfoPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoPageManager.swift; sourceTree = "<group>"; };
 		AE0AB0632557CB9C0018D314 /* PetSaveDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSaveDataManager.swift; sourceTree = "<group>"; };
 		AE0AB06E2557D1AA0018D314 /* PetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfo.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 		AE81AF8924CBEEBE0028D8FD /* Atlas */ = {
 			isa = PBXGroup;
 			children = (
+				AE0A581125A974FD008642C2 /* take.atlas */,
 				AE4FB6D32567BFAA00D08EF5 /* getBonusPanel.atlas */,
 				AE4F3C3924D47BC7006A2BAB /* gotItAffect.atlas */,
 				AE4F3C3724D47B98006A2BAB /* coin.atlas */,
@@ -800,6 +803,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE95327B2484C95200370C8D /* ChalkboardRegular@3x.xml in Resources */,
+				AE0A581225A974FD008642C2 /* take.atlas in Resources */,
 				AE28B722240B7B6800A49B23 /* Main.storyboard in Resources */,
 				AE1EAEFA25657AEE0035A849 /* peng@2x.xml in Resources */,
 				AE28B724240B7B6900A49B23 /* Assets.xcassets in Resources */,

@@ -14,14 +14,16 @@ class EquipDetailSceneUIManager: BaseUIManager{
     private var layerManager        : LayerManager      = .sharedInstance
     private var equipmentManager    : EquipmentManager  = .sharedInstance
     
-    private var equipmentData: [String:Any]!
+    
+    private var equipmentData        : [String:Any]!
+    public  var currentEquipment     : Equipment!
     
     private var sceneBuilder        : SceneBuilder!
     private var uiElementBuilder    : UIElementBuilder!
     private var labelBuilder        : LabelBuilder!
     
     private var detailPanel     : SKSpriteNode!
-    public var gotItPanel: GotItPanel!
+    public var  gotItPanel: GotItPanel!
     private var alphaBlackPanel : Panel!
     private var equipmentFloorImage: SKSpriteNode!
     private var backgroundImage : SKSpriteNode!
@@ -85,9 +87,7 @@ class EquipDetailSceneUIManager: BaseUIManager{
         InitializeLabels()
         SetUpButtonDelegation()
         
-        EncodeItemNameToButtons()
-        
-        LoadTextToLabels()
+
         LoadQuantityCount()
         
         SetUILayers()
@@ -125,9 +125,11 @@ class EquipDetailSceneUIManager: BaseUIManager{
                             selectionButton.isSeleted = true
                             currentSelectedButton = selectionButton
                         }else{
-                            currentSelectedButton = nil
+                            requirementPanel.currentSeletedRecipe = currentSelectedButton.index
                             selectionButton.OnClicked(at: location)
+                            //send index or item name to recipeDetailPanel
                             selectionButton.isSeleted = false
+                            currentSelectedButton = nil
                             uiState = .requirementPanelOpened
                         }
                     }else{
@@ -215,14 +217,18 @@ class EquipDetailSceneUIManager: BaseUIManager{
         for i in 0...2{
 
             let selectionButton = Button(DefaultImage: "equipmentFoodMenuButton")
+            selectionButton.index = i
 
             selectionButton.setScale(0.13)
             selectionButton.position = centerPosition
             selectionButton.position.y -= 180
             selectionButton.position.y += CGFloat(i) * selectionButton.size.width/3
             selectionButton.zPosition = 3
-            selectionButton.SubscribeButton(target: requirementPanel)
+           //selectionButton.SubscribeButton(target: requirementPanel)
+            selectionButton.SubscribeButton(sender: selectionButton, target: requirementPanel)
             selectionButton.SubscribeButton(target: alphaBlackPanel)
+            
+            
             
     
 
@@ -270,17 +276,15 @@ class EquipDetailSceneUIManager: BaseUIManager{
     }
     
     
-    private func LoadTextToLabels(){
+    public func LoadTextToLabels(){
         let path                = Bundle.main.path(forResource: "GameData", ofType: "plist")
         let dict:NSDictionary   = NSDictionary(contentsOfFile: path!)!
-        
         let equipmentDict       = dict.object(forKey: "Equipments") as! [String:Any]
-        let ironPan             = equipmentDict["IronPan"] as! [String:Any]
+    
+        let selectedEuipment       = equipmentDict[currentEquipment.equipmentName.rawValue] as! [String:Any]
 
 
-        
-        let text = ironPan["Text"] as! [String:Any]
-        
+        let text = selectedEuipment["Text"] as! [String:Any]
         let keys = ["Description", "recipe1", "recipe2", "recipe3"]
 
         var i = 0;
@@ -316,18 +320,26 @@ class EquipDetailSceneUIManager: BaseUIManager{
     
     
     public func UpdateQuantityCount(){
-        for i in 0...2{
-            
-            let recipeCount = equipmentManager.RecipeCountInventory[RecipeName.allCases[i]]
-            
-            quantityLabels[i].setGlyphText("x" + String(recipeCount!))
-        }
+//        for i in 0...2{
+//
+//            let recipeCount = equipmentManager.RecipeCountInventory[RecipeName.allCases[i]]
+//
+//            quantityLabels[i].setGlyphText("x" + String(recipeCount!))
+//        }
+        
+        let updateRecipeCount = equipmentManager.RecipeCountInventory[RecipeName(rawValue: currentSelectedButton.itemName)!]
+        quantityLabels[currentSelectedButton.index].setGlyphText("x" + String(updateRecipeCount!))
     }
     
-    private func EncodeItemNameToButtons(){
-        let ironPan = equipmentData["IronPan"] as! [String:Any]
+    public func EncodeItemNameToButtons(){
+//        let ironPan = equipmentData["Iron Pan"] as! [String:Any]
+//        let keys    = ["recipe1", "recipe2", "recipe3"]
+//        let text    = ironPan["Text"] as! [String:Any]
+        
+        let selectedEquipment_Dic = equipmentData[currentEquipment.equipmentName.rawValue] as! [String:Any]
+        let text                  = selectedEquipment_Dic["Text"] as! [String:Any]
         let keys    = ["recipe1", "recipe2", "recipe3"]
-        let text    = ironPan["Text"] as! [String:Any]
+        
         
         for i in 0...2{
             let recipeName = text[keys[i]] as! String

@@ -66,7 +66,7 @@ class GotItPanel: SKNode, ButtonDelegate{
         
         if gotIt_Item == nil{
             gotIt_Item = SKSpriteNode(imageNamed: "default")
-            gotIt_Item.setScale(1.1)
+            gotIt_Item.setScale(0.1)
             gotIt_Item.zPosition = 20
             self.addChild(gotIt_Item)
         }

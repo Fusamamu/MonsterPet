@@ -27,7 +27,8 @@ class EquipmentUIManager: BaseUIManager{
     private var titleIcon        : SKSpriteNode!
     private var pageCountBar     : SKSpriteNode!
     private var background       : SKSpriteNode!
-    private var dialogueBlock    : SKSpriteNode!
+    
+    public var dialogueBlock    : SKSpriteNode!
     
     override init(skScene: SKScene) {
         super.init(skScene: skScene)
@@ -35,17 +36,27 @@ class EquipmentUIManager: BaseUIManager{
         uiElementBuilder    = UIElementBuilder(currentSKScene: skScene, baseUIManager: self)
         labelBuilder        = LabelBuilder()
         
-        homeButton      = uiElementBuilder.Build(selectedButton: .menuButton)
-        buyHeartButton  = uiElementBuilder.Build(selectedButton: .buyHeartButton)
+        homeButton          = uiElementBuilder.Build(selectedButton: .menuButton)
+        buyHeartButton      = uiElementBuilder.Build(selectedButton: .buyHeartButton)
         
-        background      = uiElementBuilder.Build(seletedUiElement: .inventoryBackground)
-        dialogueBlock   = uiElementBuilder.Build(seletedUiElement: .dialogueBox)
+        background          = uiElementBuilder.Build(seletedUiElement: .inventoryBackground)
+        
+            
+            let IntroductoryDialogue: String = "\t Welcome to our kitchen! \n  Unlock equipments and \n make your favorite recipes."
+        
+            dialogueLabel = BMGlyphLabel(txt: IntroductoryDialogue, fnt: BMGlyphFont(name: "hd"))
+            dialogueLabel.setHorizontalAlignment(.centered)
+            dialogueLabel.position.y += 90
+            dialogueLabel.zPosition = 200
+        dialogueLabel.setScale(3.7)
+        
+        dialogueBlock       = uiElementBuilder.Build(seletedUiElement: .dialogueBox)
         
         nextPageLeftButton  = uiElementBuilder.Build(selectedButton: .nextPageLeftButton)
         nextPageRightButton = uiElementBuilder.Build(selectedButton: .nextPageRightButton)
         pageCountBar        = uiElementBuilder.Build(seletedUiElement: .pageCountBar)
         
-        titleIcon       = uiElementBuilder.Build(seletedUiIcon: .equipmentTitleIcon)
+        titleIcon           = uiElementBuilder.Build(seletedUiIcon: .equipmentTitleIcon)
         
         
         currentSKScene.addChild(homeButton)
@@ -54,11 +65,10 @@ class EquipmentUIManager: BaseUIManager{
         currentSKScene.addChild(nextPageLeftButton)
         currentSKScene.addChild(nextPageRightButton)
         currentSKScene.addChild(pageCountBar)
-        currentSKScene.addChild(dialogueBlock)
         currentSKScene.addChild(titleIcon)
         
-        AddMovingCloud()
-        AddDialogueLabel()
+        AddTakeAnimation()
+        AddDialogueLabel(by: nil)
         SetUILayers()
         
         let titleLabel = labelBuilder.Build(selectedLabel: .titleLabel)
@@ -68,6 +78,16 @@ class EquipmentUIManager: BaseUIManager{
         titleLabel.position.x += 50
         titleLabel.position.y -= 8
         currentSKScene.addChild(titleLabel)
+        
+        let kitchenBackground = SKSpriteNode(imageNamed: "equipmentBackground")
+        kitchenBackground.position = centerPosition
+        kitchenBackground.position.y -= 210
+        kitchenBackground.setScale(0.22)
+        kitchenBackground.zPosition = 1
+        currentSKScene.addChild(kitchenBackground)
+        
+        
+        
     }
     
     func UpdateTouch(at location: CGPoint){
@@ -82,18 +102,43 @@ class EquipmentUIManager: BaseUIManager{
         }
     }
     
-    private func AddDialogueLabel(){
-        //dialogueLabel = BMGlyphLabel(txt: "Put Text in here", fnt: BMGlyphFont(name: "TitleText"))
-        dialogueLabel = BMGlyphLabel(txt: "Choose Something Please.", fnt: BMGlyphFont(name: "hd"))
-        dialogueLabel.setHorizontalAlignment(.centered)
-        dialogueLabel.position = centerPosition
-        dialogueLabel.position.y -= 190
-        dialogueLabel.zPosition = 200
-        dialogueLabel.setScale(0.7)
+    public func AddDialogueLabel(by equipmentName: String?){
         
-        currentSKScene.addChild(dialogueLabel)
+        RemoveDialogueBlock()
+        
+        if equipmentName != nil{
+            let selectedEquipment = GetEquipmentDic(by: equipmentName!)
+            let text_fromPlist = selectedEquipment["Text"] as! [String:Any]
+            let key = "IntroductoryDialogue"
+        
+            dialogueLabel.setGlyphText(text_fromPlist[key] as! String)
+        }
+        
+        
+        dialogueBlock.addChild(dialogueLabel)
+        currentSKScene.addChild(dialogueBlock)
+        
+        let popUp       = SKEase.scale(easeFunction: .curveTypeElastic, easeType: .easeTypeInOut, time: 0.5, from: 0.05, to: 0.15)
+        let wait        = SKAction.wait(forDuration: 5)
+        let popDown     = SKEase.scale(easeFunction: .curveTypeElastic, easeType: .easeTypeInOut, time: 0.5, from: 0.15, to: 0.05)
+        
+        dialogueBlock.run(SKAction.sequence([popUp, wait, popDown]), completion: {
+                            self.dialogueBlock.removeAllActions()
+                            self.dialogueBlock.removeAllChildren()
+                            self.dialogueBlock.removeFromParent()
+        })
+        
+        
         
        // UpdateDialogueLabel(by: 0)
+    }
+    
+    public func RemoveDialogueBlock(){
+        if currentSKScene.contains(dialogueBlock) {
+            dialogueBlock.removeAllActions()
+            dialogueBlock.removeAllChildren()
+            dialogueBlock.removeFromParent()
+        }
     }
     
   
@@ -112,6 +157,17 @@ class EquipmentUIManager: BaseUIManager{
 
     }
     
+    private func AddTakeAnimation(){
+        let animation = Animation()
+        let take_frames = animation.GetBuiltFrames(from: "take")
+        let take_anime  = animation.GetAnimatedObject(from: take_frames)
+        take_anime.position.x += 65
+        take_anime.position.y += 50
+        take_anime.setScale(0.25)
+        take_anime.zPosition = 8
+        currentSKScene.addChild(take_anime)
+    }
+    
     private func AddMovingCloud(){
         let cloud = SKSpriteNode(imageNamed: "foodCloud")
         cloud.setScale(0.25)
@@ -124,6 +180,15 @@ class EquipmentUIManager: BaseUIManager{
         cloud.run(SKAction.repeatForever(SKAction.sequence([moveLeft, reset])))
         
         currentSKScene.addChild(cloud)
+    }
+    
+    private func GetEquipmentDic(by name: String)->[String:Any]{
+        
+        let path = Bundle.main.path(forResource: "GameData", ofType: "plist")
+        let dict:NSDictionary = NSDictionary(contentsOfFile: path!)!
+        let equipmentDict   = dict.object(forKey: "Equipments") as! [String:Any]
+        
+        return equipmentDict[name] as! [String:Any]
     }
     
     

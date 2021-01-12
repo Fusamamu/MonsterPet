@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+       // PetSaveDataManager.sharedInstance.LoadPetInSceneData()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
        // TimerManager.sharedInstance.passedTime = CFTimeInterval.init()
@@ -57,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        /// SaveNLoadManager.sharedInstance.SaveCurrencyData()
         
         SaveNLoadManager.sharedInstance.SaveCurrencyData()
-        //PetSaveDataManager.sharedInstance.SavePetInSceneData()
+        PetSaveDataManager.sharedInstance.SavePetInSceneData()
         
         PetSaveDataManager.sharedInstance.SavePetInfo()
         

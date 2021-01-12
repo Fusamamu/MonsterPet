@@ -3,15 +3,15 @@ import SpriteKit
 
 enum EquipmentName: String, CaseIterable{
     
-    case ironPan        = "IronPan"
-    case hotBaseRock    = "BaseRock"
+    case ironPan        = "Iron Pan"
+    case hotBaseRock    = "Stone Slab"
     case bento          = "Bento"
-    case whiteBowl      = "WhiteBowl"
+    case whiteBowl      = "White Bowl"
     
-    case blueBowl       = "BlueBowl"
-    case nabe           = "Nabe"
-    case b              = "b"
-    case c              = "c"
+    case blueBowl       = "Blue Bowl"
+    case nabe           = "Nabe Pot"
+    case yellowMug      = "Yellow Mug"
+    case tamagoyakiPan  = "Tamagoyaki Pan"
     
 
     
@@ -19,9 +19,12 @@ enum EquipmentName: String, CaseIterable{
 }
 
 enum RecipeName: String, CaseIterable{
-    case recipe1    = "recipe1"
-    case recipe2    = "recipe2"
-    case recipe3    = "recipe3"
+    case friedMushroom      = "friedMushroom"
+    case friedPotato        = "friedPotato"
+    case timsum             = "timsum"
+    
+    case recipe2    = "recipe_2"
+    case recipe3    = "recipe_3"
     
     static var count: Int { return RecipeName.recipe3.hashValue + 1}
 }

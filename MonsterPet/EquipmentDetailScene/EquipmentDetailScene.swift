@@ -55,6 +55,9 @@ class EquipmentDetailScene: SKScene, Observer{
         }
         
         uiManager = EquipDetailSceneUIManager(skScene: self)
+        uiManager.currentEquipment = currentEquipment
+        uiManager.EncodeItemNameToButtons()
+        uiManager.LoadTextToLabels()
         
         coinCountLabel = BMGlyphLabel(txt: String(currenyManager.CoinCounts), fnt: BMGlyphFont(name: "TitleText"))
         coinCountLabel.setHorizontalAlignment(.right)
@@ -128,14 +131,14 @@ class EquipmentDetailScene: SKScene, Observer{
                     //When press"BuyButton"//
                     if uiManager.buyButton.contains(location!){
                         
+                        let equipmentDict           = GetEquipmentDic(by: currentEquipment.equipmentName.rawValue)
+                        let ingredientRequireDict   = equipmentDict["IngredientRequirements"] as! [String:Any]
                         
-                        let selectedEquipment = GetEquipmentDic(by: "Nabe")
-                        let IngredientRequirements = selectedEquipment["IngredientRequirements"] as! [String:Any]
-                        let selectedRecipe         = IngredientRequirements["SalmonNabe"] as! [String:Any]
-                        let coinRequired = selectedRecipe["coin"] as! Int
-                     
+                        let recipe_keys     = ["recipe_1", "recipe_2", "recipe_3"]
+                        let recipeDict      = ingredientRequireDict[recipe_keys[uiManager.currentSelectedButton.index]] as! [String:Any]
+                        let coinRequired    = recipeDict["coin"] as! Int
                         
-                        let isEnougCoin =  currenyManager.CoinCounts > coinRequired ? true : false
+                        let isEnougCoin =  currenyManager.CoinCounts >= coinRequired ? true : false
                         
                         if isEnougCoin {
                             print("buyButton was Clicked")
@@ -147,7 +150,9 @@ class EquipmentDetailScene: SKScene, Observer{
                             
                             for buttonDelegate in uiManager.buyButton.buttonDelegates!{
                                 if buttonDelegate is GotItPanel{
-                                    (buttonDelegate as! GotItPanel).gotIt_Item.texture = SKTexture(imageNamed: recipeName)
+                                    let texture = SKTexture(imageNamed: recipeName)
+                                    (buttonDelegate as! GotItPanel).gotIt_Item.texture = texture
+                                    (buttonDelegate as! GotItPanel).gotIt_Item.size = CGSize(width: texture.size().width/4, height: texture.size().height/4)
                                 }
                             }
 
@@ -253,11 +258,11 @@ class EquipmentDetailScene: SKScene, Observer{
 //            }
             
             let selectedEquipment = GetEquipmentDic(by: currentEquipment.equipmentName.rawValue)
-            let test_fromPlist = selectedEquipment["Text"] as! [String:Any]
+            let text_fromPlist = selectedEquipment["Text"] as! [String:Any]
             let keys = ["recipe1", "recipe2", "recipe3"]
         
         for i in 0...uiManager.recipeSelectButtons.count - 1{
-            let recipeName = test_fromPlist[keys[i]] as! String
+            let recipeName = text_fromPlist[keys[i]] as! String
             
             let recipeImage = SKSpriteNode(imageNamed: recipeName)
             recipeImage.setScale(0.4)

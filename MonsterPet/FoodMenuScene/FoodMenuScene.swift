@@ -104,14 +104,22 @@ class FoodMenuScene: SKScene, Observer{
 
                         
                         
-                        if slot.unpackMenuPanel == nil{
-                            slot.unpackMenuPanel = UnpackPanel(index: slot.slotIndex, skScene: self as SKScene)
-                            slot.SubscribeButton(target: slot.unpackMenuPanel)
-                            slot.SubscribeButton(target: slot.unpackMenuPanel.alphaBlackPanel)
-                        }else{
-                            slot.unpackMenuPanel.currentSKscene = self
-                        }
-                        
+//                        if slot.unpackMenuPanel == nil{
+//                            slot.unpackMenuPanel = UnpackPanel(index: slot.slotIndex, skScene: self as SKScene)
+//                            slot.SubscribeButton(target: slot.unpackMenuPanel)
+//                            slot.SubscribeButton(target: slot.unpackMenuPanel.alphaBlackPanel)
+//                        }else{
+//                            slot.unpackMenuPanel.currentSKscene = self
+//                            slot.UnsubscribeButton()
+//                            slot.SubscribeButton(target: slot.unpackMenuPanel)
+//                            slot.SubscribeButton(target: slot.unpackMenuPanel.alphaBlackPanel)
+//                        }
+
+                        slot.unpackMenuPanel = UnpackPanel(index: slot.slotIndex, skScene: self as SKScene)
+                        slot.UnsubscribeButton()
+                        slot.SubscribeButton(target: slot.unpackMenuPanel)
+                        slot.SubscribeButton(target: slot.unpackMenuPanel.alphaBlackPanel)
+
                         
                         
                         

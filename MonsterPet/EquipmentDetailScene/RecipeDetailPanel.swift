@@ -12,6 +12,7 @@ import SpriteKit
 class RecipeDetailPanel: Panel{
     
     public var currentEquipmentIndex: Int!
+    public var currentSeletedRecipe: Int!
     
     public var closeButton: Button!
     
@@ -103,14 +104,20 @@ class RecipeDetailPanel: Panel{
     
     override func UpdateLabels() {
         //have to update selected ingredient based on selected menu
-        
+        let equipmentName = EquipmentName.allCases[currentEquipmentIndex].rawValue
         //current equipment?
-        let Nabe                   = GetEquipmentDicData()["Nabe"] as! [String:Any]
+        let equipment_dic                   = GetEquipmentDicData()[equipmentName] as! [String:Any]
         //current selected Ingredient?
-        let IngredientRequirements = Nabe["IngredientRequirements"] as! [String:Any]
-        let selectedRecipe         = IngredientRequirements["SalmonNabe"] as! [String:Any]
+        let IngredientRequirements = equipment_dic["IngredientRequirements"] as! [String:Any]
         
-        let keys = ["quantity-1", "quantity-2", "quantity-3", "quantity-4"]
+        let recipe_keys = ["recipe_1", "recipe_2", "recipe_3"]
+        
+        
+        //let recipe_keys = ["ingredient_1", "ingredient_2", "ingredient_3", "ingredient_4"]
+        
+        let selectedRecipe         = IngredientRequirements[recipe_keys[currentSeletedRecipe]] as! [String:Any]
+        
+        let keys = ["quantity_1", "quantity_2", "quantity_3", "quantity_4"]
         
         for i in 0...keys.count - 1 {
             let quantity = selectedRecipe[keys[i]] as! Int

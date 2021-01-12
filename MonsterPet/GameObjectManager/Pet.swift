@@ -26,8 +26,8 @@ class Pet: SKSpriteNode, Observer, Observable{
     var petLockedTexture: SKTexture!
     var petTextures     : [SKTexture] = []
     
-    public enum Direction {
-        case NW_dir
+    public enum Direction: Int {
+        case NW_dir = 0
         case NE_dir
         case SE_dir
         case SW_dir

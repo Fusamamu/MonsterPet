@@ -77,7 +77,6 @@ class EquipmentMenuScene : SKScene{
             
             case .allClose:
                 
-                
                 if currentSelectedSlot != nil{
                     if !currentSelectedSlot.contains(location!){
                         RemoveHighlight()
@@ -93,9 +92,7 @@ class EquipmentMenuScene : SKScene{
                     }
                 }
                 
-
                 for slot in currentPage.slots{
-                    
                     if slot.isLock && slot.contains(location!){
                         slot.OnClicked(at: location!)
                         equipUImanager.state = .unpackMenuOpend
@@ -109,10 +106,24 @@ class EquipmentMenuScene : SKScene{
                         currentSelectedSlot = slot
                         currentSelectedSlot.isSelected = true
                         AddHighlight(at: currentSelectedSlot.position)
-                
+                        
+//                        if !scene!.contains(equipUImanager.dialogueLabel) {
+//                            equipUImanager.AddDialogueLabel()
+//                        }
+                        equipUImanager.AddDialogueLabel(by: currentSelectedSlot.equipmentInSlot.equipmentName.rawValue)
                     }
-  
                 }
+                
+                if equipUImanager.nextPageLeftButton.contains(location!){
+                    equipUImanager.RemoveDialogueBlock()
+                    TurnPageLeft()
+                }
+                if equipUImanager.nextPageRightButton.contains(location!) {
+                    equipUImanager.RemoveDialogueBlock()
+                    TurnPageRight()
+                }
+                
+               
             
                 
             case .unpackMenuOpend:
@@ -152,26 +163,15 @@ class EquipmentMenuScene : SKScene{
     
     @objc func swipedRight(sender:UISwipeGestureRecognizer){
         print("swipeRight")
-        if currentPageIndex != 0 {
-            currentPage.MoveOutRight()
-            currentPageIndex -= 1
-            currentPage = pages[currentPageIndex]
-            currentPage.position.x = -600
-            addChild(currentPage)
-            currentPage.MoveInRight()
-            
-            pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|2")
-
-        }
-        else {
-            print("end of page")
-        }
+        TurnPageLeft()
     }
-    
-    
     
     @objc func swipedLeft(sender:UISwipeGestureRecognizer){
         print("swipeLeft")
+        TurnPageRight()
+    }
+    
+    private func TurnPageRight(){
         if currentPageIndex < pages.count - 1{
             currentPage.MoveOutLeft()
             currentPageIndex += 1
@@ -182,7 +182,23 @@ class EquipmentMenuScene : SKScene{
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|2")
             
-   
+        }
+        else {
+            print("end of page")
+        }
+    }
+    
+    private func TurnPageLeft(){
+        if currentPageIndex != 0 {
+            currentPage.MoveOutRight()
+            currentPageIndex -= 1
+            currentPage = pages[currentPageIndex]
+            currentPage.position.x = -600
+            addChild(currentPage)
+            currentPage.MoveInRight()
+            
+            pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|2")
+
         }
         else {
             print("end of page")

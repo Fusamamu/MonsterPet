@@ -26,6 +26,8 @@ class MainScene: SKScene, GADRewardedAdDelegate {
     
     var rewardedAd: GADRewardedAd!
     
+    
+    
     override func didMove(to view: SKView) {
         
         LoadGameEnvironment()
@@ -41,7 +43,12 @@ class MainScene: SKScene, GADRewardedAdDelegate {
 
         petManager.SetCurrentScene(gameScene: self)
         packageManager.SetCurrentScene(gameScene: self)
+        
         //PetSaveDataManager.sharedInstance.LoadPetInScene()
+        
+        
+        
+        
         petManager.LoadPetData()
         petManager.LoadHeartInScene()
         packageManager.LoadPackageInScene()

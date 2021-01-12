@@ -49,12 +49,15 @@ class PetSaveDataManager{
                 petInfo.timeWhenPlaced              = CGFloat(u_pet.timeWhenPlaced)
                //  petInfo.timeWhenLeftScene   = CGFloat(u_pet.timeWhenLeftScene)
                 petInfo.isAdded                     = u_pet.isAdded
+                petInfo.direction                   = u_pet.direction.rawValue
+                petInfo.position                    = u_pet.position
+                petInfo.scale                       = u_pet.xScale
                 
                 let json    = SaveNLoadManager.sharedInstance.EncodeGameData(data: petInfo)
                 let data    = json?.data(using: .utf8)
                 let path    = "PetInScene_name_" + u_pet.petName.rawValue + ".txt"
                 
-//                save_N_load.createFileToURL(withData: data, withName: path, withSubDirectory: subDir)
+                save_N_load.createFileToURL(withData: data, withName: path, withSubDirectory: subDir)
             }
         }
     }
@@ -73,7 +76,18 @@ class PetSaveDataManager{
             if loadedPet.isAdded {
                 let petName: PetName = PetName(rawValue: loadedPet.petName)!
                 let pet = Pet(petName: petName)
+                pet.position = loadedPet.position
+                pet.setScale(loadedPet.scale)
+                pet.direction = Pet.Direction.init(rawValue: loadedPet.direction)
                 
+                pet.VisitedTime             = loadedPet.visitedCount
+                pet.isAdded                 = loadedPet.isAdded
+                pet.isFirstTime             = loadedPet.isFirstTime
+                pet.hasGivenSpecialItem     = loadedPet.hasGivenSpecialItem
+                pet.timeWhenPlaced          = CFTimeInterval(loadedPet.timeWhenPlaced)
+                
+                
+                petManager.petInScene.append(pet)
                 //should know only if the pet is added to scene or not
                 //Other data for pet should be save regularly from sigleton
                 

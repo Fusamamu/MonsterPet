@@ -3,6 +3,7 @@ import SpriteKit
 
 protocol ButtonDelegate {
     
+
     var isOpened: Bool! { get set }
     var sender: Button! { get set }
     func Invoked()
@@ -54,7 +55,7 @@ class Button: SKSpriteNode{
     
     func SubscribeButton(sender: Button, target: ButtonDelegate){
         buttonDelegates?.append(target)
-     
+    
     }
     
     func UnsubscribeButton(){
@@ -69,6 +70,14 @@ class Button: SKSpriteNode{
             }
         }
         
+    }
+    
+    func OnClicked(at location: CGPoint, index: Int){
+        if self.contains(location){
+            for delegate in buttonDelegates!{
+                    delegate.Invoked()
+            }
+        }
     }
     
 }

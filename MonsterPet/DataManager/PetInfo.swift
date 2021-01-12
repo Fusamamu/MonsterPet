@@ -23,6 +23,8 @@ struct PetInfo: Codable {
     var scale               : CGFloat
     var position            : CGPoint
     
+    var direction           : Int
+    
     init(){
         petName                 = "Nil"
         visitedCount            = 0
@@ -34,6 +36,7 @@ struct PetInfo: Codable {
         
         scale                   = 1
         position                = CGPoint(x: 0, y: 0)
+        direction               = 0
     }
     
 }

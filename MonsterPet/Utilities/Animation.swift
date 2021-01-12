@@ -25,9 +25,6 @@ class Animation{
         
     }
     
-    
-    
-    
     public func GetBuiltFrames(from atlasName: String) -> [SKTexture]{
         textureAtlas = SKTextureAtlas(named: atlasName)
         numberImages = textureAtlas.textureNames.count
