@@ -30,6 +30,9 @@ class MainScene: SKScene, GADRewardedAdDelegate {
     
     override func didMove(to view: SKView) {
         
+        //LoadUnpack State//
+        UnpackStateDataManager.sharedInstance.LoadUnpackState()
+        
         LoadGameEnvironment()
 
         UI_Manager      = MainSceneUIManager     (skScene: self)

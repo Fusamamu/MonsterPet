@@ -120,6 +120,7 @@
 		AEC82129247BD2DC0077E57D /* UiBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC82128247BD2DC0077E57D /* UiBuilder.swift */; };
 		AEC8212B247BD5A10077E57D /* BaseUiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC8212A247BD5A10077E57D /* BaseUiManager.swift */; };
 		AECA3EA82567C0FE0048AEC5 /* BonusPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */; };
+		AED8A54025DB93E500FB9A75 /* UnpackStateDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED8A53F25DB93E500FB9A75 /* UnpackStateDataManager.swift */; };
 		AEE1261524E522A5006C7535 /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */; };
 		AEE1261724E52442006C7535 /* Pen Click Sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEE1261624E52442006C7535 /* Pen Click Sfx.wav */; };
 		AEE1EEB92575F43400C53E64 /* CoreObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE1EEB82575F43400C53E64 /* CoreObjectManager.swift */; };
@@ -273,6 +274,7 @@
 		AEC82128247BD2DC0077E57D /* UiBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiBuilder.swift; sourceTree = "<group>"; };
 		AEC8212A247BD5A10077E57D /* BaseUiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUiManager.swift; sourceTree = "<group>"; };
 		AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusPanel.swift; sourceTree = "<group>"; };
+		AED8A53F25DB93E500FB9A75 /* UnpackStateDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnpackStateDataManager.swift; sourceTree = "<group>"; };
 		AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bensound-ukulele.mp3"; path = "../../../GameSounds/bensound-ukulele.mp3"; sourceTree = "<group>"; };
 		AEE1261624E52442006C7535 /* Pen Click Sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Pen Click Sfx.wav"; path = "../../../GameSounds/Pen Click Sfx.wav"; sourceTree = "<group>"; };
 		AEE1EEB82575F43400C53E64 /* CoreObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreObjectManager.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				AE0AB0632557CB9C0018D314 /* PetSaveDataManager.swift */,
+				AED8A53F25DB93E500FB9A75 /* UnpackStateDataManager.swift */,
 				AE0AB06E2557D1AA0018D314 /* PetInfo.swift */,
 				AE0AB0732557D5E90018D314 /* ItemInfo.swift */,
 				AEC3B5D725721E470048A4B5 /* SaveNLoadManager.swift */,
@@ -986,6 +989,7 @@
 				AE7EC62824937A7500E70A28 /* TextureManager.swift in Sources */,
 				AE6831B92420A03900D8A05A /* Slot.swift in Sources */,
 				AE40560B2481139D002F8450 /* PetInfoSlot.swift in Sources */,
+				AED8A54025DB93E500FB9A75 /* UnpackStateDataManager.swift in Sources */,
 				AE4055FD24810BE4002F8450 /* PetInfoPage.swift in Sources */,
 				AE7C064424C1A0DB00FF1079 /* RecipeDetailPanel.swift in Sources */,
 				AE6E8CBF24AE35110075370B /* UnpackPanel.swift in Sources */,

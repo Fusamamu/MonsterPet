@@ -486,7 +486,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>u</key>
+	<key>cheeseCake</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -510,7 +510,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>v</key>
+	<key>Roll Bread</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -534,7 +534,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>w</key>
+	<key>Short Cake</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -558,7 +558,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>y</key>
+	<key>Butter</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -582,7 +582,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>z</key>
+	<key>Seasoning</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.
@@ -606,7 +606,7 @@ People eat everyday</string>
 		<key>CoinRequirement</key>
 		<string>25</string>
 	</dict>
-	<key>aa</key>
+	<key>Olive Oil</key>
 	<dict>
 		<key>DialogueText</key>
 		<string>  Just a Cornflake.

@@ -45,6 +45,14 @@ class FoodMenuScene: SKScene, Observer{
         currentPage = itemPageManager.pages[currentPageIndex]
         addChild(currentPage)
         
+        //Load Slot Unpack State from SaveData//
+        for page in itemPageManager.pages {
+            for slot in page.slots{
+                slot.itemInSlot.isUnlock = itemManager.slotUpdateUnpackState[slot.itemInSlot.itemIndex]!
+            }
+        }
+        
+        
         pageCountLabel.position.x = uiManager.mid_X
         pageCountLabel.position.y += 30
         //pageCountLabel.setGlyphText("\(String(describing: currentPageIndex))|\(String(describing: maxPageNumber))")

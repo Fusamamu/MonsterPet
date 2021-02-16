@@ -87,14 +87,8 @@ class EquipDetailSceneUIManager: BaseUIManager{
         InitializeLabels()
         SetUpButtonDelegation()
         
-
-        LoadQuantityCount()
         
         SetUILayers()
-        
-
-        
-        
     }
     
     func UpdateTouch(at location: CGPoint){
@@ -157,13 +151,11 @@ class EquipDetailSceneUIManager: BaseUIManager{
             }
     }
     
-    
     private func SetUpButtonDelegation(){
         gotItPanel = GotItPanel()
         gotItPanel.currentSKScene = currentSKScene
         buyButton.SubscribeButton(target: gotItPanel)
     }
-    
     
     private func InitializeBasicUIElements(){
         currencyIcon    = uiElementBuilder.Build(seletedUiIcon: .coin)
@@ -224,17 +216,11 @@ class EquipDetailSceneUIManager: BaseUIManager{
             selectionButton.position.y -= 180
             selectionButton.position.y += CGFloat(i) * selectionButton.size.width/3
             selectionButton.zPosition = 3
-           //selectionButton.SubscribeButton(target: requirementPanel)
             selectionButton.SubscribeButton(sender: selectionButton, target: requirementPanel)
             selectionButton.SubscribeButton(target: alphaBlackPanel)
             
-            
-            
-    
-
             currentSKScene.addChild(selectionButton)
             recipeSelectButtons.append(selectionButton)
-
         }
     }
     
@@ -275,7 +261,6 @@ class EquipDetailSceneUIManager: BaseUIManager{
         }
     }
     
-    
     public func LoadTextToLabels(){
         let path                = Bundle.main.path(forResource: "GameData", ofType: "plist")
         let dict:NSDictionary   = NSDictionary(contentsOfFile: path!)!
@@ -283,63 +268,53 @@ class EquipDetailSceneUIManager: BaseUIManager{
     
         let selectedEuipment       = equipmentDict[currentEquipment.equipmentName.rawValue] as! [String:Any]
 
-
         let text = selectedEuipment["Text"] as! [String:Any]
         let keys = ["Description", "recipe1", "recipe2", "recipe3"]
 
         var i = 0;
         for key in keys{
-
             let value = text[key] as! String
-
             recipeLabels[i].setGlyphText(value)
+            i += 1
+        }
+    }
+    
+    public func LoadQuantityCount(){
+        let path                = Bundle.main.path(forResource: "GameData", ofType: "plist")
+        let dict:NSDictionary   = NSDictionary(contentsOfFile: path!)!
+        let equipmentDict       = dict.object(forKey: "Equipments") as! [String:Any]
+        let selectedEuipment    = equipmentDict[currentEquipment.equipmentName.rawValue] as! [String:Any]
+        let text_dict           = selectedEuipment["Text"] as! [String:Any]
 
-
+        let keys = ["recipe1", "recipe2", "recipe3"]
+        
+        var i:Int = 0
+        for key in keys{
+            let recipeCount = equipmentManager.RecipeCountInventory[RecipeName(rawValue: text_dict[key] as! String)!]
+            quantityLabels[i].setGlyphText("x" + String(recipeCount!))
             i += 1
         }
         
         
-    }
-    
-    private func LoadQuantityCount(){
-//        let ironPan         = equipmentData["IronPan"] as! [String:Any]
-//        let keys            = ["recipe1", "recipe2", "recipe3"]
-//        let recipeInventory = ironPan["RecipeInventory"] as! [String:Any]
-//
-////        for i in 0...2{
-//            quantityLabels[i].setGlyphText("x\(String(describing: recipeInventory[keys[i]]!))")
-//        }
-        
-        for i in 0...2{
-            
-            let recipeCount = equipmentManager.RecipeCountInventory[RecipeName.allCases[i]]
-            
-            quantityLabels[i].setGlyphText("x" + String(recipeCount!))
-        }
-    }
-    
-    
-    public func UpdateQuantityCount(){
 //        for i in 0...2{
 //
 //            let recipeCount = equipmentManager.RecipeCountInventory[RecipeName.allCases[i]]
 //
 //            quantityLabels[i].setGlyphText("x" + String(recipeCount!))
 //        }
-        
+    }
+    
+    
+    public func UpdateQuantityCount(){
         let updateRecipeCount = equipmentManager.RecipeCountInventory[RecipeName(rawValue: currentSelectedButton.itemName)!]
         quantityLabels[currentSelectedButton.index].setGlyphText("x" + String(updateRecipeCount!))
     }
     
     public func EncodeItemNameToButtons(){
-//        let ironPan = equipmentData["Iron Pan"] as! [String:Any]
-//        let keys    = ["recipe1", "recipe2", "recipe3"]
-//        let text    = ironPan["Text"] as! [String:Any]
         
         let selectedEquipment_Dic = equipmentData[currentEquipment.equipmentName.rawValue] as! [String:Any]
         let text                  = selectedEquipment_Dic["Text"] as! [String:Any]
         let keys    = ["recipe1", "recipe2", "recipe3"]
-        
         
         for i in 0...2{
             let recipeName = text[keys[i]] as! String
@@ -354,7 +329,6 @@ class EquipDetailSceneUIManager: BaseUIManager{
         return equipmentDict
     }
     
-    
     private func AddHightLightSelectionButton(at location: CGPoint){
           
         if !currentSKScene.contains(selectionHighLight){
@@ -368,7 +342,6 @@ class EquipDetailSceneUIManager: BaseUIManager{
         let loop        = SKAction.sequence([scaleUp,scaleDown])
         
         selectionHighLight.run(SKAction.repeatForever(loop))
-
     }
     
     private func RemoveHighLightSelection(){

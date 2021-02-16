@@ -62,6 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PetSaveDataManager.sharedInstance.SavePetInfo()
         
+        UnpackStateDataManager.sharedInstance.SaveUnpackState()
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

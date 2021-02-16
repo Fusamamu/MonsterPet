@@ -58,6 +58,7 @@ class EquipmentDetailScene: SKScene, Observer{
         uiManager.currentEquipment = currentEquipment
         uiManager.EncodeItemNameToButtons()
         uiManager.LoadTextToLabels()
+        uiManager.LoadQuantityCount()
         
         coinCountLabel = BMGlyphLabel(txt: String(currenyManager.CoinCounts), fnt: BMGlyphFont(name: "TitleText"))
         coinCountLabel.setHorizontalAlignment(.right)

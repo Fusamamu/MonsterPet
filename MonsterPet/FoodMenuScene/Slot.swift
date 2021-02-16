@@ -81,7 +81,7 @@ class Slot: SKSpriteNode, Observer{
         itemInSlot.zPosition = 5
         
         itemInSlot.AddObserver(observer: self)
-        itemInSlot.isUnlock = itemManager.slotUpdateUnpackState[slotIndex]!
+        itemInSlot.isUnlock = false
     }
     
     func SetLockImage(by index: Int){
@@ -135,6 +135,8 @@ class Slot: SKSpriteNode, Observer{
                 currentItemInSlot = itemInSlot
                 addChild(itemInSlot)
                 addChild(countLabel)
+        
+                
             }
             
         }else{

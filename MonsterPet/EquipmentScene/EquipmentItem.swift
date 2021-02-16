@@ -23,6 +23,30 @@ enum RecipeName: String, CaseIterable{
     case friedPotato        = "friedPotato"
     case timsum             = "timsum"
     
+    case fruits             = "Fruits"
+    case barbecue           = "Barbecue"
+    case cheeseBurger       = "Cheese Burger"
+    
+    case onigiriBento       = "onigiriBento"
+    case ricePickleBento    = "ricePickleBento"
+    case tempureBento       = "tempuraBento"
+    
+    case anmitsu            = "Anmitsu"
+    case matchaIcecream     = "Matcha Ice Cream"
+    case greenTea           = "Green Tea"
+    
+    case matchaSoftcream    = "Matcha Soft Cream"
+    case snowCone           = "Snow Cone"
+    case bibimbap           = "Bibimbap"
+    
+    case gimjiNabe          = "gimjiNabe"
+    case salmonNabe         = "salmonNabe"
+    
+    case blackCoffee        = "Black Coffee"
+    case lemonade           = "Lemonade"
+    case softCream          = "Soft Cream"
+    
+    
     case recipe2    = "recipe_2"
     case recipe3    = "recipe_3"
     

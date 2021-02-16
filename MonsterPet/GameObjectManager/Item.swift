@@ -29,14 +29,14 @@ enum ItemName: String, CaseIterable{
     ////////////////////////////////////
     case mushroom               = "Mushroom"
     case milk                   = "Milk"
-    case u = "u"
+    case cheeseCake             = "cheeseCake"
     
-    case v = "v"
-    case w = "w"
-    case y = "y"
+    case rollBread              = "Roll Bread"
+    case shortCake              = "Short Cake"
+    case butter                 = "Butter"
     
-    case z  = "z"
-    case aa = "aa"
+    case seasoning              = "Seasoning"
+    case oliveOil               = "Olive Oil"
     case bb = "bb"
     ////////////////////////////////////
     

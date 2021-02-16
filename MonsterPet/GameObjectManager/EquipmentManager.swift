@@ -81,10 +81,10 @@ class EquipmentManager: Observable{
     }
     
     func InitializeRecipeCountInventory(){
-           let allRecipeTypeCount = 3
+        let allRecipeTypeCount = RecipeName.allCases.count
            for index in 0...allRecipeTypeCount - 1{
 
-                RecipeCountInventory[RecipeName.allCases[index]] = 3
+                RecipeCountInventory[RecipeName.allCases[index]] = 0
            }
        }
     
