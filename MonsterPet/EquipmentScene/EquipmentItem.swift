@@ -57,14 +57,21 @@ enum RecipeName: String, CaseIterable{
 
 class Equipment: SKSpriteNode, Observable, ItemProtocol{
     
+    //ItemName added to conform ItemProtocol//
     var itemName        : ItemName!
     var itemImage       : SKTexture!
-   
-    
     var equipmentIndex  : Int!
+    
+
     var equipmentName   : EquipmentName!
     var equipmentImage  : SKTexture!
     
+    var recipeName      : RecipeName!
+    var recipeImage     : SKTexture!
+    
+    var eattenByPet     : Pet!
+    
+    var isBeingEaten: Bool  = false
     var isUnlock: Bool      = true   { didSet { NotifyAllObservers() } }
     var count: Int = 10              { didSet { NotifyAllObservers() } }
     var price: Int = 10

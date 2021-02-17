@@ -59,6 +59,7 @@ class Pet: SKSpriteNode, Observer, Observable{
     
     public var favoriteItem    : [ItemName] = []
     public var nowEatingItem   : Item!
+    public var nowEatingEquipment: Equipment!
     
     public var VisitedTime  : Int!
     public var isFirstTime  : Bool!

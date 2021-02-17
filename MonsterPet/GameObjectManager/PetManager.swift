@@ -69,51 +69,68 @@ class PetManager: Observable{
             eatingItem.isBeingEaten = true
             pet.nowEatingItem = eatingItem
             
-            var pointToPlacePet: CGPoint!
+            SortPetDirection_N_AddToScene(pet: pet, at: point)
+    }
+    
+    func Call(_ pet: Pet, to point: CGPoint, for eatingEquipment: Equipment, elapsedTime: CFTimeInterval){
+        
+            guard elapsedTime > pet.waitTime else { return }
+            guard !pet.isAdded else { return }
             
-            for index in 0...3{
-                if placeHolderManager.surroundingPointData[point]![index]{
-                    
-                    if index == 0 {
-                        pointToPlacePet = point + placeHolderManager.NW_point
-                        pet.direction = .NW_dir
-                        pet.currentPointInPointData = point
-                        pet.currentIndexSurroundingPointData = 0
-                        placeHolderManager.surroundingPointData[point]![index] = false
-                        break
-                    }
-                    if index == 1 {
-                        pointToPlacePet = point + placeHolderManager.NE_point
-                        pet.direction = .NE_dir
-                        pet.currentPointInPointData = point
-                        pet.currentIndexSurroundingPointData = 1
-                        placeHolderManager.surroundingPointData[point]![index] = false
-                        break
-                    }
-                    if index == 2 {
-                        pointToPlacePet = point + placeHolderManager.SE_point
-                        pet.direction = .SE_dir
-                        pet.currentPointInPointData = point
-                        pet.currentIndexSurroundingPointData = 2
-                        placeHolderManager.surroundingPointData[point]![index] = false
-                        break
-                    }
-                    if index == 3 {
-                        pointToPlacePet = point + placeHolderManager.SW_point
-                        pet.direction = .SW_dir
-                        pet.currentPointInPointData = point
-                        pet.currentIndexSurroundingPointData = 3
-                        placeHolderManager.surroundingPointData[point]![index] = false
-                        break
-                    }
+            eatingEquipment.eattenByPet = pet
+            eatingEquipment.isBeingEaten = true
+            pet.nowEatingEquipment = eatingEquipment
+            
+            SortPetDirection_N_AddToScene(pet: pet, at: point)
+    }
+    
+    func SortPetDirection_N_AddToScene(pet: Pet, at point: CGPoint){
+        
+        var pointToPlacePet: CGPoint!
+        
+        for index in 0...3{
+            if placeHolderManager.surroundingPointData[point]![index]{
+                
+                if index == 0 {
+                    pointToPlacePet = point + placeHolderManager.NW_point
+                    pet.direction = .NW_dir
+                    pet.currentPointInPointData = point
+                    pet.currentIndexSurroundingPointData = 0
+                    placeHolderManager.surroundingPointData[point]![index] = false
+                    break
+                }
+                if index == 1 {
+                    pointToPlacePet = point + placeHolderManager.NE_point
+                    pet.direction = .NE_dir
+                    pet.currentPointInPointData = point
+                    pet.currentIndexSurroundingPointData = 1
+                    placeHolderManager.surroundingPointData[point]![index] = false
+                    break
+                }
+                if index == 2 {
+                    pointToPlacePet = point + placeHolderManager.SE_point
+                    pet.direction = .SE_dir
+                    pet.currentPointInPointData = point
+                    pet.currentIndexSurroundingPointData = 2
+                    placeHolderManager.surroundingPointData[point]![index] = false
+                    break
+                }
+                if index == 3 {
+                    pointToPlacePet = point + placeHolderManager.SW_point
+                    pet.direction = .SW_dir
+                    pet.currentPointInPointData = point
+                    pet.currentIndexSurroundingPointData = 3
+                    placeHolderManager.surroundingPointData[point]![index] = false
+                    break
                 }
             }
-            
-            currentScene.addChild(pet)
-            pet.BeingCalled(to: pointToPlacePet)
-            (currentScene as! MainScene).SortObjectsLayerAfterAdded()
-            
-            petInScene.append(pet)
+        }
+        
+        currentScene.addChild(pet)
+        pet.BeingCalled(to: pointToPlacePet)
+        (currentScene as! MainScene).SortObjectsLayerAfterAdded()
+        
+        petInScene.append(pet)
     }
 
     func Remove(pet: Pet, at_Index index: Int, at elapsedTime:CFTimeInterval){

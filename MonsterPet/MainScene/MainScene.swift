@@ -31,7 +31,7 @@ class MainScene: SKScene, GADRewardedAdDelegate {
     override func didMove(to view: SKView) {
         
         //LoadUnpack State//
-        UnpackStateDataManager.sharedInstance.LoadUnpackState()
+        InventoryDataManager.sharedInstance.LoadUnpackState()
         
         LoadGameEnvironment()
 
@@ -212,9 +212,10 @@ class MainScene: SKScene, GADRewardedAdDelegate {
                     if equipmentManager.tempEquipmentHolder != nil{
                         
                         let equipment = EquipmentManager.sharedInstance.tempEquipmentHolder!
-                        equipment.setScale(0.1)
-                        equipment.zPosition = 3
                         equipment.position = arrow!.position
+                        equipment.zPosition = 3
+                        equipment.setScale(0.1)
+                        equipment.timeWhenPlaced = Date.timeIntervalSinceReferenceDate
                         addChild(equipment)
                         
                         equipmentManager.StoreEquipmentData(equipment: equipment, at: arrow!.position)
@@ -231,6 +232,7 @@ class MainScene: SKScene, GADRewardedAdDelegate {
 
         if timeManager.timePassed(Target: 100){
             CORE_MG.ScanObjects(at: Date.timeIntervalSinceReferenceDate)
+            
 //            petManager.ScanPets(at: Date.timeIntervalSinceReferenceDate)
 //            petManager.ScanItems(at: Date.timeIntervalSinceReferenceDate)
         }

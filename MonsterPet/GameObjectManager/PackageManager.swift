@@ -13,7 +13,8 @@ class PackageManager: Observable{
     
     static let sharedInstance = PackageManager()
     
-    let itemManager: ItemManager = .sharedInstance
+    let itemManager: ItemManager                = .sharedInstance
+    let equipmentManager: EquipmentManager      = .sharedInstance
     
     var observers: [Observer] = []
     
@@ -76,6 +77,7 @@ class PackageManager: Observable{
     func Remove(package: Package){
         
         self.itemManager.itemData[package.position]!.isPlacable = true
+        self.equipmentManager.equipmentData[package.position]!.isPlacable = true
         
         package.texture = package.openedImage
         

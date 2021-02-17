@@ -28,6 +28,16 @@ class EquipmentManager: Observable{
         
     }
     
+    func Remove(equipment: Equipment, at elapsedTime: CFTimeInterval){
+        
+        guard elapsedTime > equipment.timeOnScreen else { return }
+        
+        equipment.run(SKAction.fadeOut(withDuration: 1)){
+            self.equipmentData[equipment.position]?.equipment = nil
+            equipment.removeFromParent()
+        }
+    }
+    
     func AddObserver(observer: Observer) {
         observers.append(observer)
     }

@@ -31,6 +31,7 @@ class CoreObjectManager{
     public func ScanObjects(at currentTime: CFTimeInterval){
         ScanItems(at: currentTime)
         ScanPets(at: currentTime)
+        ScanEquipment(at: currentTime)
     }
     
     public func UpdateTouch(at location: CGPoint){
@@ -48,7 +49,7 @@ class CoreObjectManager{
         
         for pet in petMG.petInStore.values{
             
-            if pet!.timeWhenLeftScene == nil{
+            if pet!.timeWhenLeftScene == 0{
                 if !(pet!.isAdded){
                     petMG.Call(pet!,to: point,for: checkingItem, elapsedTime: elapsedTime)
                     break;
@@ -71,6 +72,38 @@ class CoreObjectManager{
         
     }
     
+    func ScanEquipment(at currentTime: CFTimeInterval){
+        let point = placeHolderMG.pointData[Int.random(in: 0...4)]
+        guard let checkingEquipment = equipmentMG.equipmentData[point]?.equipment else { return }
+        
+        let elapsedTime = currentTime - checkingEquipment.timeWhenPlaced
+        
+        
+        for pet in petMG.petInStore.values{
+            
+            if pet!.timeWhenLeftScene == 0{
+                if !(pet!.isAdded){
+                    petMG.Call(pet!,to: point,for: checkingEquipment, elapsedTime: elapsedTime)
+                    break;
+                }
+            }else{
+                let nextCallelapsedTime = currentTime - pet!.timeWhenLeftScene
+            
+                if nextCallelapsedTime > pet!.waitTime + 10{
+                    if !(pet!.isAdded) {
+                        petMG.Call(pet!,to: point,for: checkingEquipment, elapsedTime: elapsedTime)
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if !(checkingEquipment.isBeingEaten) && elapsedTime > checkingEquipment.timeOnScreen {
+           // petMG.Remove(item: checkingItem, at: elapsedTime)
+            equipmentMG.Remove(equipment: checkingEquipment, at: elapsedTime)
+        }
+    }
+    
     
     
     func ScanPets(at currentTime: CFTimeInterval){
@@ -89,13 +122,22 @@ class CoreObjectManager{
                 checkingPet.AddFloatingHeartPopUp(waitTime: elapsedTime)
 
 
-
-                checkingPet.DropItemPackage(at: checkingPet.nowEatingItem.position, whenTimePassed: elapsedTime)
+                if checkingPet.nowEatingItem != nil {
+                    checkingPet.DropItemPackage(at: checkingPet.nowEatingItem.position, whenTimePassed: elapsedTime)
+                    petMG.Remove(item: checkingPet.nowEatingItem, at: elapsedTime)
+                }
+                
+                if checkingPet.nowEatingEquipment != nil {
+                    checkingPet.DropItemPackage(at: checkingPet.nowEatingEquipment.position, whenTimePassed: elapsedTime)
+                    equipmentMG.Remove(equipment: checkingPet.nowEatingEquipment, at: elapsedTime)
+                }
+               
+                petMG.Remove(pet: checkingPet, at_Index: i, at: elapsedTime)
+               
                 //packageMG.packageInScene.append(checkingPet.dropPackage)
 
 
-                petMG.Remove(pet: checkingPet, at_Index: i, at: elapsedTime)
-                petMG.Remove(item: checkingPet.nowEatingItem, at: elapsedTime)
+                
             }
         }
         ///}

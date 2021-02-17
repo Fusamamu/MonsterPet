@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PetSaveDataManager.sharedInstance.SavePetInfo()
         
-        UnpackStateDataManager.sharedInstance.SaveUnpackState()
+        InventoryDataManager.sharedInstance.SaveUnpackState()
         
     }
 
