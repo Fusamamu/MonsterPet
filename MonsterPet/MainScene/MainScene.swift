@@ -159,8 +159,10 @@ class MainScene: SKScene, GADRewardedAdDelegate {
 //        }
         
         
-        //        let click = SKAudioNode(fileNamed: "Pen Click Sfx.wav")
-        //        addChild(click)
+//                let click = SKAudioNode(fileNamed: "Pen Click Sfx.wav")
+//                addChild(click)
+        
+        
 
         let touch       = touches.first
         let location    = touch?.location(in: self)

@@ -48,6 +48,12 @@
 		AE28B73D240B7B6900A49B23 /* MonsterPetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28B73C240B7B6900A49B23 /* MonsterPetUITests.swift */; };
 		AE28B74B240B7E1400A49B23 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28B74A240B7E1400A49B23 /* Button.swift */; };
 		AE28B74D240B82DE00A49B23 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28B74C240B82DE00A49B23 /* Panel.swift */; };
+		AE35CE6C25DE255C000DFC8F /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35CE6B25DE255C000DFC8F /* SoundManager.swift */; };
+		AE35CE7125DE2BD9000DFC8F /* mixkit-fairy-arcade-sparkle-866.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE35CE7025DE2BD9000DFC8F /* mixkit-fairy-arcade-sparkle-866.wav */; };
+		AE35CE7625DE3557000DFC8F /* mixkit-paper-slide-1530.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE35CE7525DE3557000DFC8F /* mixkit-paper-slide-1530.wav */; };
+		AE35CE7B25DE37D0000DFC8F /* mixkit-click-error-1110.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE35CE7A25DE37D0000DFC8F /* mixkit-click-error-1110.wav */; };
+		AE35CE8025DE3972000DFC8F /* mixkit-cool-interface-click-tone-2568.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE35CE7F25DE3972000DFC8F /* mixkit-cool-interface-click-tone-2568.wav */; };
+		AE35CE8525DE3EF5000DFC8F /* mixkit-magic-bubbles-spell-2999.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE35CE8425DE3EF5000DFC8F /* mixkit-magic-bubbles-spell-2999.wav */; };
 		AE3752652463E5360020B80F /* FoodMenuUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3752642463E5360020B80F /* FoodMenuUIManager.swift */; };
 		AE38F35D244EBDCE001F5E25 /* EquipmentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE38F35C244EBDCE001F5E25 /* EquipmentItem.swift */; };
 		AE4055FD24810BE4002F8450 /* PetInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4055FC24810BE4002F8450 /* PetInfoPage.swift */; };
@@ -202,6 +208,12 @@
 		AE28B73E240B7B6900A49B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE28B74A240B7E1400A49B23 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		AE28B74C240B82DE00A49B23 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		AE35CE6B25DE255C000DFC8F /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		AE35CE7025DE2BD9000DFC8F /* mixkit-fairy-arcade-sparkle-866.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-fairy-arcade-sparkle-866.wav"; sourceTree = "<group>"; };
+		AE35CE7525DE3557000DFC8F /* mixkit-paper-slide-1530.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-paper-slide-1530.wav"; sourceTree = "<group>"; };
+		AE35CE7A25DE37D0000DFC8F /* mixkit-click-error-1110.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-click-error-1110.wav"; sourceTree = "<group>"; };
+		AE35CE7F25DE3972000DFC8F /* mixkit-cool-interface-click-tone-2568.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-cool-interface-click-tone-2568.wav"; sourceTree = "<group>"; };
+		AE35CE8425DE3EF5000DFC8F /* mixkit-magic-bubbles-spell-2999.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-magic-bubbles-spell-2999.wav"; sourceTree = "<group>"; };
 		AE3752642463E5360020B80F /* FoodMenuUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenuUIManager.swift; sourceTree = "<group>"; };
 		AE38F35C244EBDCE001F5E25 /* EquipmentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentItem.swift; sourceTree = "<group>"; };
 		AE4055FC24810BE4002F8450 /* PetInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoPage.swift; sourceTree = "<group>"; };
@@ -414,6 +426,7 @@
 				AE95327E2484F1BA00370C8D /* EquipmentManager.swift */,
 				AE9532802484F40700370C8D /* PlaceHolderManager.swift */,
 				AEE1EEB82575F43400C53E64 /* CoreObjectManager.swift */,
+				AE35CE6B25DE255C000DFC8F /* SoundManager.swift */,
 			);
 			path = GameObjectManager;
 			sourceTree = "<group>";
@@ -691,6 +704,11 @@
 			isa = PBXGroup;
 			children = (
 				AEE1261624E52442006C7535 /* Pen Click Sfx.wav */,
+				AE35CE7025DE2BD9000DFC8F /* mixkit-fairy-arcade-sparkle-866.wav */,
+				AE35CE7A25DE37D0000DFC8F /* mixkit-click-error-1110.wav */,
+				AE35CE8425DE3EF5000DFC8F /* mixkit-magic-bubbles-spell-2999.wav */,
+				AE35CE7F25DE3972000DFC8F /* mixkit-cool-interface-click-tone-2568.wav */,
+				AE35CE7525DE3557000DFC8F /* mixkit-paper-slide-1530.wav */,
 				AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */,
 			);
 			path = GameSounds;
@@ -813,27 +831,32 @@
 				AE28B727240B7B6900A49B23 /* LaunchScreen.storyboard in Resources */,
 				AE1EAEF725657AEE0035A849 /* peng.atlas in Resources */,
 				AE95327D2484C95600370C8D /* ChalkboardRegular.atlas in Resources */,
+				AE35CE7625DE3557000DFC8F /* mixkit-paper-slide-1530.wav in Resources */,
 				AEE1261724E52442006C7535 /* Pen Click Sfx.wav in Resources */,
 				AE0E4F1224B97A5A00AB26FC /* GameData.plist in Resources */,
 				AE1EAEEF25657ADA0035A849 /* hd@3x.xml in Resources */,
 				AE4FB6D42567BFAA00D08EF5 /* getBonusPanel.atlas in Resources */,
 				AE92F50D24D1635500904A73 /* ItemData.plist in Resources */,
 				AE28B71B240B7B6800A49B23 /* Actions.sks in Resources */,
+				AE35CE7125DE2BD9000DFC8F /* mixkit-fairy-arcade-sparkle-866.wav in Resources */,
 				AE4F3C3A24D47BC7006A2BAB /* gotItAffect.atlas in Resources */,
 				AE1EAEF925657AEE0035A849 /* peng.xml in Resources */,
 				AE1EAEEE25657ADA0035A849 /* hd@2x.xml in Resources */,
+				AE35CE8025DE3972000DFC8F /* mixkit-cool-interface-click-tone-2568.wav in Resources */,
 				AE4746E5243D971600BDD3D2 /* petText.atlas in Resources */,
 				AEE1261524E522A5006C7535 /* bensound-ukulele.mp3 in Resources */,
 				AE95327A2484C95200370C8D /* ChalkboardRegular@2x.xml in Resources */,
 				AE1EAEF825657AEE0035A849 /* peng@4x.xml in Resources */,
 				AE87764A2449669B00779C34 /* MainScene.sks in Resources */,
 				AE94B92C24CC0C050010441E /* flare.sks in Resources */,
+				AE35CE7B25DE37D0000DFC8F /* mixkit-click-error-1110.wav in Resources */,
 				AE1EAEED25657ADA0035A849 /* hd.atlas in Resources */,
 				AE9532772484C94300370C8D /* ChalkboardRegular.xml in Resources */,
 				AE00CA4D244895EE005B7342 /* Smoke.atlas in Resources */,
 				AEA9AB4F24D7D6C100922166 /* TitleText@2x.xml in Resources */,
 				AE4F3C3824D47B98006A2BAB /* coin.atlas in Resources */,
 				AEA9AB5024D7D6C100922166 /* TitleText.atlas in Resources */,
+				AE35CE8525DE3EF5000DFC8F /* mixkit-magic-bubbles-spell-2999.wav in Resources */,
 				AEA9AB4E24D7D6C100922166 /* TitleText@3x.xml in Resources */,
 				AE4746E7243D973500BDD3D2 /* petText@2x.xml in Resources */,
 				AE94B92824CC0B9E0010441E /* Assets.xcassets in Resources */,
@@ -996,6 +1019,7 @@
 				AEF8B1272410393F00C6B690 /* CurrencyManager.swift in Sources */,
 				AE4055FF24810D20002F8450 /* HeartShopScene.swift in Sources */,
 				AEC8212B247BD5A10077E57D /* BaseUiManager.swift in Sources */,
+				AE35CE6C25DE255C000DFC8F /* SoundManager.swift in Sources */,
 				AE38F35D244EBDCE001F5E25 /* EquipmentItem.swift in Sources */,
 				AE6D424124CFDCA7002BB3E4 /* InventoryManager.swift in Sources */,
 				AE279FCC248011170037DAAE /* LabelBuilder.swift in Sources */,

@@ -15,5 +15,7 @@ class WarnPanel: Panel{
         currentSKscene.addChild(self)
         isOpened = true
         self.run(SKEase.scale(easeFunction: .curveTypeExpo, easeType: .easeTypeInOut, time: 0.1, from: 0.2, to: 0.13))
+        
+        run(SoundManager.sharedInstanced.Play(by: .clickError))
     }
 }

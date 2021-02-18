@@ -190,6 +190,8 @@ class PetManager: Observable{
                 
                 
                 currencyManager.HeartCounts += pet!.givenHeart
+                
+                currentScene.run(SoundManager.sharedInstanced.Play(by: .heart))
             }
         }
     }

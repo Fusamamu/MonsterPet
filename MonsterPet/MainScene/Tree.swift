@@ -89,6 +89,8 @@ class Tree: SKSpriteNode{
                 
                 tapArea.contains(convertedLoc){
                 
+                run(SoundManager.sharedInstanced.Play(by: SoundManager.sharedInstanced.coin))
+                
                 coinCollected.collectedCount_s[index]  += 1
                 
                 PopUpCoin(at: self.position)

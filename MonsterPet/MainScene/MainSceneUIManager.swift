@@ -167,12 +167,15 @@ class MainSceneUIManager : BaseUIManager{
             case .allClosed:
                 
                 if menuButton != nil && menuButton.contains(location){
+                    currentSKScene.run(SoundManager.sharedInstanced.Play(by: .interfaceClick))
                     menuButton.OnClicked(at: location)
                     uiState = .menuPanelOpened
                 }
             
                 if petInfoButton != nil && petInfoButton.contains(location){
-                    currentSKScene.view?.presentScene(sceneBuilder.Create(selectedScene: .petInfoScene))
+                    currentSKScene.run(SoundManager.sharedInstanced.Play(by: .interfaceClick)){
+                        self.currentSKScene.view?.presentScene(self.sceneBuilder.Create(selectedScene: .petInfoScene))
+                    }
                 }
                 
                 

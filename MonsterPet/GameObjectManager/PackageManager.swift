@@ -13,15 +13,12 @@ class PackageManager: Observable{
     
     static let sharedInstance = PackageManager()
     
-    let itemManager: ItemManager                = .sharedInstance
-    let equipmentManager: EquipmentManager      = .sharedInstance
+    let itemManager        : ItemManager        = .sharedInstance
+    let equipmentManager   : EquipmentManager   = .sharedInstance
     
-    var observers: [Observer] = []
-    
-    public var currentScene: SKScene!
-    
-//public var packageInScene: [Package?] = []
-    public var packageInScaneData: [CGPoint: Package?] = [:]
+    public var observers            : [Observer] = []
+    public var currentScene         : SKScene!
+    public var packageInScaneData   : [CGPoint: Package?] = [:]
     
     private init(){
         packageInScaneData = Dictionary(minimumCapacity: 5)
@@ -42,11 +39,6 @@ class PackageManager: Observable{
 //    }
     
     func UpdateTouch(at location: CGPoint){
-//        for package in packageInScene{
-//            if package!.contains(location){
-//                Remove(package: package!)
-//            }
-//        }
         for package in packageInScaneData.values{
             if package!.contains(location){
                 Remove(package: package!)
@@ -54,22 +46,10 @@ class PackageManager: Observable{
         }
     }
 
-    
     func LoadPackageInScene(){
-//        for package in packageInScene{
-//            if package != nil{
-////                if !currentScene.children.contains(package!){
-//
-//                    currentScene.addChild(package!)
-//                //}
-//            }
-//        }
         for package in packageInScaneData.values{
             if package != nil{
-//                if !currentScene.children.contains(package!){
-                    
-                    currentScene.addChild(package!)
-                //}
+                currentScene.addChild(package!)
             }
         }
     }
@@ -106,6 +86,4 @@ class PackageManager: Observable{
             observer.Update()
         }
     }
-    
-    
 }

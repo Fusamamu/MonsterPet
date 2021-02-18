@@ -182,6 +182,8 @@ class EquipmentMenuScene : SKScene{
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|2")
             
+            run(SoundManager.sharedInstanced.Play(by: .slide))
+            
         }
         else {
             print("end of page")
@@ -198,6 +200,8 @@ class EquipmentMenuScene : SKScene{
             currentPage.MoveInRight()
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|2")
+            
+            run(SoundManager.sharedInstanced.Play(by: .slide))
 
         }
         else {

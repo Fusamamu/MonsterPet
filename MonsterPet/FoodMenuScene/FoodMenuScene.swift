@@ -201,6 +201,8 @@ class FoodMenuScene: SKScene, Observer{
             currentPage.MoveInRight()
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
+            
+            run(SoundManager.sharedInstanced.Play(by: .slide))
         }
         else {
             print("end of page")
@@ -223,6 +225,8 @@ class FoodMenuScene: SKScene, Observer{
             currentPage.MoveInLeft()
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
+            
+            run(SoundManager.sharedInstanced.Play(by: .slide))
         }
         else {
             print("end of page")
