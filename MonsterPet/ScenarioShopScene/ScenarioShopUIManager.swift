@@ -11,8 +11,12 @@ class ScenarioShopUIManager: BaseUIManager{
     
     public var homeButton: Button!
     public var buyHeartButton   : Button!
+    var nextPageLeftButton  : Button!
+    var nextPageRightButton : Button!
+    
     
     private var titleIcon        : SKSpriteNode!
+    var pageCountBar        : SKSpriteNode!
     
     override init(skScene: SKScene) {
         super.init(skScene: skScene)
@@ -22,12 +26,19 @@ class ScenarioShopUIManager: BaseUIManager{
         
         homeButton      = uiElementBuilder.Build(selectedButton: .menuButton)
         buyHeartButton  = uiElementBuilder.Build(selectedButton: .buyHeartButton)
+        nextPageLeftButton  = uiElementBuilder.Build(selectedButton: .nextPageLeftButton)
+        nextPageRightButton = uiElementBuilder.Build(selectedButton: .nextPageRightButton)
         
         titleIcon       = uiElementBuilder.Build(seletedUiIcon: .scenarioTitleIcon)
+        pageCountBar        = uiElementBuilder.Build(seletedUiElement: .pageCountBar)
         
         currentSKScene.addChild(homeButton)
         currentSKScene.addChild(buyHeartButton)
+        currentSKScene.addChild(nextPageLeftButton)
+        currentSKScene.addChild(nextPageRightButton)
+        
         currentSKScene.addChild(titleIcon)
+        currentSKScene.addChild(pageCountBar)
         
         let titleLabel = labelBuilder.Build(selectedLabel: .titleLabel)
         titleLabel.setGlyphText("SCENARIO")
@@ -35,6 +46,7 @@ class ScenarioShopUIManager: BaseUIManager{
         titleLabel.position = titleIcon.position
         titleLabel.position.x += 80
         titleLabel.position.y -= 8
+        
         currentSKScene.addChild(titleLabel)
         
         SetUILayers()

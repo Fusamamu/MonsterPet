@@ -41,6 +41,13 @@ class PetInfoScene : SKScene{
         let location = touch?.location(in: self)
         
         uiManager.UpdateTouch(at: location!)
+        
+        if uiManager.nextPageRightButton.contains(location!) {
+            TurnPageRight()
+        }
+        if uiManager.nextPageLeftButton.contains(location!){
+            TurnPageLeft()
+        }
     }
     
     private func AddPageCountLabel(){
@@ -74,26 +81,17 @@ class PetInfoScene : SKScene{
     
     @objc func swipedRight(sender:UISwipeGestureRecognizer){
         print("swipeRight")
-        if currentPageIndex != 0 {
-            currentPage.MoveOutRight()
-            currentPage = nil
-            currentPageIndex -= 1
-            currentPage = petInfoPageManager.pages[currentPageIndex]
-            currentPage.position.x = -600
-            addChild(currentPage)
-            currentPage.MoveInRight()
-            
-//            pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
-        }
-        else {
-            print("end of page")
-        }
+        TurnPageLeft()
     }
     
     ///<-----////
     
     @objc func swipedLeft(sender:UISwipeGestureRecognizer){
         print("swipeLeft")
+        TurnPageRight()
+    }
+    
+    private func TurnPageRight(){
         if currentPageIndex < 2{
             
             currentPage.MoveOutLeft()
@@ -105,7 +103,24 @@ class PetInfoScene : SKScene{
             addChild(currentPage)
             currentPage.MoveInLeft()
             
-//            pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
+            pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
+        }
+        else {
+            print("end of page")
+        }
+    }
+    
+    private func TurnPageLeft(){
+        if currentPageIndex != 0 {
+            currentPage.MoveOutRight()
+            currentPage = nil
+            currentPageIndex -= 1
+            currentPage = petInfoPageManager.pages[currentPageIndex]
+            currentPage.position.x = -600
+            addChild(currentPage)
+            currentPage.MoveInRight()
+            
+            pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
         }
         else {
             print("end of page")

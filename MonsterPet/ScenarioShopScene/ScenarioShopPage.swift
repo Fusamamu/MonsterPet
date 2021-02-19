@@ -6,7 +6,7 @@ class ScenarioShopPage: BaseUIManager{
     private var uiBuilder: UIElementBuilder!
     
     public var slots: [ScenarioSlot]!
-    public var slotCount: Int = 5
+    public var slotCount: Int = 3
     
     public var sliderButton: Button!
     public var sliderBar   : SKSpriteNode!
@@ -20,16 +20,16 @@ class ScenarioShopPage: BaseUIManager{
         super.init(skScene: skScene)
         slots = []
         GenerateScenarioSelectionSlots(from: 0)
-        GenerateSlotConstraint()
+        //GenerateSlotConstraint()
         
         uiBuilder = UIElementBuilder(currentSKScene: skScene, baseUIManager: self)
-        sliderButton = uiBuilder.Build(selectedButton: .sliderButton)
-        sliderBar = uiBuilder.Build(seletedUiElement: .verticalPageSliderBar)
+        //sliderButton = uiBuilder.Build(selectedButton: .sliderButton)
+        //sliderBar = uiBuilder.Build(seletedUiElement: .verticalPageSliderBar)
         
-        currentSKScene.addChild(sliderButton)
-        currentSKScene.addChild(sliderBar)
+       // currentSKScene.addChild(sliderButton)
+        //currentSKScene.addChild(sliderBar)
         
-        denominator = GetUpperLimitHeight()
+       // denominator = GetUpperLimitHeight()
     }
     
     func GenerateScenarioSelectionSlots(from index: Int){
@@ -39,7 +39,7 @@ class ScenarioShopPage: BaseUIManager{
             let slot = ScenarioSlot(index: i)
             slot.setScale(0.18)
             slot.zPosition = 5
-            slot.position.x = mid_X - 10
+            slot.position.x = mid_X
             slot.position.y = max_Y - CGFloat(i) * slot.size.width/slotPadding - 170
             slot.positionWhenInitialized = slot.position
             slots.append(slot)

@@ -52,7 +52,7 @@ class LabelBuilder{
             let priceTag = BMGlyphLabel(txt: "Defaulte Text", fnt: font)
             
             priceTag.setHorizontalAlignment(.centered)
-            priceTag.setScale(2.1)
+            priceTag.setScale(3.5)
             priceTag.zPosition = 12
             
             return priceTag

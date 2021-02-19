@@ -16,9 +16,6 @@ class DeviceDependency{
     
     var modelName: String!
     
-
-    
-    
     //MainScene Adjustment//
     var heartIconPosition_X     : CGFloat!
     var heartIconPosition_Y     : CGFloat!
@@ -35,33 +32,16 @@ class DeviceDependency{
     var mainBackground_Scale    : CGFloat!
     var mainBackground_Pos      : CGPoint!
     
-    
     private init(){
         modelName = UIDevice.modelName
 
         AlignToPhoneDevice()
     }
     
-    
     private func AlignToPhoneDevice(){
         switch modelName {
         
-        case "iPhone 8":
-            heartIconPosition_X     = 50;
-            heartIconPosition_Y     = 30;
-            
-            barPosition_Y           = 30;
-            
-            menuButtonPosition_Y    = 50
-            petInfoButtonPosition_Y = 50
-            
-            hearCountLabelPosition  = CGPoint(x: 143, y: 28)
-            heart_n_coin_LabelScale = 1
-            
-            //Environment (houst, tree, etc//
-            mainBackground_Scale    = 0.47
-            mainBackground_Pos      = CGPoint(x: 0, y: 0)
-        case "Simulator iPhone 8":
+        case "iPhone 8", "Simulator iPhone 8":
             heartIconPosition_X     = 50;
             heartIconPosition_Y     = 30;
             
@@ -77,10 +57,23 @@ class DeviceDependency{
             mainBackground_Scale    = 0.47
             mainBackground_Pos      = CGPoint(x: 0, y: 0)
             
+        case "iPhone 8 Plus" , "Simulator iPhone 8 Plus" :
+            heartIconPosition_X     = 50;
+            heartIconPosition_Y     = 30;
             
+            barPosition_Y           = 30;
             
+            menuButtonPosition_Y    = 50
+            petInfoButtonPosition_Y = 50
             
-        case "Simulator iPhone 11":
+            hearCountLabelPosition  = CGPoint(x: 143, y: 28)
+            heart_n_coin_LabelScale = 1
+            
+            //Environment (houst, tree, etc//
+            mainBackground_Scale    = 0.47
+            mainBackground_Pos      = CGPoint(x: 0, y: 0)
+            
+        case "iPhone 11", "Simulator iPhone 11":
             heartIconPosition_X     = 50;
             heartIconPosition_Y     = 30;
             
@@ -95,7 +88,8 @@ class DeviceDependency{
             //Environment (houst, tree, etc//
             mainBackground_Scale    = 0.55
             mainBackground_Pos      = CGPoint(x: 0, y: 70)
-        case "Simulator iPhone 11 Pro":
+            
+        case "iPhone 11 Pro", "Simulator iPhone 11 Pro":
             heartIconPosition_X     = 50;
             heartIconPosition_Y     = 30;
             
@@ -110,7 +104,7 @@ class DeviceDependency{
             //Environment (houst, tree, etc//
             mainBackground_Scale    = 0.55
             mainBackground_Pos      = CGPoint(x: 0, y: 70)
-        case "Simulator iPhone 11 Pro Max":
+        case "iPhone 11 Pro Max", "Simulator iPhone 11 Pro Max":
             heartIconPosition_X     = 50;
             heartIconPosition_Y     = 30;
             
@@ -125,7 +119,8 @@ class DeviceDependency{
             //Environment (houst, tree, etc//
             mainBackground_Scale    = 0.52
             mainBackground_Pos      = CGPoint(x: 0, y: 55)
-        case "Simulator iPhone 12 Pro Max":
+            
+        case "iPhone 12", "Simulator iPhone 12":
             heartIconPosition_X = 50;
             heartIconPosition_Y = 60;
             
@@ -136,6 +131,59 @@ class DeviceDependency{
             
             hearCountLabelPosition  = CGPoint(x: 143, y: 28)
             heart_n_coin_LabelScale = 1
+            
+            
+            mainBackground_Scale    = 0.52
+            mainBackground_Pos      = CGPoint(x: 0, y: 55)
+            
+        case "iPhone 12 Pro", "Simulator iPhone 12 Pro":
+            heartIconPosition_X = 50;
+            heartIconPosition_Y = 60;
+            
+            barPosition_Y = 60
+            
+            menuButtonPosition_Y = 60
+            petInfoButtonPosition_Y = 60
+            
+            hearCountLabelPosition  = CGPoint(x: 143, y: 28)
+            heart_n_coin_LabelScale = 1
+            
+            
+            mainBackground_Scale    = 0.52
+            mainBackground_Pos      = CGPoint(x: 0, y: 55)
+            
+        case "iPhone 12 Pro Max", "Simulator iPhone 12 Pro Max":
+            heartIconPosition_X = 50;
+            heartIconPosition_Y = 60;
+            
+            barPosition_Y = 60
+            
+            menuButtonPosition_Y = 60
+            petInfoButtonPosition_Y = 60
+            
+            hearCountLabelPosition  = CGPoint(x: 143, y: 28)
+            heart_n_coin_LabelScale = 1
+            
+            
+            mainBackground_Scale    = 0.52
+            mainBackground_Pos      = CGPoint(x: 0, y: 55)
+            
+        case "iPhone 12 mini", "Simulator iPhone 12 mini":
+            heartIconPosition_X     = 50;
+            heartIconPosition_Y     = 30;
+            
+            barPosition_Y           = 30;
+            
+            menuButtonPosition_Y    = 50
+            petInfoButtonPosition_Y = 50
+            
+            hearCountLabelPosition  = CGPoint(x: 143, y: 28)
+            heart_n_coin_LabelScale = 1
+            
+            //Environment (houst, tree, etc//
+            mainBackground_Scale    = 0.47
+            mainBackground_Pos      = CGPoint(x: 0, y: 0)
+            
         default:
             print("Failed to set heart ICON position!")
         }

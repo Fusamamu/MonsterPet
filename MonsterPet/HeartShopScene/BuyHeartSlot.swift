@@ -37,6 +37,9 @@ class BuyHeartSlot: SKSpriteNode{
         gainedHeartLabel    = labelBuilder.Build(selectedLabel: .priceTag)
         priceTagLabel       = labelBuilder.Build(selectedLabel: .priceTag)
         
+//        gainedHeartLabel.setScale(1.5)
+//        priceTagLabel.setScale(1.5)
+        
         gainedHeartLabel.setGlyphText("\(String(describing: gainedHeartAmount!))")
         
         gainedHeartLabel.position.x += 270

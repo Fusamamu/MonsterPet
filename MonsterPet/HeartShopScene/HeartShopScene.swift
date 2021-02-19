@@ -29,7 +29,8 @@ class HeartShopScene : SKScene{
         
         self.backgroundColor = UIColor(red: 255/255, green: 196/255, blue: 196/255, alpha: 1)
         
-        AddBackground()
+        //AddBackground()
+        CreateBackground()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -46,5 +47,27 @@ class HeartShopScene : SKScene{
         heartShopBackground.setScale(0.3)
         heartShopBackground.anchorPoint = CGPoint.zero
         addChild(heartShopBackground)
+    }
+    
+    func CreateBackground(){
+        let backgroundTexture = SKTexture(imageNamed: "heartSceneBackground")
+        
+        for i in 0 ... 1 {
+            let background = SKSpriteNode(texture: backgroundTexture)
+            let scale: CGFloat = 0.33
+            background.zPosition = -30 - CGFloat(i)
+            background.setScale(scale)
+            background.anchorPoint = CGPoint.zero
+            background.position = CGPoint(x: (backgroundTexture.size().width * scale * CGFloat(i))  , y: 0)
+            self.addChild(background)
+
+            let moveLeft    = SKAction.moveBy(x: -backgroundTexture.size().width*scale, y: 0, duration: 14)
+            let moveReset   = SKAction.moveBy(x: backgroundTexture.size().width*scale, y: 0, duration: 0)
+            let moveLoop    = SKAction.sequence([moveLeft, moveReset])
+            let moveForever = SKAction.repeatForever(moveLoop)
+
+            background.run(moveForever)
+            
+        }
     }
 }

@@ -44,6 +44,7 @@ class UIElementBuilder{
         case coin
         case petInfoTitleIcon
         case giftIcon
+        case coinTitleIcon
         case foodTitleIcon
         case equipmentTitleIcon
         case scenarioTitleIcon
@@ -233,6 +234,14 @@ class UIElementBuilder{
             petInfoTitleIcon.position.x += 60
             petInfoTitleIcon.position.y -= 45
             return petInfoTitleIcon
+        case .coinTitleIcon:
+            let foodTitleIcon = SKSpriteNode(imageNamed: "CoinTitleIcon")
+            foodTitleIcon.setScale(0.092)
+            foodTitleIcon.zPosition = defaultUi_Zposition
+            foodTitleIcon.position = baseUIManager.upperLeftPosition
+            foodTitleIcon.position.x += 60
+            foodTitleIcon.position.y -= 45
+            return foodTitleIcon
         case .foodTitleIcon:
             let foodTitleIcon = SKSpriteNode(imageNamed: "FoodIcon")
             foodTitleIcon.setScale(0.092)

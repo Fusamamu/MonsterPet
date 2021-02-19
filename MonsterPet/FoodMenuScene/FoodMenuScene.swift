@@ -110,18 +110,6 @@ class FoodMenuScene: SKScene, Observer{
                 for slot in checkedCurrentPage.slots{
                     if slot.isLock && slot.contains(location!){
 
-                        
-                        
-//                        if slot.unpackMenuPanel == nil{
-//                            slot.unpackMenuPanel = UnpackPanel(index: slot.slotIndex, skScene: self as SKScene)
-//                            slot.SubscribeButton(target: slot.unpackMenuPanel)
-//                            slot.SubscribeButton(target: slot.unpackMenuPanel.alphaBlackPanel)
-//                        }else{
-//                            slot.unpackMenuPanel.currentSKscene = self
-//                            slot.UnsubscribeButton()
-//                            slot.SubscribeButton(target: slot.unpackMenuPanel)
-//                            slot.SubscribeButton(target: slot.unpackMenuPanel.alphaBlackPanel)
-//                        }
 
                         slot.unpackMenuPanel = UnpackPanel(index: slot.slotIndex, skScene: self as SKScene)
                         slot.UnsubscribeButton()
@@ -148,6 +136,14 @@ class FoodMenuScene: SKScene, Observer{
                     }
 
                 }
+                
+                if uiManager.nextPageLeftButton.contains(location!){
+                    TurnPageLeft()
+                }
+                if uiManager.nextPageRightButton.contains(location!){
+                    TurnPageRight()
+                }
+                
             
             case .unpackMenuOpend:
 
@@ -191,6 +187,17 @@ class FoodMenuScene: SKScene, Observer{
     
     @objc func swipedRight(sender:UISwipeGestureRecognizer){
         print("swipeRight")
+        TurnPageLeft()
+    }
+    
+    ///<-----////
+    
+    @objc func swipedLeft(sender:UISwipeGestureRecognizer){
+        print("swipeLeft")
+        TurnPageRight()
+    }
+    
+    private func TurnPageLeft(){
         if currentPageIndex != 0 {
             currentPage.MoveOutRight()
             currentPage = nil
@@ -209,10 +216,7 @@ class FoodMenuScene: SKScene, Observer{
         }
     }
     
-    ///<-----////
-    
-    @objc func swipedLeft(sender:UISwipeGestureRecognizer){
-        print("swipeLeft")
+    private func TurnPageRight(){
         if currentPageIndex < 2{
             
             currentPage.MoveOutLeft()
