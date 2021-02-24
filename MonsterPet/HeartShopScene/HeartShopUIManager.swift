@@ -66,6 +66,10 @@ class HeartShopUIManager: BaseUIManager{
             if previousSceneName != nil && previousSceneName == "EquipmentMenuScene"{
                 currentSKScene.view?.presentScene(sceneBuilder.Create(selectedScene: .equipmentScene))
             }
+            
+            if previousSceneName != nil && previousSceneName == "ScenarioShopScene"{
+                currentSKScene.view?.presentScene(sceneBuilder.Create(selectedScene: .scenarioShopScene))
+            }
         }
     }
     

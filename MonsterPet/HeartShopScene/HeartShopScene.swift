@@ -16,6 +16,8 @@ class HeartShopScene : SKScene{
     private var currentPage: HeartShopPage!
     private var currentPageIndex: Int = 0
     
+    private var pageCountLabel = LabelBuilder().Build(selectedLabel: .pageCountLabel)
+    
     private var heartShopBackground: SKSpriteNode!
     
     override func didMove(to view: SKView) {
@@ -27,9 +29,12 @@ class HeartShopScene : SKScene{
         
         heartShopPage = HeartShopPage(skScene: self)
         
-        self.backgroundColor = UIColor(red: 255/255, green: 196/255, blue: 196/255, alpha: 1)
+        pageCountLabel.position.x = uiManager.mid_X
+        pageCountLabel.position.y += 30
+        pageCountLabel.setGlyphText("1|\(String(describing: 1))")
+        addChild(pageCountLabel)
         
-        //AddBackground()
+        self.backgroundColor = UIColor(red: 255/255, green: 196/255, blue: 196/255, alpha: 1)
         CreateBackground()
     }
     

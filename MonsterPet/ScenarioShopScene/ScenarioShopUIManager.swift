@@ -9,6 +9,13 @@ class ScenarioShopUIManager: BaseUIManager{
     private var sceneBuilder        : SceneBuilder!
     private var labelBuilder        : LabelBuilder!
     
+    enum ScenarioUIState {
+        case allClose
+        case unlockMenuOpened
+    }
+    
+    public var state: ScenarioUIState = .allClose
+    
     public var homeButton: Button!
     public var buyHeartButton   : Button!
     var nextPageLeftButton  : Button!
@@ -55,6 +62,12 @@ class ScenarioShopUIManager: BaseUIManager{
     func UpdateTouch(at location: CGPoint){
         if homeButton.contains(location){
             currentSKScene.view?.presentScene(sceneBuilder.Create(selectedScene: .mainScene))
+        }
+        
+        if buyHeartButton.contains(location){
+            let nextScene = sceneBuilder.Create(selectedScene: .heartShopScene) as! HeartShopScene
+            nextScene.previousSceneName = "ScenarioShopScene"
+            currentSKScene.view?.presentScene(nextScene)
         }
     }
     

@@ -68,7 +68,9 @@ class Item: SKSpriteNode, Observable, ItemProtocol{
     
     var observers: [Observer] = []
     
-    var notEnoughCoin: Bool = false
+    var notEnoughCoin       : Bool  = false
+    var missingIngredient   : Bool  = false
+    var outOfStock          : Bool  = false
     
     var itemData: [String:Any]
 
@@ -121,11 +123,20 @@ class Item: SKSpriteNode, Observable, ItemProtocol{
             self.count += 1
             
             itemManager.itemCountInventory[self.itemName] = self.count
+            notEnoughCoin = false
+            
         }else{
             notEnoughCoin = true
             NotifyAllObservers()
         }
     }
+    
+    func MakeItem(){
+        missingIngredient = true
+        NotifyAllObservers()
+    }
+    
+    
     
     func Unlock(){
         if let slot = self.parent as? Slot {

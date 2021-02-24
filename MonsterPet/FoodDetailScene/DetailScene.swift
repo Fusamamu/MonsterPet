@@ -17,7 +17,9 @@ class DetailScene: SKScene, Observer{
     var currentItemIndex    : Int!
     //var itemCountLabel      : SKLabelNode = SKLabelNode(text: "Still nil")
     
-    var warningPanel: WarnPanel!
+    var notEnoughCoinPanel      : WarnPanel!
+    var missingIngredientPanel  : WarnPanel!
+    var outOfStock              : WarnPanel!
     
     private var coinCountLabel : BMGlyphLabel!
     
@@ -30,11 +32,21 @@ class DetailScene: SKScene, Observer{
         
         self.backgroundColor = UIColor(red: 255/255, green: 233/255, blue: 190/255, alpha: 1)
         
-        warningPanel = WarnPanel(panelImage: "notEnoughCoin", skScene: self)
-        warningPanel.setScale(0.15)
-        warningPanel.zPosition = 300
-        uiManager.buyButton.SubscribeButton(target: warningPanel)
-      
+        notEnoughCoinPanel      = WarnPanel(panelImage: "notEnoughCoin", skScene: self)
+        notEnoughCoinPanel.setScale(0.15)
+        notEnoughCoinPanel.zPosition = 300
+        
+        missingIngredientPanel  = WarnPanel(panelImage: "missingIngredientPanel", skScene: self)
+        missingIngredientPanel.setScale(0.15)
+        missingIngredientPanel.zPosition = 300
+        
+        outOfStock              = WarnPanel(panelImage: "outOfStockPanel", skScene: self)
+        outOfStock.setScale(0.15)
+        outOfStock.zPosition = 300
+        
+        uiManager.buyButton.SubscribeButton(target: notEnoughCoinPanel)
+        uiManager.makeButton.SubscribeButton(target: missingIngredientPanel)
+        uiManager.placeButton.SubscribeButton(target: outOfStock)
         
         if currentItem == nil{
             currentItem = Item(index: currentItemIndex)
@@ -48,7 +60,6 @@ class DetailScene: SKScene, Observer{
         }
  
         itemManager.SetCurrentScene(to: self)
-        
         
         coinCountLabel = BMGlyphLabel(txt: String(currencyManager.CoinCounts), fnt: BMGlyphFont(name: "TitleText"))
         coinCountLabel.setHorizontalAlignment(.right)
@@ -65,9 +76,6 @@ class DetailScene: SKScene, Observer{
         let textAnimation = TextAnimation(skScene: self)
         currencyManager.AddObserver(observer: textAnimation)
         
-        
-
-        
     }
     
     override func willMove(from view: SKView) {
@@ -80,7 +88,6 @@ class DetailScene: SKScene, Observer{
         currencyManager.RemoveObserver(observer: self)
         
         currencyManager.observers.removeAll()
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -90,19 +97,34 @@ class DetailScene: SKScene, Observer{
         
         uiManager.UpdateTouch(at: location!)
         
-        if warningPanel.isOpened{
-            warningPanel.Invoked()
+        if notEnoughCoinPanel.isOpened{
+            notEnoughCoinPanel.Invoked()
         }
-       
+        
+        if missingIngredientPanel.isOpened{
+            missingIngredientPanel.Invoked()
+        }
+        
+        if outOfStock.isOpened{
+            outOfStock.Invoked()
+        }
+        
         if uiManager.buyButton.contains(location!){
             currentItem.BuyItem()
         }
         
+        if uiManager.makeButton.contains(location!){
+            currentItem.MakeItem()
+        }
+        
         if uiManager.placeButton.contains(location!){
             if currentItem.count > 0{
+                currentItem.outOfStock = false
                 LoadGameScene()
+            }else{
+                currentItem.outOfStock = true
+                currentItem.NotifyAllObservers()
             }
-           
         }
     }
     
@@ -115,7 +137,17 @@ class DetailScene: SKScene, Observer{
         ItemManager.sharedInstance.TempCount = currentItem.count
         
         if currentItem.notEnoughCoin {
-            warningPanel.Invoked()
+            currentItem.notEnoughCoin = false
+            notEnoughCoinPanel.Invoked()
+        }
+        if currentItem.missingIngredient{
+            currentItem.missingIngredient = false
+            missingIngredientPanel.Invoked()
+        }
+        
+        if currentItem.outOfStock{
+            currentItem.outOfStock = false
+            outOfStock.Invoked()
         }
     
     }

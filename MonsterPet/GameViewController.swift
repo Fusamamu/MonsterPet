@@ -19,6 +19,10 @@ class GameViewController: UIViewController {
         //PetSaveDataManager.sharedInstance.LoadPetInfo()
         
         
+        
+        
+    
+        
         let view = self.view as! SKView
         view.ignoresSiblingOrder = true
         view.showsFPS = true
@@ -33,6 +37,14 @@ class GameViewController: UIViewController {
         ItemPageManager.sharedInstance.LoadItemSelectionPage()
         PetInfoPageManager.sharedInstance.LoadPetInfoPages()
         GiftPageManager.sharedInstance.LoadGiftPage()
+        
+        
+        
+       // NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.playBackgroundSound(_:)), name: NSNotification.Name(rawValue: "PlayBackgroundSound"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SoundManager.sharedInstanced.playBackgroundSound(_:)), name: NSNotification.Name(rawValue: "PlayBackgroundSound"), object: nil)
+
+      
     }
 
     override var shouldAutorotate: Bool {

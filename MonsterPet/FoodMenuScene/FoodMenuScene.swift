@@ -109,8 +109,9 @@ class FoodMenuScene: SKScene, Observer{
                 
                 for slot in checkedCurrentPage.slots{
                     if slot.isLock && slot.contains(location!){
-
-
+                        
+                        run(SoundManager.sharedInstanced.Play(by: .interfaceClick))
+                        
                         slot.unpackMenuPanel = UnpackPanel(index: slot.slotIndex, skScene: self as SKScene)
                         slot.UnsubscribeButton()
                         slot.SubscribeButton(target: slot.unpackMenuPanel)
@@ -128,6 +129,9 @@ class FoodMenuScene: SKScene, Observer{
                     }
                     
                     if !slot.isLock && !slot.isSelected && slot.contains(location!){
+                        
+                        run(SoundManager.sharedInstanced.Play(by: .interfaceClick))
+                        
                         currentSelectedSlot = slot
                         currentSelectedSlot.isSelected = true
                         AddHighlight_PopUpInfo(at: currentSelectedSlot.position)

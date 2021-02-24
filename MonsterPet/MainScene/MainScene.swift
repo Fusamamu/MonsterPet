@@ -64,12 +64,13 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         let textAnimation = TextAnimation(skScene: self)
         currencyManager.AddObserver(observer: textAnimation)
         
-
-//        let bgMusic = SKAudioNode(fileNamed: "bensound-ukulele.mp3")
-//        bgMusic.run(SKAction.changeVolume(to: 0.2, duration: 0))
-//        addChild(bgMusic)
         
-   
+        
+       // SoundManager.sharedInstanced.Play_BMG(in: self)
+        
+//        let dictToSend: [String: String] = ["fileToPlay" : "bensound-ukulele" ]
+//
+//        NotificationCenter.default.post(name: Notification.Name(rawValue: "PlayBackgroundSound"), object: self, userInfo:dictToSend)
 
         
 //        let text = BMGlyphLabel(txt: "TEST", fnt: BMGlyphFont(name: "TitleText"))

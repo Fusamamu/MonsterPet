@@ -12,8 +12,12 @@ class GameSettingUIManager: BaseUIManager{
     public var homeButton: Button!
     public var languageButtons: [Button] = []
     
-    private var titleIcon        : SKSpriteNode!
-    private var gameSettingPanel: SKSpriteNode!
+    public var BGM_slideButton          : Button!
+    public var SE_slideButton           : Button!
+    public var HOW_TO_PLAY_GUIDE_panel  : Button!
+    
+    private var titleIcon           : SKSpriteNode!
+    public var gameSettingPanel    : SKSpriteNode!
     
     override init(skScene: SKScene) {
         super.init(skScene: skScene)
@@ -21,19 +25,36 @@ class GameSettingUIManager: BaseUIManager{
         uiElementBuilder    = UIElementBuilder(currentSKScene: skScene, baseUIManager: self)
         labelBuilder        = LabelBuilder()
         
-        homeButton      = uiElementBuilder.Build(selectedButton: .menuButton)
+        homeButton          = uiElementBuilder.Build(selectedButton: .menuButton)
         
-        titleIcon       = uiElementBuilder.Build(seletedUiIcon: .gameSettingIcon)
+        BGM_slideButton     = Button(DefaultImage: "soundSlideButton")
+        SE_slideButton      = Button(DefaultImage: "soundSlideButton")
+                BGM_slideButton.setScale(0.75)
+                BGM_slideButton.position = CGPoint(x: -90, y: 800)
+                BGM_slideButton.zPosition = 200
+                
+                SE_slideButton.setScale(0.75)
+                SE_slideButton.position = BGM_slideButton.position
+                SE_slideButton.position.y -= 300
+                SE_slideButton.zPosition = 200
         
+        HOW_TO_PLAY_GUIDE_panel = Button(DefaultImage: "howtoplayButton")
+                HOW_TO_PLAY_GUIDE_panel.setScale(1)
+                HOW_TO_PLAY_GUIDE_panel.position.y -= 1100
+                HOW_TO_PLAY_GUIDE_panel.zPosition = 200
+        
+        titleIcon           = uiElementBuilder.Build(seletedUiIcon: .gameSettingIcon)
+        gameSettingPanel    = SKSpriteNode(imageNamed: "gameSettingPanel")
+        gameSettingPanel.SetParameter(pos: centerPosition, scale: 0.15, layer: layerManager.layer_0, alpha: 1)
+        
+        gameSettingPanel.addChild(BGM_slideButton)
+        gameSettingPanel.addChild(SE_slideButton)
+        gameSettingPanel.addChild(HOW_TO_PLAY_GUIDE_panel)
         
         currentSKScene.addChild(homeButton)
         currentSKScene.addChild(titleIcon)
-        
-        gameSettingPanel = SKSpriteNode(imageNamed: "gameSettingPanel")
-        gameSettingPanel.SetParameter(pos: centerPosition, scale: 0.15, layer: layerManager.layer_0, alpha: 1)
         currentSKScene.addChild(gameSettingPanel)
-        
-        
+       // currentSKScene.addChild(HOW_TO_PLAY_GUIDE_panel)
         
         for i in 0...2{
             let languageSelectionButton = Button(DefaultImage: "languageSelectionButtonOff")
@@ -67,7 +88,7 @@ class GameSettingUIManager: BaseUIManager{
         let font = BMGlyphFont(name: "hd")
         
         let gameSettingTitle = BMGlyphLabel(txt: "Game Setting", fnt: font)
-        gameSettingTitle.SetParameter(pos: centerPosition, scale: 1.5, layer: layerManager.layer_5)
+        gameSettingTitle.SetParameter(pos: centerPosition, scale: 1.1, layer: layerManager.layer_5)
         gameSettingTitle.position.y += 200
         
         let BGMLabel = BMGlyphLabel(txt: "BGM", fnt: font)
@@ -80,7 +101,7 @@ class GameSettingUIManager: BaseUIManager{
         SELabel.position.y -= 45
         
         let languageSelectionTitle = BMGlyphLabel(txt: "Language Selection", fnt: font)
-        languageSelectionTitle.SetParameter(pos: centerPosition, scale: 1, layer: layerManager.layer_5, alpha: 0.85)
+        languageSelectionTitle.SetParameter(pos: centerPosition, scale: 0.8, layer: layerManager.layer_5, alpha: 0.85)
         languageSelectionTitle.position.y += 10
         
         let EnglishButtonLabel = BMGlyphLabel(txt: "English", fnt: font)
