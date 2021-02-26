@@ -77,8 +77,8 @@ class ScenarioShopScene : SKScene {
                 
                 for slot in scenarioPage.slots {
                     if slot.isLock && slot.contains(location!){
-                        run(SoundManager.sharedInstanced.Play(by: .interfaceClick))
-                        
+                        //run(SoundManager.sharedInstanced.Play(by: .interfaceClick))
+                        SoundManager.sharedInstanced.Play_SE(by: SoundName.interfaceClick.rawValue)
                         currentSelectedSlot = slot
                         
                         //uiManager.state = .unlockMenuOpened

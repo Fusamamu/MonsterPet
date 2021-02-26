@@ -191,7 +191,9 @@ class PetManager: Observable{
                 
                 currencyManager.HeartCounts += pet!.givenHeart
                 
-                currentScene.run(SoundManager.sharedInstanced.Play(by: .heart))
+                //currentScene.run(SoundManager.sharedInstanced.Play(by: .heart))
+                
+                SoundManager.sharedInstanced.Play_SE(by: SoundName.heart.rawValue)
             }
         }
     }

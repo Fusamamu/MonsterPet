@@ -2,7 +2,7 @@ import Foundation
 import SpriteKit
 import UIKit
 import GoogleMobileAds
-
+import AVKit
 
 class MainScene: SKScene, GADRewardedAdDelegate {
     
@@ -23,11 +23,9 @@ class MainScene: SKScene, GADRewardedAdDelegate {
     var sceneEnvironment: SceneEnvironment!
     
 //    var SortedObjects: [SKSpriteNode] = []
-    
     var rewardedAd: GADRewardedAd!
     
-    
-    
+    var player: AVAudioPlayer!
     override func didMove(to view: SKView) {
         
         //LoadUnpack State//
@@ -48,10 +46,7 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         packageManager.SetCurrentScene(gameScene: self)
         
         //PetSaveDataManager.sharedInstance.LoadPetInScene()
-        
-        
-        
-        
+
         petManager.LoadPetData()
         petManager.LoadHeartInScene()
         packageManager.LoadPackageInScene()
@@ -64,51 +59,20 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         let textAnimation = TextAnimation(skScene: self)
         currencyManager.AddObserver(observer: textAnimation)
         
-        
-        
-       // SoundManager.sharedInstanced.Play_BMG(in: self)
-        
-//        let dictToSend: [String: String] = ["fileToPlay" : "bensound-ukulele" ]
-//
-//        NotificationCenter.default.post(name: Notification.Name(rawValue: "PlayBackgroundSound"), object: self, userInfo:dictToSend)
+        //let dictToSend: [String: String] = ["fileToPlay" : "bensound-ukulele" ]
+        //  NotificationCenter.default.post(name: Notification.Name(rawValue: "PlayBackgroundSound"), object: self, userInfo: dictToSend)
 
         
 //        let text = BMGlyphLabel(txt: "TEST", fnt: BMGlyphFont(name: "TitleText"))
 //        text.position = CGPoint(x: frame.midX, y: frame.midY)
 //        text.zPosition  = 200
 //        addChild(text)
-//        
-//        let modelName = UIDevice.modelName
-//        if modelName == "Simulator iPhone 8"{
-//            text.setGlyphText("This is iPhone 8")
-//        }
-//        
-//        if modelName == "Simulator iPhone 11 Pro Max"{
-//            text.setGlyphText("This is iPhone 11 Pro Max")
-//        }
-//        
-//        if modelName == "Simulator iPhone 12 Pro Max"{
-//            text.setGlyphText("This is iPhone 12 Pro Max")
-//        }
-        
-        
+
 //        for tree in sceneEnvironment.allTrees{
 //            RefreshManager.shared.loadDataIfNeeded(){
 //                success in tree.ResetCoin(isNeeded: success)
 //            }
-//
-        
-//        let gameData = GameDataStorage.sharedInstance
-//
-//        let currencyDate = GameCurrency(heart: currencyManager.HeartCounts, coin: currencyManager.CoinCounts)
-//
-//
-//        let encoded_CurrencyData = gameData.EncodeGameData(data: currencyDate)!
-//
-//        let dataToWrite = encoded_CurrencyData.data(using: .utf8)
-        
-//        gameData.createFileToURL(withData: dataToWrite, withName: "currencyData.txt", withSubDirectory: "SaveGameData")
-//
+
         
 //        let function: (Bool)->Void = {
 //            success in if success{
@@ -144,13 +108,11 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         equipmentManager.tempEquipmentHolder = nil
         scene?.removeAllChildren()
         
-        ///Test code
+        //Test code
         currencyManager.observers.removeAll()
     }
 
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         
         //Display AD!!//
 //        guard let controller = self.view?.window?.rootViewController as? GameViewController else {return}
@@ -158,12 +120,6 @@ class MainScene: SKScene, GADRewardedAdDelegate {
 //            rewardedAd?.present(fromRootViewController: controller, delegate: self)
 //
 //        }
-        
-        
-//                let click = SKAudioNode(fileNamed: "Pen Click Sfx.wav")
-//                addChild(click)
-        
-        
 
         let touch       = touches.first
         let location    = touch?.location(in: self)
@@ -177,7 +133,6 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         if UI_Manager.uiState != .menuPanelOpened{
             sceneEnvironment.UpdateTouched(on: location!)
         }
-        
         
         PlaceItem(in: location!)
         
@@ -241,7 +196,6 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         }
     }
     
-    
     public func SortObjectsLayerAfterAdded(){
         var SortedObjs: [SKSpriteNode] = []
         
@@ -258,23 +212,14 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         }
     }
 
-    
     func LoadGameEnvironment(){
-        
-      
         //LoadCloud()
 //        let mainBackground = SKSpriteNode(imageNamed: "MainBackground")
 //        mainBackground.position = CGPoint(x: frame.midX, y: frame.midY)
 //        mainBackground.zPosition = 0
 //        mainBackground.setScale(0.47)
 //        addChild(mainBackground)
-        
-        
-
-
-        
     }
-    
     
     private func LoadCloud(){
         
@@ -283,8 +228,6 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         cloud.alpha = 0.35
         cloud.position = CGPoint(x: cloud.texture!.size().width, y: 0)
         addChild(cloud)
-        
-        
         
         let moveLeft = SKAction.moveTo(x: -cloud.texture!.size().width, duration: 10)
         let moveUp = SKAction.moveTo(y: cloud.texture!.size().height, duration: 0.1)
@@ -295,9 +238,7 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         let moveForever = SKAction.repeatForever(moveLoop)
         
         cloud.run(moveForever)
-        
     }
-    
     
     func animateSmoke(at position: CGPoint){
         
@@ -319,11 +260,7 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         addChild(smoke)
         
         let smokeAnimate = SKAction.animate(with: smokeFrames, timePerFrame: 0.1, resize: false, restore: true)
-    
-        
         smoke.run(SKAction.repeat(smokeAnimate, count: 1), completion: { smoke.removeFromParent() })
-        
-        
     }
     
     private func animateGotItAffect(at position: CGPoint){
@@ -365,24 +302,22 @@ class MainScene: SKScene, GADRewardedAdDelegate {
         node.run(popUpAnimation, completion: {node.removeFromParent()})
     }
     
-    
-    /// Tells the delegate that the user earned a reward.
+    // Tells the delegate that the user earned a reward.
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
       print("Reward received with currency: \(reward.type), amount \(reward.amount).")
     }
-    /// Tells the delegate that the rewarded ad was presented.
+    // Tells the delegate that the rewarded ad was presented.
     func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {
       print("Rewarded ad presented.")
     }
-    /// Tells the delegate that the rewarded ad was dismissed.
+    // Tells the delegate that the rewarded ad was dismissed.
     func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
       print("Rewarded ad dismissed.")
     }
-    /// Tells the delegate that the rewarded ad failed to present.
+    // Tells the delegate that the rewarded ad failed to present.
     func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
       print("Rewarded ad failed to present.")
     }
-    
 }
 
 

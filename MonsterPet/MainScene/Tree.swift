@@ -89,7 +89,9 @@ class Tree: SKSpriteNode{
                 
                 tapArea.contains(convertedLoc){
                 
-                run(SoundManager.sharedInstanced.Play(by: SoundManager.sharedInstanced.coin))
+                //run(SoundManager.sharedInstanced.Play(by: SoundName.coin.rawValue))
+                
+                SoundManager.sharedInstanced.Play_SE(by: SoundName.coin.rawValue)
                 
                 coinCollected.collectedCount_s[index]  += 1
                 

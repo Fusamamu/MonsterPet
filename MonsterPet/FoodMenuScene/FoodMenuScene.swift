@@ -110,7 +110,9 @@ class FoodMenuScene: SKScene, Observer{
                 for slot in checkedCurrentPage.slots{
                     if slot.isLock && slot.contains(location!){
                         
-                        run(SoundManager.sharedInstanced.Play(by: .interfaceClick))
+                        //run(SoundManager.sharedInstanced.Play(by: .interfaceClick))
+                        SoundManager.sharedInstanced.Play_SE(by: SoundName.interfaceClick.rawValue)
+                        
                         
                         slot.unpackMenuPanel = UnpackPanel(index: slot.slotIndex, skScene: self as SKScene)
                         slot.UnsubscribeButton()
@@ -130,7 +132,7 @@ class FoodMenuScene: SKScene, Observer{
                     
                     if !slot.isLock && !slot.isSelected && slot.contains(location!){
                         
-                        run(SoundManager.sharedInstanced.Play(by: .interfaceClick))
+                        SoundManager.sharedInstanced.Play_SE(by: SoundName.interfaceClick.rawValue)
                         
                         currentSelectedSlot = slot
                         currentSelectedSlot.isSelected = true
@@ -213,7 +215,8 @@ class FoodMenuScene: SKScene, Observer{
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
             
-            run(SoundManager.sharedInstanced.Play(by: .slide))
+            //run(SoundManager.sharedInstanced.Play(by: .slide))
+            SoundManager.sharedInstanced.Play_SE(by: SoundName.slide.rawValue)
         }
         else {
             print("end of page")
@@ -234,7 +237,8 @@ class FoodMenuScene: SKScene, Observer{
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
             
-            run(SoundManager.sharedInstanced.Play(by: .slide))
+            //run(SoundManager.sharedInstanced.Play(by: .slide))
+            SoundManager.sharedInstanced.Play_SE(by: SoundName.slide.rawValue)
         }
         else {
             print("end of page")

@@ -67,8 +67,11 @@ class GameSettingScene : SKScene{
         BMG_Percentage_VOL  = GetVolumePercentage(from: uiManager.BGM_slideButton.position)
         SE_Percentage_VOL   = GetVolumePercentage(from: uiManager.SE_slideButton.position)
         
+        soundManager.Set_BGM_VOL(by: (Float)(BMG_Percentage_VOL))
+        soundManager.Set_SE_VOL(by: (Float)(SE_Percentage_VOL))
+        
         print("BMG Percent VOL")
-        print(BMG_Percentage_VOL)
+        print(SE_Percentage_VOL)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -118,8 +121,14 @@ class GameSettingScene : SKScene{
     func GetVolumePercentage(from buttonPosition: CGPoint) -> CGFloat {
         let nominator  :CGFloat  = (buttonPosition.x + 90)
         let denominator:CGFloat  = upper_limit
-        let percentage: CGFloat     = nominator/denominator
+        var percentage: CGFloat     = nominator/denominator
         
+        if percentage < 0{
+            percentage = 0
+        }
+        if percentage > 1{
+            percentage = 1
+        }
         
         return percentage;
     }

@@ -182,8 +182,8 @@ class EquipmentMenuScene : SKScene{
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|2")
             
-            run(SoundManager.sharedInstanced.Play(by: .slide))
-            
+            //run(SoundManager.sharedInstanced.Play(by: .slide))
+            SoundManager.sharedInstanced.Play_SE(by: SoundName.slide.rawValue)
         }
         else {
             print("end of page")
@@ -201,7 +201,8 @@ class EquipmentMenuScene : SKScene{
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|2")
             
-            run(SoundManager.sharedInstanced.Play(by: .slide))
+            //run(SoundManager.sharedInstanced.Play(by: .slide))
+            SoundManager.sharedInstanced.Play_SE(by: SoundName.slide.rawValue)
 
         }
         else {

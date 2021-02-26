@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import AVKit
 
 class GameViewController: UIViewController {
     
@@ -17,11 +18,9 @@ class GameViewController: UIViewController {
         
         //SaveNLoadManager.sharedInstance.LoadCurrencyData()
         //PetSaveDataManager.sharedInstance.LoadPetInfo()
-        
-        
-        
-        
-    
+        ItemPageManager.sharedInstance.LoadItemSelectionPage()
+        PetInfoPageManager.sharedInstance.LoadPetInfoPages()
+        GiftPageManager.sharedInstance.LoadGiftPage()
         
         let view = self.view as! SKView
         view.ignoresSiblingOrder = true
@@ -34,17 +33,10 @@ class GameViewController: UIViewController {
         
         //let textureManager = TextureManager.sharedInstance
         
-        ItemPageManager.sharedInstance.LoadItemSelectionPage()
-        PetInfoPageManager.sharedInstance.LoadPetInfoPages()
-        GiftPageManager.sharedInstance.LoadGiftPage()
-        
-        
-        
-       // NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.playBackgroundSound(_:)), name: NSNotification.Name(rawValue: "PlayBackgroundSound"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(SoundManager.sharedInstanced.playBackgroundSound(_:)), name: NSNotification.Name(rawValue: "PlayBackgroundSound"), object: nil)
+        // NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.playBackgroundSound(_:)), name: NSNotification.Name(rawValue: "PlayBackgroundSound"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(SoundManager.sharedInstanced.playBackgroundSound(_:)), name: Notification.Name(rawValue: "PlayBackgroundSound"), object: nil)
 
-      
+        SoundManager.sharedInstanced.Play_BMG(by: .AVAUDIOPLAYER, in: nil)
     }
 
     override var shouldAutorotate: Bool {
