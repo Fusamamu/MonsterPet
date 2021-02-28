@@ -102,7 +102,7 @@ class PlaceHolderManager{
             }
         }
  
-        if packageManager.packageInScaneData[point] != nil {
+        if packageManager.packageInSceneData[point] != nil {
             _isPlacable = false
         }
         

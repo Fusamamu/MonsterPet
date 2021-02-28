@@ -175,6 +175,14 @@ class Pet: SKSpriteNode, Observer, Observable{
         if !packageIsDropped && whenTimePassed > onScreenTime - 30 {
                 //Need logic for dropping package//Ex drop 1 / 30 visited count//random item in package
                 dropPackage.position = position
+            
+                let targetPosition  = dropPackage.position
+                let moveUp          = SKAction.moveTo(y: dropPackage.position.y + 100, duration: 0.1)
+                let moveDown        = SKAction.move(to: targetPosition, duration: 0.1)
+                dropPackage.run(SKAction.sequence([moveUp, moveDown]))
+            
+                Animation().animateSmoke(at: targetPosition, in: scene!)
+            
                 scene?.addChild(dropPackage)
                 (scene as! MainScene).SortObjectsLayerAfterAdded()
             
@@ -182,7 +190,7 @@ class Pet: SKSpriteNode, Observer, Observable{
             
                 packageIsDropped = true
                // packageManager.packageInScene.append(dropPackage)
-            packageManager.packageInScaneData[position] = dropPackage
+                packageManager.packageInSceneData[position] = dropPackage
         }
     }
     

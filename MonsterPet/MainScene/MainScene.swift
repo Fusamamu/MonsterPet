@@ -152,23 +152,26 @@ class MainScene: SKScene, GADRewardedAdDelegate {
                     
                     if itemManager.tempItemHolder != nil{
                         let item = itemManager.tempItemHolder!
-                        
                         item.position = arrow!.position
                         item.zPosition = 3
                         item.setScale(0.1)
                         item.timeWhenPlaced = Date.timeIntervalSinceReferenceDate
                         addChild(item)
+                        
                         itemManager.StoreObjectData(item: item, at: arrow!.position)
                         
                         let updatedItemCount = itemManager.itemCountInventory[item.itemName]! - 1
                         itemManager.itemCountInventory[item.itemName] = updatedItemCount
                         
-                        animateSmoke(at: item.position)
+                        let targetPosition  = item.position
+                        let moveUp          = SKAction.moveTo(y: item.position.y + 100, duration: 0.1)
+                        let moveDown        = SKAction.move(to: targetPosition, duration: 0.1)
+                        item.run(SKAction.sequence([moveUp, moveDown]))
                         
+                        animateSmoke(at: item.position)
                     }
                     
                     if equipmentManager.tempEquipmentHolder != nil{
-                        
                         let equipment = EquipmentManager.sharedInstance.tempEquipmentHolder!
                         equipment.position = arrow!.position
                         equipment.zPosition = 3
@@ -177,6 +180,13 @@ class MainScene: SKScene, GADRewardedAdDelegate {
                         addChild(equipment)
                         
                         equipmentManager.StoreEquipmentData(equipment: equipment, at: arrow!.position)
+                        
+                        let targetPosition  = equipment.position
+                        let moveUp          = SKAction.moveTo(y: equipment.position.y + 100, duration: 0.1)
+                        let moveDown        = SKAction.move(to: targetPosition, duration: 0.1)
+                        equipment.run(SKAction.sequence([moveUp, moveDown]))
+                        
+                        animateSmoke(at: equipment.position)
                     }
                     
                     SortObjectsLayerAfterAdded()

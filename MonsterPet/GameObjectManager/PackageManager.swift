@@ -18,15 +18,15 @@ class PackageManager: Observable{
     
     public var observers            : [Observer] = []
     public var currentScene         : SKScene!
-    public var packageInScaneData   : [CGPoint: Package?] = [:]
+    public var packageInSceneData   : [CGPoint: Package?] = [:]
     
     private init(){
-        packageInScaneData = Dictionary(minimumCapacity: 5)
+        packageInSceneData = Dictionary(minimumCapacity: 5)
     }
     
     public func InitializePackageInSceneDataPoint(pointData: [CGPoint]){
         for point in pointData{
-            packageInScaneData[point] = nil
+            packageInSceneData[point] = nil
         }
     }
     
@@ -39,7 +39,7 @@ class PackageManager: Observable{
 //    }
     
     func UpdateTouch(at location: CGPoint){
-        for package in packageInScaneData.values{
+        for package in packageInSceneData.values{
             if package!.contains(location){
                 Remove(package: package!)
             }
@@ -47,7 +47,7 @@ class PackageManager: Observable{
     }
 
     func LoadPackageInScene(){
-        for package in packageInScaneData.values{
+        for package in packageInSceneData.values{
             if package != nil{
                 currentScene.addChild(package!)
             }
@@ -69,7 +69,8 @@ class PackageManager: Observable{
             package.removeFromParent()
             //self.packageInScene = self.packageInScene.filter({ $0 != package })
             
-            self.packageInScaneData[package.position] = nil
+            //have to wait until completely fade away to become placable again//
+            self.packageInSceneData[package.position] = nil
         }
     }
     

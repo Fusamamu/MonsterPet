@@ -73,6 +73,29 @@ class Animation{
         return animation
     }
     
+    public func animateSmoke(at position: CGPoint, in skScene: SKScene){
+        
+        let smokeAtlas = SKTextureAtlas(named: "Smoke")
+        var smokeFrames: [SKTexture] = []
+        
+        let numberImages = smokeAtlas.textureNames.count
+        
+        for i in 1...numberImages{
+            let smokeTextureName = "smoke\(i)"
+            smokeFrames.append(smokeAtlas.textureNamed(smokeTextureName))
+        }
+        
+        let smoke = SKSpriteNode(texture: smokeFrames[0])
+        smoke.setScale(0.15)
+        smoke.zPosition = 2
+        smoke.position = position
+        smoke.position.y -= 20
+        skScene.addChild(smoke)
+        
+        let smokeAnimate = SKAction.animate(with: smokeFrames, timePerFrame: 0.1, resize: false, restore: true)
+        smoke.run(SKAction.repeat(smokeAnimate, count: 1), completion: { smoke.removeFromParent() })
+    }
+    
 }
 
 
