@@ -9,9 +9,9 @@ class PetInfoScene : SKScene{
     private var uiManager   : PetInfoUIManager!
     private var swipeManager: SwipeManager!
     
-    var currentPage: PetInfoPage!
-    var currentPageIndex: Int = 0
-    let maxPageNumber: Int = 3
+    var currentPage         : PetInfoPage!
+    var currentPageIndex    : Int = 0
+    let maxPageNumber       : Int = 3
     
     private var pageCountLabel = LabelBuilder().Build(selectedLabel: .pageCountLabel)
 
@@ -26,7 +26,6 @@ class PetInfoScene : SKScene{
 
         CreateBackground()
         AddPageCountLabel()
-        self.backgroundColor = UIColor(red: 228/255, green: 226/255, blue: 175/255, alpha: 1)
     }
         
     override func willMove(from view: SKView) {
@@ -80,23 +79,18 @@ class PetInfoScene : SKScene{
     }
     
     @objc func swipedRight(sender:UISwipeGestureRecognizer){
-        print("swipeRight")
         TurnPageLeft()
     }
-    
-    ///<-----////
-    
+
     @objc func swipedLeft(sender:UISwipeGestureRecognizer){
-        print("swipeLeft")
         TurnPageRight()
     }
     
     private func TurnPageRight(){
-        if currentPageIndex < 2{
-            
+        if currentPageIndex < maxPageNumber - 1{
+    
             currentPage.MoveOutLeft()
             currentPage = nil
-            
             currentPageIndex += 1
             currentPage = petInfoPageManager.pages[currentPageIndex]
             currentPage.position.x = 600
@@ -105,13 +99,11 @@ class PetInfoScene : SKScene{
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
         }
-        else {
-            print("end of page")
-        }
     }
     
     private func TurnPageLeft(){
         if currentPageIndex != 0 {
+            
             currentPage.MoveOutRight()
             currentPage = nil
             currentPageIndex -= 1
@@ -121,9 +113,6 @@ class PetInfoScene : SKScene{
             currentPage.MoveInRight()
             
             pageCountLabel.setGlyphText("\(String(describing: currentPageIndex + 1))|\(String(describing: maxPageNumber))")
-        }
-        else {
-            print("end of page")
         }
     }
 }

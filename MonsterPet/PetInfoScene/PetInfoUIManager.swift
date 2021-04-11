@@ -19,7 +19,6 @@ class PetInfoUIManager: BaseUIManager{
     var petInfoPanel : SKSpriteNode!
     var petInfoPanelSupport : SKSpriteNode!
    
-    
     override init(skScene: SKScene) {
         super.init(skScene: skScene)
         sceneBuilder        = SceneBuilder(currentSKScene: currentSKScene)
@@ -27,7 +26,7 @@ class PetInfoUIManager: BaseUIManager{
         labelBuilder        = LabelBuilder()
         
         homeButton      = uiElementBuilder.Build(selectedButton: .menuButton)
-        giftButton  = uiElementBuilder.Build(selectedButton: .giftButton)
+        giftButton      = uiElementBuilder.Build(selectedButton: .giftButton)
         
         nextPageLeftButton  = uiElementBuilder.Build(selectedButton: .nextPageLeftButton)
         nextPageRightButton = uiElementBuilder.Build(selectedButton: .nextPageRightButton)
@@ -56,8 +55,6 @@ class PetInfoUIManager: BaseUIManager{
         titleLabel.position.x += 40
         titleLabel.position.y -= 30
         currentSKScene.addChild(titleLabel)
-        
-        
     }
 
     func CreateBackground(){
@@ -80,13 +77,12 @@ class PetInfoUIManager: BaseUIManager{
         }
     }
     
-    func DisplayPetInfoPanel(){
-        petInfoPanel.run(SKEase.move(easeFunction: .curveTypeElastic, easeType: .easeTypeOut, time: 1, from: petInfoPanel.position, to: CGPoint(x: mid_X, y: mid_Y )))
-    }
-    
-    func UnDisplayPetInfoPanel(){
-        petInfoPanel.run(SKEase.move(easeFunction: .curveTypeElastic, easeType: .easeTypeInOut, time: 1, from: petInfoPanel.position, to: CGPoint(x: mid_X, y: min_Y - 150 )))
-    }
-    
+//    func DisplayPetInfoPanel(){
+//        petInfoPanel.run(SKEase.move(easeFunction: .curveTypeElastic, easeType: .easeTypeOut, time: 1, from: petInfoPanel.position, to: CGPoint(x: mid_X, y: mid_Y )))
+//    }
+//
+//    func UnDisplayPetInfoPanel(){
+//        petInfoPanel.run(SKEase.move(easeFunction: .curveTypeElastic, easeType: .easeTypeInOut, time: 1, from: petInfoPanel.position, to: CGPoint(x: mid_X, y: min_Y - 150 )))
+//    }
 }
 

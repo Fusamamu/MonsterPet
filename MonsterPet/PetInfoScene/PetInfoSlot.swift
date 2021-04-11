@@ -42,6 +42,7 @@ class PetInfoSlot: SKSpriteNode, Observer{
         //SetPetDataInfo(by: index)
         
         var petBaseName: String?
+        
         if index == 0{
             petBaseName = "petBaseRed"
         }
@@ -65,11 +66,6 @@ class PetInfoSlot: SKSpriteNode, Observer{
     }
     
     func SetPetDisplayImage(by index: Int){
-//        petImage = SKSpriteNode(texture: loadedPet!.petTextures[1])
-//        petImage.zPosition = 20
-//        petImage.setScale(0.9)
-//        petImage.position.x -= 1000
-//        self.addChild(petImage)
         
         petImage = SKSpriteNode(imageNamed: loadedPet!.petName.rawValue + "InfoDisplayLocked")
         petImage.zPosition = 20
@@ -80,9 +76,9 @@ class PetInfoSlot: SKSpriteNode, Observer{
     
     func InitializeDataInfo(by index: Int){
         
-        let _name = "...?"
-        let _visitedCount = "?"
-        let _gift = "?"
+        let _name           = "...?"
+        let _visitedCount   = "?"
+        let _gift           = "?"
         
         //petName = BMGlyphLabel(txt: loadedPet.petName.rawValue, fnt: BMGlyphFont(name: "TitleText"))
         petName = BMGlyphLabel(txt: _name, fnt: BMGlyphFont(name: "TitleText"))
@@ -118,7 +114,6 @@ class PetInfoSlot: SKSpriteNode, Observer{
             addChild(petFavoriteFoodLabel)
         }
     }
-    
     
     func SetPetDataInfo(by index: Int){
         //Set after pet has visited

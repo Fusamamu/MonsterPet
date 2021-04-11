@@ -63,7 +63,7 @@ class Tree: SKSpriteNode{
         tapArea.zPosition = 10
         tapArea.setScale(0.7)
         tapArea.position.y += self.frame.height * 1.2
-        tapArea.alpha = 0.2
+        tapArea.alpha = 0
         self.addChild(tapArea)
         
 

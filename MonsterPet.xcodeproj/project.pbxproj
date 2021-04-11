@@ -354,8 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				AE0A57502478F6FC002C6CA4 /* PetInfoScene.swift */,
-				AE0A57522478F745002C6CA4 /* PetInfoUIManager.swift */,
 				AE4055FC24810BE4002F8450 /* PetInfoPage.swift */,
+				AE0A57522478F745002C6CA4 /* PetInfoUIManager.swift */,
 				AE40560A2481139D002F8450 /* PetInfoSlot.swift */,
 				AE71B079248E81E200AC3B21 /* PetCharacterDisplay.swift */,
 				AE0AB05D2557BFD80018D314 /* PetInfoPageManager.swift */,

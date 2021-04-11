@@ -6,6 +6,8 @@ enum PetName: String, CaseIterable{
     case rabbit         = "rabbit"
     case birdy          = "birdy"
     case take           = "take"
+    case frog           = "froggy"
+    case duck           = "duck"
     
     static var count: Int { return PetName.take.hashValue + 1}
 }

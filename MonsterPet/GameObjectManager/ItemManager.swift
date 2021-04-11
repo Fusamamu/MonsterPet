@@ -71,14 +71,14 @@ class ItemManager: Observable{
     }
     
     func InitializeItemCountInventory(){
-        let allItemTypeCount = 27
+        let allItemTypeCount = ItemName.allCases.count
         for index in 0...allItemTypeCount - 1{
             itemCountInventory[ItemName.allCases[index]] = 0
         }
     }
     
     func InitializeSlotUpdateUnpackState(){
-        let allItemTypeCount = 27
+        let allItemTypeCount = ItemName.allCases.count
         for index in 0...allItemTypeCount - 1{
             slotUpdateUnpackState[index] = false
         }

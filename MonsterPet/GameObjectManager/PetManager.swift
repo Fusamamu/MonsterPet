@@ -22,6 +22,8 @@ class PetManager: Observable{
     static var rabbit: Pet!
     static var birdy: Pet!
     static var take:Pet!
+    static var duck:Pet!
+    static var frog:Pet!
     
     private init(){
         
@@ -45,15 +47,27 @@ class PetManager: Observable{
         PetManager.rabbit.SetFavoriteItem(itemName: .pumpkin)
         PetManager.rabbit.SetGivenHeart(count: 3)
         
+        PetManager.duck = Pet(petName: .duck)
+        PetManager.duck.SetTime(waitTime: 5, giveHeartTime: 5, onScreenTime: 150)
+        PetManager.duck.SetFavoriteItem(itemName: .pumpkin)
+        PetManager.duck.SetGivenHeart(count: 3)
+        
+        PetManager.frog = Pet(petName: .frog)
+        PetManager.frog.SetTime(waitTime: 5, giveHeartTime: 5, onScreenTime: 150)
+        PetManager.frog.SetFavoriteItem(itemName: .pumpkin)
+        PetManager.frog.SetGivenHeart(count: 3)
+        
         self.InitializePetInStore()
         
     }
     
     func InitializePetInStore(){
-         petInStore[PetName.chicken]        = PetManager.chicken
-         petInStore[PetName.take]           = PetManager.take
-         petInStore[PetName.birdy]          = PetManager.birdy
-         petInStore[PetName.rabbit]         = PetManager.rabbit
+        petInStore[PetName.chicken]        = PetManager.chicken
+        petInStore[PetName.take]           = PetManager.take
+        petInStore[PetName.birdy]          = PetManager.birdy
+        petInStore[PetName.rabbit]         = PetManager.rabbit
+        petInStore[PetName.duck]           = PetManager.duck;
+        petInStore[PetName.frog]           = PetManager.frog;
     }
     
     func SetCurrentScene(gameScene: SKScene){
@@ -64,12 +78,17 @@ class PetManager: Observable{
         
             guard elapsedTime > pet.waitTime else { return }
             guard !pet.isAdded else { return }
-            
+        
+        if isSurroundingAvailable(at: point){
             eatingItem.eattenByPet = pet
             eatingItem.isBeingEaten = true
             pet.nowEatingItem = eatingItem
             
             SortPetDirection_N_AddToScene(pet: pet, at: point)
+        }else{
+            pet.timeWhenLeftScene = Date.timeIntervalSinceReferenceDate
+        }
+           
     }
     
     func Call(_ pet: Pet, to point: CGPoint, for eatingEquipment: Equipment, elapsedTime: CFTimeInterval){
@@ -77,11 +96,30 @@ class PetManager: Observable{
             guard elapsedTime > pet.waitTime else { return }
             guard !pet.isAdded else { return }
             
+        if isSurroundingAvailable(at: point){
+            
             eatingEquipment.eattenByPet = pet
             eatingEquipment.isBeingEaten = true
             pet.nowEatingEquipment = eatingEquipment
             
             SortPetDirection_N_AddToScene(pet: pet, at: point)
+            
+        }else{
+            pet.timeWhenLeftScene = Date.timeIntervalSinceReferenceDate
+        }
+            
+    }
+    
+    private func isSurroundingAvailable(at point: CGPoint) -> Bool {
+        var isAvailable: Bool = false
+        
+        for index in 0...3{
+            if placeHolderManager.surroundingPointData[point]![index]{
+                isAvailable = true
+                return isAvailable
+            }
+        }
+        return isAvailable;
     }
     
     func SortPetDirection_N_AddToScene(pet: Pet, at point: CGPoint){

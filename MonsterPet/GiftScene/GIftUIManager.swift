@@ -19,15 +19,11 @@ class GiftUIManager: BaseUIManager{
     var homeButton          : Button!
     var backButton          : Button!
 
-
-    
     var titleIcon           : SKSpriteNode!
     var pageCountBar        : SKSpriteNode!
 
-    
     public var dialogueLabel: BMGlyphLabel!
 
-    
     override init(skScene: SKScene) {
         super.init(skScene: skScene)
         

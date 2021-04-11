@@ -10,15 +10,14 @@ import Foundation
 import SpriteKit
 
 class GiftScene: SKScene{
+    
     public var sceneName: String = "FoodMenuScene"
     
     private let giftPageManager: GiftPageManager = .sharedInstance
     
-    private var uiManager: GiftUIManager!
+    private var uiManager   : GiftUIManager!
+    unowned var currentPage : GiftPage!
     
-    
-    
-    unowned var currentPage: GiftPage!
     var currentPageIndex: Int = 0
     
     override func didMove(to view: SKView) {
@@ -27,14 +26,12 @@ class GiftScene: SKScene{
         currentPage = giftPageManager.pages[currentPageIndex]
         addChild(currentPage)
         
-        
         CreateBackground()
     }
     
     override func willMove(from view: SKView) {
         currentPage.removeFromParent()
         currentPage = nil
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

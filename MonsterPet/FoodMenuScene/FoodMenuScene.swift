@@ -16,7 +16,7 @@ class FoodMenuScene: SKScene, Observer{
   
     
     var id: Int = 0
-    let maxPageNumber: Int = 3
+    let maxPageNumber: Int = 4
     
     unowned var currentPage: ItemSelectionPage!
     var currentPageIndex: Int = 0
@@ -48,6 +48,12 @@ class FoodMenuScene: SKScene, Observer{
         //Load Slot Unpack State from SaveData//
         for page in itemPageManager.pages {
             for slot in page.slots{
+                
+                // this should be set in save/load data somewhere??
+                if itemManager.slotUpdateUnpackState[slot.itemInSlot.itemIndex] == nil{
+                    itemManager.slotUpdateUnpackState[slot.itemInSlot.itemIndex] = false;
+                }
+                
                 slot.itemInSlot.isUnlock = itemManager.slotUpdateUnpackState[slot.itemInSlot.itemIndex]!
             }
         }
@@ -224,7 +230,7 @@ class FoodMenuScene: SKScene, Observer{
     }
     
     private func TurnPageRight(){
-        if currentPageIndex < 2{
+        if currentPageIndex < maxPageNumber - 1{
             
             currentPage.MoveOutLeft()
             currentPage = nil

@@ -7,17 +7,6 @@ class PetInfoPage: Page {
     
     private var petCount: Int = PetName.count
     
-//    let slotScale   : CGFloat = 0.2
-//    let slotPadding : CGFloat = 4.5
-//    let padding     : CGFloat = 105
-    
-//    public var petFamilyInfoPanel: SKSpriteNode!
-//    public var petCharacter: PetCharacterDisplay!
-//    public var defalultPetInfoPanel: SKSpriteNode!
-//    public var augmentedPetInfoPanel: SKSpriteNode!
-    
-    
-    
     init(pageIndex: Int, skScene: SKScene) {
         super.init(index: pageIndex, skScene: skScene)
         GenerateSlots(from: pageIndex)
@@ -33,8 +22,9 @@ class PetInfoPage: Page {
     }
     
     func GenerateSlots(from index: Int){
+        
         for i in 0...2{
-            let petInfoSlot = PetInfoSlot(index: i)
+            let petInfoSlot = PetInfoSlot(index: index + i)
             petInfoSlot.setScale(0.16)
             petInfoSlot.zPosition = 200
             //should use "mid x" from base class "page"

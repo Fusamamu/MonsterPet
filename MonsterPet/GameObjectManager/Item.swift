@@ -37,7 +37,20 @@ enum ItemName: String, CaseIterable{
     
     case seasoning              = "Seasoning"
     case oliveOil               = "Olive Oil"
-    case bb = "bb"
+    case orange                 = "Orange"
+    ////////////////////////////////////
+    case rice                   = "Rice"
+    case corn                   = "Corn"
+    case burgerBun              = "BurgerBun"
+    
+    case ketChup                = "KetChup"
+    case pickle                 = "Pickle"
+    case waterMelon             = "WaterMelon"
+    
+    case banana                 = "Banana"
+    case nori                   = "Nori"
+   // case onigiri                = "Onigiri"
+    case bb                     = "bb"
     ////////////////////////////////////
     
     static var count: Int { return ItemName.bb.hashValue + 1}
