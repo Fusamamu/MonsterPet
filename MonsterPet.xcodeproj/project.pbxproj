@@ -127,8 +127,6 @@
 		AEC8212B247BD5A10077E57D /* BaseUiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC8212A247BD5A10077E57D /* BaseUiManager.swift */; };
 		AECA3EA82567C0FE0048AEC5 /* BonusPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */; };
 		AED8A54025DB93E500FB9A75 /* InventoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED8A53F25DB93E500FB9A75 /* InventoryDataManager.swift */; };
-		AEE1261524E522A5006C7535 /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */; };
-		AEE1261724E52442006C7535 /* Pen Click Sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEE1261624E52442006C7535 /* Pen Click Sfx.wav */; };
 		AEE1EEB92575F43400C53E64 /* CoreObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE1EEB82575F43400C53E64 /* CoreObjectManager.swift */; };
 		AEEAA191248E35C30016A8FB /* BuyHeartSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEAA190248E35C30016A8FB /* BuyHeartSlot.swift */; };
 		AEEAA193248E36B60016A8FB /* HeartShopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEAA192248E36B60016A8FB /* HeartShopPage.swift */; };
@@ -287,8 +285,6 @@
 		AEC8212A247BD5A10077E57D /* BaseUiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUiManager.swift; sourceTree = "<group>"; };
 		AECA3EA72567C0FE0048AEC5 /* BonusPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusPanel.swift; sourceTree = "<group>"; };
 		AED8A53F25DB93E500FB9A75 /* InventoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryDataManager.swift; sourceTree = "<group>"; };
-		AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bensound-ukulele.mp3"; path = "../../../GameSounds/bensound-ukulele.mp3"; sourceTree = "<group>"; };
-		AEE1261624E52442006C7535 /* Pen Click Sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Pen Click Sfx.wav"; path = "../../../GameSounds/Pen Click Sfx.wav"; sourceTree = "<group>"; };
 		AEE1EEB82575F43400C53E64 /* CoreObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreObjectManager.swift; sourceTree = "<group>"; };
 		AEEAA190248E35C30016A8FB /* BuyHeartSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyHeartSlot.swift; sourceTree = "<group>"; };
 		AEEAA192248E36B60016A8FB /* HeartShopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartShopPage.swift; sourceTree = "<group>"; };
@@ -703,13 +699,11 @@
 		AEE1261324E5228A006C7535 /* GameSounds */ = {
 			isa = PBXGroup;
 			children = (
-				AEE1261624E52442006C7535 /* Pen Click Sfx.wav */,
 				AE35CE7025DE2BD9000DFC8F /* mixkit-fairy-arcade-sparkle-866.wav */,
 				AE35CE7A25DE37D0000DFC8F /* mixkit-click-error-1110.wav */,
 				AE35CE8425DE3EF5000DFC8F /* mixkit-magic-bubbles-spell-2999.wav */,
 				AE35CE7F25DE3972000DFC8F /* mixkit-cool-interface-click-tone-2568.wav */,
 				AE35CE7525DE3557000DFC8F /* mixkit-paper-slide-1530.wav */,
-				AEE1261424E522A5006C7535 /* bensound-ukulele.mp3 */,
 			);
 			path = GameSounds;
 			sourceTree = "<group>";
@@ -832,7 +826,6 @@
 				AE1EAEF725657AEE0035A849 /* peng.atlas in Resources */,
 				AE95327D2484C95600370C8D /* ChalkboardRegular.atlas in Resources */,
 				AE35CE7625DE3557000DFC8F /* mixkit-paper-slide-1530.wav in Resources */,
-				AEE1261724E52442006C7535 /* Pen Click Sfx.wav in Resources */,
 				AE0E4F1224B97A5A00AB26FC /* GameData.plist in Resources */,
 				AE1EAEEF25657ADA0035A849 /* hd@3x.xml in Resources */,
 				AE4FB6D42567BFAA00D08EF5 /* getBonusPanel.atlas in Resources */,
@@ -844,7 +837,6 @@
 				AE1EAEEE25657ADA0035A849 /* hd@2x.xml in Resources */,
 				AE35CE8025DE3972000DFC8F /* mixkit-cool-interface-click-tone-2568.wav in Resources */,
 				AE4746E5243D971600BDD3D2 /* petText.atlas in Resources */,
-				AEE1261524E522A5006C7535 /* bensound-ukulele.mp3 in Resources */,
 				AE95327A2484C95200370C8D /* ChalkboardRegular@2x.xml in Resources */,
 				AE1EAEF825657AEE0035A849 /* peng@4x.xml in Resources */,
 				AE87764A2449669B00779C34 /* MainScene.sks in Resources */,
